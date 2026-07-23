@@ -1,0 +1,112 @@
+.page-wrapper {
+  background-color: var(--bg-light);
+  min-height: 80vh;
+  overflow-x: hidden;
+}
+
+.page-header {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #112d61 100%);
+  color: #fff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.page-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.page-content-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* Common Grid Layout for Courses, Projects, Internships */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.item-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.item-image {
+  height: 160px;
+  background-color: #e2e8f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #94a3b8;
+}
+
+.item-details {
+  padding: 25px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-title {
+  font-size: 1.3rem;
+  color: var(--primary-dark);
+  margin-bottom: 10px;
+}
+
+.item-desc {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-light);
+  padding-top: 15px;
+}
+
+.item-price {
+  font-weight: 700;
+  color: var(--accent-orange);
+}
+
+.item-btn {
+  background: transparent;
+  color: var(--primary-dark);
+  border: 1px solid var(--primary-dark);
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.item-btn:hover {
+  background: var(--primary-dark);
+  color: #fff;
+}

@@ -1,0 +1,217 @@
+.alumni-section {
+  padding: 80px 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.alumni-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.alumni-header {
+  text-align: center;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.alumni-tag {
+  display: inline-block;
+  color: var(--accent-green); /* Hemsethu crimson red */
+  font-size: 0.8rem;
+  font-weight: 750;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.alumni-title {
+  font-size: 2.4rem;
+  font-weight: 850;
+  color: var(--primary-dark);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.alumni-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-gray);
+  max-width: 620px;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+/* ---------------- Ticker / Marquee Styles ---------------- */
+.companies-ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  padding: 10px 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+}
+
+.companies-ticker-track {
+  display: flex;
+  width: max-content;
+  gap: 25px;
+  animation: scrollMarquee 25s linear infinite;
+}
+
+.companies-ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Company Logo Cards */
+.company-logo-card {
+  flex-shrink: 0;
+  width: 190px;
+  height: 80px;
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(11, 33, 74, 0.015);
+  cursor: pointer;
+}
+
+.company-logo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px -5px rgba(11, 33, 74, 0.08);
+  border-color: rgba(11, 33, 74, 0.08);
+}
+
+/* ---------------- Brand Logo Typography & Icons ---------------- */
+.company-logo-card span {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  user-select: none;
+}
+
+/* Zoho */
+.logo-zoho {
+  font-weight: 800 !important;
+  letter-spacing: -0.5px;
+}
+.logo-zoho .z-red { color: #e1251b; }
+.logo-zoho .z-blue { color: #1a73e8; }
+.logo-zoho .z-green { color: #00b050; }
+.logo-zoho .z-yellow { color: #ffc000; }
+
+/* Razorpay */
+.logo-razorpay {
+  color: #0b72e7;
+  font-weight: 850 !important;
+  letter-spacing: -0.5px;
+}
+
+/* Swiggy */
+.logo-swiggy {
+  color: #fc8019;
+  font-weight: 850 !important;
+  letter-spacing: -0.5px;
+}
+
+/* Zomato */
+.logo-zomato {
+  color: #cb202d;
+  font-weight: 850 !important;
+  letter-spacing: -0.8px;
+}
+
+/* Freshworks */
+.logo-freshworks {
+  color: #1b263b;
+  font-weight: 700 !important;
+}
+
+/* Wipro */
+.logo-wipro {
+  color: #0d2c6c;
+  font-weight: 900 !important;
+}
+
+/* Accenture */
+.logo-accenture {
+  color: #000000;
+  font-weight: 800 !important;
+  font-size: 1.25rem !important;
+}
+.logo-accenture .acc-arrow {
+  color: #a100ff;
+  font-weight: 800;
+  display: inline-block;
+  transform: scaleY(1.3);
+}
+
+/* Cognizant */
+.logo-cognizant {
+  color: #000048;
+}
+
+/* Capgemini */
+.logo-capgemini {
+  color: #0070ad;
+  font-size: 1.15rem !important;
+}
+.logo-capgemini .cap-spade {
+  font-size: 1.3rem;
+  color: #002244;
+}
+
+/* TCS */
+.logo-tcs {
+  color: #0056b3;
+  font-style: italic;
+}
+.logo-tcs .tcs-dot {
+  color: var(--accent-orange); /* orange dot */
+  font-style: normal;
+}
+
+/* Infosys */
+.logo-infosys {
+  color: #007cc3;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .alumni-title {
+    font-size: 2rem;
+  }
+  .alumni-section {
+    padding: 60px 0;
+  }
+}

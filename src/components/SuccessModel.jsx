@@ -1,0 +1,153 @@
+import React from 'react';
+import './SuccessModel.css';
+
+/* ── Chart constants ─────────────────────────────────── */
+const CX = 390;          // chart center x in SVG
+const CY = 265;          // chart center y in SVG
+const OUTER_R = 148;     // outer radius of donut
+const INNER_R = 84;      // inner radius (hole)
+const LINE_START = OUTER_R + 6;   // leader line starts here
+const LINE_END   = OUTER_R + 48;  // leader line ends here
+const TEXT_R     = OUTER_R + 62;  // text positioned here
+
+/* ── Segment data ────────────────────────────────────── */
+const segments = [
+  { label: 'Group Discussion',      pct: 5,  color: '#e91e8c' },  // pink
+  { label: 'Practical Exposure',    pct: 50, color: '#1565c0' },  // navy blue
+  { label: 'Live Projects',         pct: 20, color: '#29b6f6' },  // light blue
+  { label: 'Theory Knowledge',      pct: 10, color: '#f57c00' },  // orange
+  { label: 'Weekly Evaluations',    pct: 5,  color: '#546e7a' },  // gray
+  { label: 'Placement Assessments', pct: 5,  color: '#43a047' },  // green
+  { label: 'Mock Interviews',       pct: 5,  color: '#7b1fa2' },  // purple
+];
+
+/* ── Helpers ─────────────────────────────────────────── */
+function polar(cx, cy, r, angleDeg) {
+  const rad = ((angleDeg - 90) * Math.PI) / 180;
+  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+}
+
+function arcPath(cx, cy, oR, iR, startDeg, endDeg) {
+  // slightly shrink segment angle to add gap
+  const GAP = 1.5;
+  const s = startDeg + GAP;
+  const e = endDeg - GAP;
+  const p1 = polar(cx, cy, oR, s);
+  const p2 = polar(cx, cy, oR, e);
+  const p3 = polar(cx, cy, iR, e);
+  const p4 = polar(cx, cy, iR, s);
+  const large = (e - s) > 180 ? 1 : 0;
+  return [
+    `M ${p1.x.toFixed(2)} ${p1.y.toFixed(2)}`,
+    `A ${oR} ${oR} 0 ${large} 1 ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`,
+    `L ${p3.x.toFixed(2)} ${p3.y.toFixed(2)}`,
+    `A ${iR} ${iR} 0 ${large} 0 ${p4.x.toFixed(2)} ${p4.y.toFixed(2)}`,
+    'Z',
+  ].join(' ');
+}
+
+/* ── Pre-calculate angles ────────────────────────────── */
+let cum = 0;
+const processed = segments.map((s) => {
+  const startDeg = cum * 3.6;
+  cum += s.pct;
+  const endDeg = cum * 3.6;
+  const midDeg = (startDeg + endDeg) / 2;
+  return { ...s, startDeg, endDeg, midDeg };
+});
+
+/* ── Component ───────────────────────────────────────── */
+export default function SuccessModel() {
+  return (
+    <section className="sm-section">
+      <div className="sm-container">
+
+        {/* Title */}
+        <h2 className="sm-title">
+          How We Measure{' '}
+          <span className="sm-title-accent">Your Success</span>
+        </h2>
+
+        {/* SVG Donut Chart */}
+        <div className="sm-chart-wrap">
+          <svg
+            viewBox="0 0 780 530"
+            xmlns="http://www.w3.org/2000/svg"
+            className="sm-svg"
+          >
+            {/* Segments */}
+            {processed.map((s, i) => (
+              <path
+                key={i}
+                d={arcPath(CX, CY, OUTER_R, INNER_R, s.startDeg, s.endDeg)}
+                fill={s.color}
+                className="sm-segment"
+              />
+            ))}
+
+            {/* White center hole */}
+            <circle cx={CX} cy={CY} r={INNER_R - 3} fill="#ffffff" />
+
+            {/* Center text */}
+            <text x={CX} y={CY - 10} textAnchor="middle" className="sm-center-pct">
+              100%
+            </text>
+            <text x={CX} y={CY + 16} textAnchor="middle" className="sm-center-sub">
+              SUCCESS MODEL
+            </text>
+
+            {/* Leader lines + labels for each segment */}
+            {processed.map((s, i) => {
+              const lineS = polar(CX, CY, LINE_START, s.midDeg);
+              const lineE = polar(CX, CY, LINE_END,   s.midDeg);
+              const txtPt = polar(CX, CY, TEXT_R,     s.midDeg);
+
+              // cos of adjusted angle for determining text alignment
+              const radMid = ((s.midDeg - 90) * Math.PI) / 180;
+              const cosVal = Math.cos(radMid);
+              const anchor = cosVal > 0.15 ? 'start' : cosVal < -0.15 ? 'end' : 'middle';
+              const txtX = txtPt.x + (cosVal > 0.15 ? 4 : cosVal < -0.15 ? -4 : 0);
+
+              return (
+                <g key={i}>
+                  {/* Leader line */}
+                  <line
+                    x1={lineS.x.toFixed(2)} y1={lineS.y.toFixed(2)}
+                    x2={lineE.x.toFixed(2)} y2={lineE.y.toFixed(2)}
+                    stroke={s.color}
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                  />
+                  {/* Small dot at line end */}
+                  <circle cx={lineE.x.toFixed(2)} cy={lineE.y.toFixed(2)} r="3" fill={s.color} />
+
+                  {/* Label name */}
+                  <text
+                    x={txtX.toFixed(2)}
+                    y={(txtPt.y - 6).toFixed(2)}
+                    textAnchor={anchor}
+                    className="sm-lbl-name"
+                  >
+                    {s.label}
+                  </text>
+
+                  {/* Percentage in segment color */}
+                  <text
+                    x={txtX.toFixed(2)}
+                    y={(txtPt.y + 14).toFixed(2)}
+                    textAnchor={anchor}
+                    fill={s.color}
+                    className="sm-lbl-pct"
+                  >
+                    {s.pct}%
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
+        </div>
+
+      </div>
+    </section>
+  );
+}

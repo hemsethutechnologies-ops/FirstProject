@@ -1,0 +1,668 @@
+.hero-page-section {
+  width: 100%;
+  margin: 0;
+  padding: 0 0 60px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+}
+
+/* 1. Hero Slider Container */
+.hero-slider-container {
+  position: relative;
+  width: 100%;
+  border-radius: 0;
+  background: linear-gradient(135deg, #0b214a 0%, #173b75 35%, #881b1b 75%, #c2410c 100%);
+  box-shadow: 0 25px 60px -15px rgba(11, 33, 74, 0.25);
+  border: none;
+  overflow: hidden;
+  min-height: 360px;
+}
+
+/* Slider Viewport and Track */
+.slider-viewport {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.slider-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-item {
+  flex-shrink: 0;
+  width: 100%;
+  padding: 25px 90px 95px 90px;
+  box-sizing: border-box;
+}
+
+.slide-content-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 40px;
+  max-width: 1680px; /* Allows content to expand and cover space on wider displays */
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Left Info Pane */
+.slide-info-pane {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  z-index: 10;
+}
+
+.slide-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 6px 16px;
+  border-radius: 50px;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 12px;
+  backdrop-filter: blur(4px);
+}
+
+.slide-title {
+  color: #ffffff;
+  font-size: 2.1rem;
+  font-weight: 850;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  margin-bottom: 8px;
+}
+
+.title-highlight {
+  display: block;
+  color: #facc15;
+  /* High contrast yellow highlight matching mockup */
+  text-shadow: 0 4px 12px rgba(250, 204, 21, 0.2);
+}
+
+.slide-desc {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  margin-bottom: 12px;
+  max-width: 580px;
+}
+
+/* Bullet Capsules */
+.slide-bullets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.bullet-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 6px 14px;
+  border-radius: 50px;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* Slide Action Buttons */
+.slide-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.slide-buttons .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: #ffcb29;
+  color: #0b214a;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 750;
+  font-size: 0.92rem;
+  box-shadow: 0 4px 15px rgba(250, 204, 21, 0.35);
+  transition: all 0.3s ease;
+}
+
+.slide-buttons .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(250, 204, 21, 0.5);
+  background: #facc15;
+}
+
+.slide-buttons .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.slide-buttons .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Right Illustration Pane */
+.slide-graphics-pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.slide-illustration-img {
+  max-width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Slider Nav Arrows */
+.slider-arrow {
+  position: absolute;
+  top: calc(50% - 42px);
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.slider-arrow:hover {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.arrow-left {
+  left: 20px;
+}
+
+.arrow-right {
+  right: 20px;
+}
+
+/* Slider Dots Indicators */
+.slider-dots {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+}
+
+.dot-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot-indicator.active {
+  width: 24px;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+/* 2. Overlapping White Courses Selector Card */
+.overlapping-courses-card {
+  margin: -85px auto 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  position: relative;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Tabs Navigation */
+.category-tabs-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+  /* Hide standard Firefox scrollbar */
+}
+
+.category-tabs-nav::-webkit-scrollbar {
+  display: none;
+  /* Hide Chrome/Safari scrollbar */
+}
+
+.category-tab-btn {
+  white-space: nowrap;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.category-tab-btn:hover {
+  background: #f8fafc;
+  color: #1e293b;
+  border-color: #cbd5e1;
+}
+
+.category-tab-btn.active {
+  background: #fef2f2;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+/* Courses Cards Grid */
+.courses-grid-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 16px;
+}
+
+/* Individual Course Cards */
+.course-card {
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.08);
+}
+
+.course-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.course-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 4px 10px;
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+}
+
+.course-icon-bg {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.course-card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.course-card-count {
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+/* Course Theme Styles */
+.course-blue {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+}
+
+.course-blue .course-icon-bg {
+  color: #3b82f6;
+}
+
+.course-blue .course-badge {
+  color: #1e40af;
+}
+
+.course-green {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1px solid #bbf7d0;
+  color: #156534;
+}
+
+.course-green .course-icon-bg {
+  color: #22c55e;
+}
+
+.course-green .course-badge {
+  color: #156534;
+}
+
+.course-purple {
+  background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+  border: 1px solid #e9d5ff;
+  color: #6b21a8;
+}
+
+.course-purple .course-icon-bg {
+  color: #a855f7;
+}
+
+.course-purple .course-badge {
+  color: #6b21a8;
+}
+
+.course-orange {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border: 1px solid #fed7aa;
+  color: #c2410c;
+}
+
+.course-orange .course-icon-bg {
+  color: #f97316;
+}
+
+.course-orange .course-badge {
+  color: #c2410c;
+}
+
+.course-pink {
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+  border: 1px solid #fbcfe8;
+  color: #9d174d;
+}
+
+.course-pink .course-icon-bg {
+  color: #ec4899;
+}
+
+.course-pink .course-badge {
+  color: #9d174d;
+}
+
+.course-teal {
+  background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+  border: 1px solid #99f6e4;
+  color: #0f766e;
+}
+
+.course-teal .course-icon-bg {
+  color: #14b8a6;
+}
+
+.course-teal .course-badge {
+  color: #0f766e;
+}
+
+
+/* 3. Bottom Stats Grid */
+.bottom-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.new-stat-card {
+  padding: 20px 24px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+}
+
+.new-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.new-stat-card .stat-icon-wrapper {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.new-stat-card .stat-details h3 {
+  font-size: 1.7rem;
+  font-weight: 850;
+  line-height: 1.15;
+  margin-bottom: 2px;
+}
+
+.new-stat-card .stat-details p {
+  font-size: 0.88rem;
+  font-weight: 650;
+  opacity: 0.85;
+}
+
+/* Stat Card Color Themes */
+.theme-blue {
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  color: #1d4ed8;
+}
+
+.theme-blue .stat-icon-wrapper {
+  color: #3b82f6;
+}
+
+.theme-blue .stat-details h3 {
+  color: #1e40af;
+}
+
+.theme-green {
+  background: #f0fdf4;
+  border: 1px solid #dcfce7;
+  color: #15803d;
+}
+
+.theme-green .stat-icon-wrapper {
+  color: #22c55e;
+}
+
+.theme-green .stat-details h3 {
+  color: #156534;
+}
+
+.theme-purple {
+  background: #faf5ff;
+  border: 1px solid #f3e8ff;
+  color: #7e22ce;
+}
+
+.theme-purple .stat-icon-wrapper {
+  color: #a855f7;
+}
+
+.theme-purple .stat-details h3 {
+  color: #6b21a8;
+}
+
+.theme-orange {
+  background: #fff7ed;
+  border: 1px solid #ffedd5;
+  color: #ea580c;
+}
+
+.theme-orange .stat-icon-wrapper {
+  color: #f97316;
+}
+
+.theme-orange .stat-details h3 {
+  color: #c2410c;
+}
+
+
+/* 4. Responsiveness */
+@media (max-width: 1024px) {
+  .slide-item {
+    padding: 50px;
+  }
+
+  .slide-title {
+    font-size: 2.3rem;
+  }
+
+  .bottom-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .slide-content-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .slide-info-pane {
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-title {
+    font-size: 2.1rem;
+  }
+
+  .slide-desc {
+    font-size: 1rem;
+  }
+
+  .slide-bullets {
+    justify-content: center;
+  }
+
+  .slide-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .slide-graphics-pane {
+    order: -1;
+    /* Place image on top on mobile */
+  }
+
+  .slide-illustration-img {
+    max-height: 200px;
+  }
+
+  .slider-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .overlapping-courses-card {
+    padding: 20px;
+    margin-top: -30px;
+  }
+
+  .courses-grid-display {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-item {
+    padding: 40px 24px;
+  }
+
+  .slide-title {
+    font-size: 1.8rem;
+  }
+
+  .slide-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .slide-buttons a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .courses-grid-display {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

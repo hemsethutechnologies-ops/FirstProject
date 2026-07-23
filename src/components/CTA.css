@@ -1,0 +1,243 @@
+.premium-cta-section {
+  padding: 80px 4%;
+  background-color: var(--bg-light);
+  overflow: visible; /* Crucial to allow the student image to overlap outside the section */
+  position: relative;
+}
+
+.premium-cta-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.premium-cta-card {
+  background: linear-gradient(135deg, #1d65d4 0%, #0b214a 100%);
+  border-radius: 40px;
+  padding: 50px 60px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 30px;
+  position: relative;
+  overflow: visible; /* Allows the right-side elements to pop out */
+  box-shadow: var(--shadow-lg), 0 20px 40px -15px rgba(11, 33, 74, 0.4);
+}
+
+.cta-left-content {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  z-index: 3;
+  position: relative;
+}
+
+.cta-tag {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.cta-title-new {
+  font-size: 2.3rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.cta-desc-new {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 28px;
+  max-width: 580px;
+}
+
+.cta-button-container {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.btn-cta-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: white;
+  color: #1d65d4;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-cta-explore:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.cta-bottom-row-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 25px;
+  margin-top: 10px;
+  gap: 30px;
+  width: 100%;
+}
+
+.cta-metrics-row {
+  display: flex;
+  gap: 40px;
+}
+
+.cta-metric-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.metric-number.yellow {
+  color: #f59e0b; /* Yellow */
+}
+
+.metric-number.teal {
+  color: #06b6d4; /* Teal */
+}
+
+.metric-number.purple {
+  color: #ec4899; /* Pink/Purple */
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* Right Content: Backdrop Circle and Image */
+.cta-right-content {
+  position: relative;
+  height: 100%;
+}
+
+.cta-circle-backdrop {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  background-color: white;
+  border-radius: 50%;
+  right: -30px;
+  top: -10px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: visible;
+  /* Double circle ring design matching image */
+  border: 10px solid #f1f5f9;
+}
+
+/* Inner shadow/border ring effect */
+.cta-circle-backdrop::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border-radius: 50%;
+  border: 2px solid rgba(29, 101, 212, 0.25);
+  pointer-events: none;
+}
+
+.cta-student-image {
+  position: absolute;
+  bottom: -5px;
+  width: 90%;
+  height: 94%;
+  object-fit: contain;
+  z-index: 3;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
+  pointer-events: none;
+  transform: scale(1.0);
+}
+
+/* Responsive Styles */
+@media (max-width: 1100px) {
+  .cta-circle-backdrop {
+    width: 320px;
+    height: 320px;
+    right: -20px;
+    top: -10px;
+  }
+  .cta-student-image {
+    max-height: 330px;
+  }
+}
+
+@media (max-width: 991px) {
+  .premium-cta-card {
+    grid-template-columns: 1fr;
+    padding: 40px;
+    gap: 40px;
+  }
+  
+  .cta-right-content {
+    height: 320px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta-circle-backdrop {
+    position: relative;
+    right: 0;
+    top: 0;
+  }
+
+  .cta-bottom-row-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .premium-cta-card {
+    padding: 30px 20px;
+  }
+
+  .cta-title-new {
+    font-size: 1.8rem;
+  }
+
+  .cta-metrics-row {
+    flex-wrap: wrap;
+    gap: 20px 30px;
+  }
+
+  .cta-right-content {
+    height: 240px;
+  }
+
+  .cta-circle-backdrop {
+    width: 240px;
+    height: 240px;
+  }
+
+  .cta-student-image {
+    max-height: 250px;
+  }
+}

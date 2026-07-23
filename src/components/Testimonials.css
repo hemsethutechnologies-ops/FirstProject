@@ -1,0 +1,133 @@
+.testimonials-section {
+  padding: 100px 20px;
+  background-color: var(--bg-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* Card Design */
+.testimonial-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  padding: 35px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(11, 33, 74, 0.01);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px -12px rgba(11, 33, 74, 0.06);
+  border-color: rgba(11, 33, 74, 0.15);
+}
+
+/* Quote Icon */
+.quote-icon-wrap {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: #eff6ff; /* Soft contrast background icon */
+}
+
+.quote-icon {
+  opacity: 0.25;
+  color: #1d4ed8;
+}
+
+/* Stars */
+.rating-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+/* Content */
+.testimonial-text {
+  font-size: 0.98rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: 28px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* User Info Section */
+.testimonial-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 750;
+  font-size: 0.92rem;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.avatar-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.avatar-purple {
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+}
+
+.avatar-teal {
+  background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 2px;
+}
+
+.user-role {
+  font-size: 0.8rem;
+  color: var(--text-gray);
+  font-weight: 600;
+}
+
+.placement-tag {
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    padding: 28px;
+  }
+}

@@ -1,0 +1,234 @@
+/* ===================================================
+   PopularCourses — matches reference design exactly
+   =================================================== */
+
+.pc-section {
+  padding: 70px 24px;
+  background: #f5f4ef;   /* cream/beige like reference */
+}
+
+.pc-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Label ── */
+.pc-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* ── Title + green underline ── */
+.pc-title-wrap {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.pc-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.25;
+  margin: 0 0 8px;
+}
+
+.pc-underline {
+  width: 220px;
+  height: 12px;
+  margin: 0 auto;
+}
+
+.pc-underline svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Slider wrapper ── */
+.pc-slider-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Cards track (horizontal scroll) ── */
+.pc-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;           /* hide scrollbar Firefox */
+  -ms-overflow-style: none;        /* hide scrollbar IE */
+  flex: 1;
+  padding: 6px 2px 12px;           /* breathing room for shadow */
+}
+
+.pc-track::-webkit-scrollbar {
+  display: none;                   /* hide scrollbar Chrome/Safari */
+}
+
+/* ── Individual card ── */
+.pc-card {
+  scroll-snap-align: start;
+  flex: 0 0 calc(50% - 10px);     /* 2 cards visible */
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.pc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.13);
+}
+
+/* ── Banner image area ── */
+.pc-banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.pc-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Orange duration badge ── */
+.pc-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #f59e0b;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── JOIN OUR CLASS button on banner ── */
+.pc-join-btn {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  background: #22c55e;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 7px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.pc-join-btn:hover {
+  background: #16a34a;
+  transform: scale(1.04);
+}
+
+/* ── Card body ── */
+.pc-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pc-course-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* ── Metadata row: sessions | students | price ── */
+.pc-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pc-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: #555e6c;
+  font-weight: 500;
+}
+
+.pc-meta-item svg {
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+/* ── Navigation arrows ── */
+.pc-arrow {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #e2e6f0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.pc-arrow:hover {
+  background: #111827;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .pc-card {
+    flex: 0 0 80%;
+  }
+
+  .pc-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .pc-section { padding: 50px 16px; }
+
+  .pc-card {
+    flex: 0 0 90%;
+  }
+
+  .pc-title {
+    font-size: 1.4rem;
+  }
+
+  .pc-arrow {
+    display: none;
+  }
+}
