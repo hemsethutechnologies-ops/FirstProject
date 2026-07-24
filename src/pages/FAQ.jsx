@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { ChevronDown, Search, HelpCircle, BookOpen, Code2, Briefcase, GraduationCap, CreditCard, Globe } from 'lucide-react';
+import SEO from '../components/SEO';
 import './PageStyles.css';
 import './FAQ.css';
 
@@ -198,8 +199,28 @@ export default function FAQ() {
     setOpenId(null);
   };
 
+  const faqPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: f.answer,
+      },
+    })),
+  };
+
   return (
     <main className="page-wrapper">
+      <SEO
+        title="Frequently Asked Questions"
+        description="Find answers to common questions about Hemsethu Technologies — courses, academic projects, internships, certifications, payments, and more."
+        canonical="/faq"
+        keywords={['FAQ Hemsethu Technologies', 'IT training questions', 'academic project help', 'internship eligibility']}
+        jsonLd={faqPageSchema}
+      />
       {/* Hero Header */}
       <div className="page-header faq-hero-header">
         <div className="faq-hero-badge">
@@ -207,6 +228,7 @@ export default function FAQ() {
           <span>Help Center</span>
         </div>
         <h1>Frequently Asked Questions</h1>
+
         <p>Everything you need to know about Hemsethu Technologies — from courses and projects to payments and certifications.</p>
 
         {/* Search Bar */}

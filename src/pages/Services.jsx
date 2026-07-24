@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import EnrollmentModal from '../components/EnrollmentModal';
+import SEO from '../components/SEO';
 import { 
   GraduationCap, 
   Code2, 
@@ -107,6 +108,12 @@ export default function Services() {
   if (!serviceType) {
     return (
       <main className="page-wrapper services-page">
+        <SEO
+          title="Our Services"
+          description="Hemsethu Technologies offers academic projects, software development, workshops, paper publication, plagiarism checks, paper writing, corporate training, and online training in Hyderabad."
+          canonical="/services"
+          keywords={['IT services Hyderabad', 'academic project services', 'paper publication', 'corporate training Hyderabad', 'software development services']}
+        />
         <div className="page-header" style={{background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-orange) 100%)'}}>
           <h1>Our Services</h1>
           <p>Comprehensive technical and academic solutions designed to empower students and professionals.</p>

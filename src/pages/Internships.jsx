@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { X, Check } from 'lucide-react';
+import SEO from '../components/SEO';
 import './PageStyles.css';
 import './Internships.css';
 
@@ -66,6 +67,12 @@ export default function Internships() {
 
   return (
     <main className="page-wrapper">
+      <SEO
+        title="Internship Programs"
+        description="Kickstart your career with Hemsethu Technologies' internship programs in Hyderabad. Summer, winter, remote & bootcamp internships with real project experience, mentorship, and certifications."
+        canonical="/internships"
+        keywords={['IT internships Hyderabad', 'summer internship program', 'software internship', 'remote internship India', 'pre-placement offer']}
+      />
       <div className="page-header" style={{background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-purple) 100%)'}}>
         <h1>Internship Programs</h1>
         <p>Kickstart your career with our hands-on internship programs. Gain real-world experience building products that matter.</p>

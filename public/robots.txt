@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or private paths (none currently, placeholder for future)
+# Disallow: /admin/
+
+Sitemap: https://hemsethutechnologies.com/sitemap.xml

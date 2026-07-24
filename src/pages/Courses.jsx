@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import './PageStyles.css';
 
 export default function Courses({ category }) {
@@ -55,9 +56,20 @@ export default function Courses({ category }) {
     ? courses.filter(c => c.category === targetCategoryName)
     : courses;
 
+  const pageTitle = targetCategoryName ? `${targetCategoryName} Courses` : 'Professional Courses';
+  const pageDesc = targetCategoryName
+    ? `Enroll in our ${targetCategoryName} course at Hemsethu Technologies, Hyderabad. Industry-relevant curriculum, expert mentors, and hands-on projects.`
+    : 'Explore professional IT courses at Hemsethu Technologies — Frontend, Backend, Fullstack, DevOps, UI/UX, and Cybersecurity. Learn from industry experts with real-world projects.';
+
   return (
     <main className="page-wrapper">
-      <div className="page-header" style={{background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-orange) 100%)'}}>
+      <SEO
+        title={pageTitle}
+        description={pageDesc}
+        canonical={category ? `/courses/${category}` : '/courses'}
+        keywords={['IT courses Hyderabad', 'programming courses', 'software development training', pageTitle]}
+      />
+      <div className="page-header" style={{background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-orange) 100%)'}}>  
         <h1>
           {targetCategoryName ? `${targetCategoryName} Courses` : 'Professional Courses'}
         </h1>

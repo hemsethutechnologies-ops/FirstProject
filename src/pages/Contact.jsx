@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO';
 import './PageStyles.css';
 import './Contact.css';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
+
 
 export default function Contact() {
   const [name, setName] = useState('');
@@ -20,10 +22,17 @@ export default function Contact() {
 
   return (
     <main className="page-wrapper">
+      <SEO
+        title="Contact Us"
+        description="Get in touch with Hemsethu Technologies in Hyderabad. Reach us by phone, email, or visit our office in Hyderabad or Secunderabad for project enquiries, course enrolments, or internships."
+        canonical="/contact"
+        keywords={['contact Hemsethu Technologies', 'IT training enquiry Hyderabad', 'academic project enquiry']}
+      />
       <div className="page-header" style={{background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-orange) 100%)'}}>
         <h1>Contact Us</h1>
         <p>Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
       </div>
+
 
       <div className="page-content-wrap contact-container">
         <div className="contact-info-panel">

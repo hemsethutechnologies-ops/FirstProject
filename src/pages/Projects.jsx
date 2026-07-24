@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import SEO from '../components/SEO';
 import './PageStyles.css';
 import './Projects.css';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -91,6 +92,12 @@ export default function Projects() {
 
   return (
     <main className="page-wrapper projects-page">
+      <SEO
+        title={activeCategory !== 'All' ? `${activeCategory} Projects` : 'Academic Projects Catalog'}
+        description={`Browse ${activeCategory !== 'All' ? activeCategory : 'IEEE, Python, ML, AI, Java, .NET & Android'} academic projects at Hemsethu Technologies. Complete documentation, PPT support, and viva preparation included.`}
+        canonical="/projects"
+        keywords={['academic projects Hyderabad', 'IEEE projects', 'Python projects', 'ML projects', 'B.Tech final year projects', 'M.Tech projects']}
+      />
       <div className="page-header" style={{background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-orange) 100%)'}}>
         <h1>Projects Catalog</h1>
         <p>Browse our extensive library of industry-standard projects across various domains.</p>
