@@ -12,6 +12,7 @@ import Services from './pages/Services'
 import Internships from './pages/Internships'
 import Contact from './pages/Contact'
 import CourseDetails from './pages/CourseDetails'
+import FAQ from './pages/FAQ'
 
 // Separate Project Pages
 import IEEEProjects from './pages/projects/IEEEProjects'
@@ -73,6 +74,8 @@ function App() {
             <Route path="/internships" element={<Internships />} />
             <Route path="/internships/:type" element={<Internships />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/about/faq" element={<FAQ />} />
           </Routes>
         </div>
 

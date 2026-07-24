@@ -140,6 +140,7 @@ export default function Header() {
                 <li><NavLink to="/internships/bootcamps">Intensive Bootcamps</NavLink></li>
               </ul>
             </li>
+            <li><NavLink to="/faq">FAQs</NavLink></li>
             <li><NavLink to="/contact">Contact</NavLink></li>
           </ul>
 
