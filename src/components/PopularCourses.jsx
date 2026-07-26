@@ -3,12 +3,12 @@ import { Clock, Users, BookOpen, IndianRupee, ChevronLeft, ChevronRight } from '
 import './PopularCourses.css';
 
 // Training banner images from assets
-import img1 from '../assets/training1.png';
-import img2 from '../assets/training2.png';
-import img3 from '../assets/training3.png';
-import img4 from '../assets/training4.png';
-import img5 from '../assets/training5.png';
-import img6 from '../assets/training6.png';
+import img1 from '../assets/training_bootcamps.png';
+import img2 from '../assets/training_ieee_projects.png';
+import img3 from '../assets/project_screen_landing.png';
+import img4 from '../assets/project_screen_dashboard.png';
+import img5 from '../assets/training_aws_devops.png';
+import img6 from '../assets/project_screen_ecommerce.png';
 
 const courses = [
   {

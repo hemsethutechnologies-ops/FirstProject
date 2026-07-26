@@ -201,11 +201,11 @@ export default function Services() {
 
                 <h3 className="section-subtitle">Project Deliverables:</h3>
                 <ul className="deliverables-bullets">
-                  <li><CheckCircle size={18} color="var(--accent-orange)" /> <strong>Complete Source Code:</strong> Clean, modular, well-commented code.</li>
-                  <li><CheckCircle size={18} color="var(--accent-orange)" /> <strong>Project Documentation:</strong> Standard reports (Synopsis, Literature survey, Design, UML diagrams).</li>
-                  <li><CheckCircle size={18} color="var(--accent-orange)" /> <strong>Local System Setup:</strong> Detailed configuration on your personal computer.</li>
-                  <li><CheckCircle size={18} color="var(--accent-orange)" /> <strong>PPT Presentation:</strong> Ready-made PPT slides for mid-term reviews.</li>
-                  <li><CheckCircle size={18} color="var(--accent-orange)" /> <strong>Viva Q&A Prep:</strong> Guides answering standard examiner questions.</li>
+                  <li><CheckCircle size={18} color="var(--accent-orange)" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>Complete Source Code:</strong> Clean, modular, well-commented code.</span></li>
+                  <li><CheckCircle size={18} color="var(--accent-orange)" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>Project Documentation:</strong> Standard reports (Synopsis, Literature survey, Design, UML diagrams).</span></li>
+                  <li><CheckCircle size={18} color="var(--accent-orange)" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>Local System Setup:</strong> Detailed configuration on your personal computer.</span></li>
+                  <li><CheckCircle size={18} color="var(--accent-orange)" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>PPT Presentation:</strong> Ready-made PPT slides for mid-term reviews.</span></li>
+                  <li><CheckCircle size={18} color="var(--accent-orange)" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>Viva Q&A Prep:</strong> Guides answering standard examiner questions.</span></li>
                 </ul>
 
                 <button className="item-btn mt-30" onClick={() => navigate('/contact')}>Request Project Callback</button>

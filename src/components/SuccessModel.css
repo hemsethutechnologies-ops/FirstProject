@@ -1,112 +1,231 @@
 /* =====================================================
    SuccessModel — "How We Measure Your Success"
-   SVG donut chart matching the reference design
+   Clean Corporate Design - Two Column
    ===================================================== */
 
 .sm-section {
-  padding: 70px 24px 80px;
+  padding: 30px 24px;
   background: #ffffff;
+  position: relative;
+  font-family: inherit;
 }
 
 .sm-container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
 }
 
-/* ── Title ─────────────────────────────────────────── */
+.sm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.sm-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ── Typography ─────────────────────────────────────── */
+.sm-title-wrapper {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
 .sm-title {
   font-size: 2.2rem;
   font-weight: 800;
   color: #111827;
-  text-align: center;
-  margin: 0 0 20px;
+  margin: 0 0 16px;
   line-height: 1.25;
 }
 
 .sm-title-accent {
-  /* gradient from blue to cyan like reference */
-  background: linear-gradient(90deg, #1565c0 0%, #29b6f6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #1565c0;
 }
 
-/* ── Chart wrapper ──────────────────────────────────── */
+.sm-description {
+  font-size: 1.1rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.sm-mobile-break {
+  display: none;
+}
+
+/* ── Chart Wrapper ──────────────────────────────────── */
 .sm-chart-wrap {
-  width: 100%;
-  max-width: 860px;
+  width: 120%;
+  margin-left: -10%;
+  animation: fadeIn 0.8s ease-out 0.2s forwards;
+  opacity: 0;
 }
 
 .sm-svg {
   width: 100%;
   height: auto;
   display: block;
+  overflow: visible;
 }
 
-/* ── SVG text elements ──────────────────────────────── */
+/* ── Right Column: Image ────────────────────────────── */
+.sm-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.sm-image-wrapper {
+  width: 100%;
+  max-width: 550px;
+  animation: fadeIn 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.sm-student-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+/* ── Animations ─────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popInSegment {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInLabel {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── SVG Elements ───────────────────────────────────── */
+.sm-segment {
+  transform-origin: 390px 265px;
+  animation: popInSegment 0.6s cubic-bezier(0.25, 1, 0.5, 1) backwards;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.sm-segment:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+.sm-center-circle {
+  transform-origin: 390px 265px;
+}
+
+.sm-center-content {
+  transform-origin: 390px 265px;
+}
+
 .sm-center-pct {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 900;
   fill: #111827;
   font-family: inherit;
 }
 
 .sm-center-sub {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   fill: #6b7280;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   font-family: inherit;
 }
 
+.sm-label-group {
+  opacity: 0;
+  animation: fadeInLabel 0.6s ease forwards;
+}
+
 .sm-lbl-name {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   fill: #374151;
   font-family: inherit;
 }
 
 .sm-lbl-pct {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 800;
   font-family: inherit;
 }
 
-/* subtle hover lift on segments */
-.sm-segment {
-  transition: opacity 0.18s ease;
-  cursor: pointer;
+.sm-line {
+  transition: stroke-width 0.2s ease;
 }
 
-.sm-segment:hover {
-  opacity: 0.85;
+.sm-dot {
+  transition: transform 0.2s ease;
+  transform-origin: center;
 }
 
 /* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .sm-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .sm-title-wrapper {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .sm-chart-wrap {
+    width: 100%;
+    margin-left: 0;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+  
+  .sm-right {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 700px) {
+  .sm-section {
+    padding: 40px 20px;
+  }
+  
   .sm-title {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+  }
+  
+  .sm-description {
+    font-size: 1rem;
   }
 
   .sm-lbl-name {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .sm-lbl-pct {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .sm-center-pct {
-    font-size: 26px;
+    font-size: 28px;
   }
 }
 
 @media (max-width: 480px) {
-  .sm-section {
-    padding: 50px 12px;
+  .sm-title {
+    font-size: 1.6rem;
   }
 }

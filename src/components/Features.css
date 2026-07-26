@@ -1,5 +1,5 @@
 .features-section {
-  padding: 100px 20px;
+  padding: 40px 20px;
   background-color: var(--bg-light);
   border-top: 1px solid var(--border-light);
   border-bottom: 1px solid var(--border-light);
@@ -134,7 +134,7 @@
 }
 
 @media (max-width: 768px) {
-  .features-section { padding: 70px 20px; }
+  .features-section { padding: 40px 20px; }
   .features-header .section-title { font-size: 2.2rem; }
   .feature-card { padding: 35px 24px; }
 }

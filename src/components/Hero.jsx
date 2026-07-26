@@ -1,31 +1,37 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Award, 
-  CheckCircle, 
-  Calendar, 
-  Clock, 
-  Code, 
-  Rocket, 
-  BookOpen, 
-  Building2, 
-  Trophy, 
-  Users, 
-  Laptop, 
-  Cloud, 
-  Activity, 
-  Terminal, 
-  Shield, 
+import {
+  ChevronLeft,
+  ChevronRight,
+  Award,
+  CheckCircle,
+  Calendar,
+  Clock,
+  Code,
+  Rocket,
+  BookOpen,
+  Building2,
+  Trophy,
+  Users,
+  Laptop,
+  Cloud,
+  Activity,
+  Terminal,
+  Shield,
   Layers,
   Settings,
-  Database
+  Database,
+  Flame
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import training1 from '../assets/training_aws_devops.png';
 import training2 from '../assets/training_ieee_projects.png';
 import training3 from '../assets/training_internships.png';
-import training4 from '../assets/training_bootcamps.png';
+import training4 from '../assets/full-hero.jpeg';
+import ban1 from '../assets/ban-1.png';
+import ban2 from '../assets/ban-2.png';
+import ban3 from '../assets/ban-3.png';
+import ban4 from '../assets/ban-4.png';
+import ban5 from '../assets/ban-5.png';
 import './Hero.css';
 
 export default function Hero() {
@@ -35,6 +41,36 @@ export default function Hero() {
   const autoplayTimerRef = useRef(null);
 
   const slides = [
+    {
+      id: 5,
+      isFullImage: true,
+      fullImage: ban1,
+      titleNormal: 'Banner 1'
+    },
+    {
+      id: 6,
+      isFullImage: true,
+      fullImage: ban2,
+      titleNormal: 'Banner 2'
+    },
+    {
+      id: 7,
+      isFullImage: true,
+      fullImage: ban3,
+      titleNormal: 'Banner 3'
+    },
+    {
+      id: 8,
+      isFullImage: true,
+      fullImage: ban4,
+      titleNormal: 'Banner 4'
+    },
+    {
+      id: 9,
+      isFullImage: true,
+      fullImage: ban5,
+      titleNormal: 'Banner 5'
+    },
     {
       id: 1,
       tag: 'INDUSTRY RELEVANT TRAINING',
@@ -315,57 +351,63 @@ export default function Hero() {
   return (
     <section className="hero-page-section">
       <div className="hero-slider-container">
-        
+
 
 
         {/* Slide Frame */}
         <div className="slider-viewport">
           <div className="slider-track" style={{ transform: `translateX(-${(virtualIndex % slides.length) * 100}%)` }}>
             {slides.map((slide, index) => (
-              <div key={slide.id} className="slide-item">
-                <div className="slide-content-grid">
-                  
-                  {/* Left Text details */}
-                  <div className="slide-info-pane">
-                    <span className="slide-tag-badge">
-                      <Award size={14} style={{ marginRight: '6px' }} />
-                      {slide.tag}
-                    </span>
-                    
-                    <h1 className="slide-title">
-                      {slide.titleNormal}
-                      <span className="title-highlight">{slide.titleHighlight}</span>
-                    </h1>
-                    
-                    <p className="slide-desc">{slide.desc}</p>
-                    
-                    <div className="slide-bullets">
-                      {slide.bullets.map((bullet, bIdx) => (
-                        <span key={bIdx} className="bullet-pill">
-                          {renderBulletIcon(bullet.icon)}
-                          {bullet.text}
-                        </span>
-                      ))}
+              <div key={slide.id} className={`slide-item ${slide.isFullImage ? 'full-image-slide' : ''}`}>
+                {slide.isFullImage ? (
+                  <div className="slide-full-image-container">
+                    <img src={slide.fullImage} alt={slide.titleNormal} className="slide-full-banner-img" />
+                  </div>
+                ) : (
+                  <div className="slide-content-grid">
+
+                    {/* Left Text details */}
+                    <div className="slide-info-pane">
+                      <span className="slide-tag-badge">
+                        <Award size={14} style={{ marginRight: '6px' }} />
+                        {slide.tag}
+                      </span>
+
+                      <h1 className="slide-title">
+                        {slide.titleNormal}
+                        <span className="title-highlight">{slide.titleHighlight}</span>
+                      </h1>
+
+                      <p className="slide-desc">{slide.desc}</p>
+
+                      <div className="slide-bullets">
+                        {slide.bullets.map((bullet, bIdx) => (
+                          <span key={bIdx} className="bullet-pill">
+                            {renderBulletIcon(bullet.icon)}
+                            {bullet.text}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="slide-buttons">
+                        <Link to={slide.btnPrimary.link} className="btn-primary">
+                          <Rocket size={16} style={{ marginRight: '8px' }} />
+                          {slide.btnPrimary.text}
+                        </Link>
+                        <Link to={slide.btnSecondary.link} className="btn-secondary">
+                          <BookOpen size={16} style={{ marginRight: '8px' }} />
+                          {slide.btnSecondary.text}
+                        </Link>
+                      </div>
                     </div>
 
-                    <div className="slide-buttons">
-                      <Link to={slide.btnPrimary.link} className="btn-primary">
-                        <Rocket size={16} style={{ marginRight: '8px' }} />
-                        {slide.btnPrimary.text}
-                      </Link>
-                      <Link to={slide.btnSecondary.link} className="btn-secondary">
-                        <BookOpen size={16} style={{ marginRight: '8px' }} />
-                        {slide.btnSecondary.text}
-                      </Link>
+                    {/* Right Illustration */}
+                    <div className="slide-graphics-pane">
+                      {slide.illustration}
                     </div>
-                  </div>
 
-                  {/* Right Illustration */}
-                  <div className="slide-graphics-pane">
-                    {slide.illustration}
                   </div>
-
-                </div>
+                )}
               </div>
             ))}
           </div>
@@ -392,7 +434,9 @@ export default function Hero() {
           {filteredCourses.map(course => (
             <div key={course.id} className={`course-card ${course.colorClass}`}>
               <div className="course-card-top">
-                <span className="course-badge">🔥 {course.tag}</span>
+                <span className="course-badge" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <Flame size={14} /> {course.tag}
+                </span>
                 <div className="course-icon-bg">
                   {renderCourseIcon(course.icon)}
                 </div>

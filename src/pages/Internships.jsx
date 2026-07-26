@@ -5,6 +5,19 @@ import SEO from '../components/SEO';
 import './PageStyles.css';
 import './Internships.css';
 
+import img1 from '../assets/intern_frontend.png';
+import img2 from '../assets/intern_uiux.png';
+import img3 from '../assets/intern_marketing.png';
+import img4 from '../assets/intern_writer.png';
+import img5 from '../assets/intern_data.png';
+import img6 from '../assets/intern_cloud.png';
+import img7 from '../assets/intern_fullstack.png';
+import img8 from '../assets/intern_security.png';
+import img9 from '../assets/intern_ml.png';
+import img10 from '../assets/intern_backend.png';
+import img11 from '../assets/intern_android.png';
+import img12 from '../assets/intern_iot.png';
+
 export default function Internships() {
   const { type } = useParams();
   const navigate = useNavigate();
@@ -13,22 +26,22 @@ export default function Internships() {
   // 12 Internship Programs (4 remote, 4 hybrid, 4 on-site)
   const internships = [
     // Remote
-    { id: 1, title: 'Frontend Developer Intern', tech: 'React.js, Next.js, CSS3', type: 'Remote', duration: '3 Months', stipend: 'Performance-based', img: 'Frontend', desc: 'Develop modern, highly interactive, and responsive web user interfaces using React.js and Next.js. Collaborate with UI designers to build features.' },
-    { id: 2, title: 'UI/UX Design Intern', tech: 'Figma, Adobe XD, Wireframing', type: 'Remote', duration: '2 Months', stipend: 'Performance-based', img: 'Design', desc: 'Design user interfaces, wireframes, and high-fidelity prototypes. Conduct user research and map out custom system workflows.' },
-    { id: 3, title: 'Social Media Marketing Intern', tech: 'SEO, Content Strategy, Analytics', type: 'Remote', duration: '3 Months', stipend: 'Performance-based', img: 'SMM', desc: 'Manage organic marketing channels, outline content strategies, and run analytics reporting to optimize page reach.' },
-    { id: 4, title: 'Technical Content Writer', tech: 'Technical Writing, Blogging, SEO', type: 'Remote', duration: '3 Months', stipend: 'Performance-based', img: 'Writer', desc: 'Write software installation guides, developer blogs, and system documentation. Practice SEO best practices.' },
+    { id: 1, title: 'Frontend Developer Intern', tech: 'React.js, Next.js, CSS3', type: 'Remote', duration: '3 Months', stipend: 'Performance-based', img: img1, desc: 'Develop modern, highly interactive, and responsive web user interfaces using React.js and Next.js. Collaborate with UI designers to build features.' },
+    { id: 2, title: 'UI/UX Design Intern', tech: 'Figma, Adobe XD, Wireframing', type: 'Remote', duration: '2 Months', stipend: 'Performance-based', img: img2, desc: 'Design user interfaces, wireframes, and high-fidelity prototypes. Conduct user research and map out custom system workflows.' },
+    { id: 3, title: 'Social Media Marketing Intern', tech: 'SEO, Content Strategy, Analytics', type: 'Remote', duration: '3 Months', stipend: 'Performance-based', img: img3, desc: 'Manage organic marketing channels, outline content strategies, and run analytics reporting to optimize page reach.' },
+    { id: 4, title: 'Technical Content Writer', tech: 'Technical Writing, Blogging, SEO', type: 'Remote', duration: '3 Months', stipend: 'Performance-based', img: img4, desc: 'Write software installation guides, developer blogs, and system documentation. Practice SEO best practices.' },
 
     // Hybrid
-    { id: 5, title: 'Data Analyst Intern', tech: 'Python, SQL, Power BI', type: 'Hybrid', duration: '3 Months', stipend: 'Performance-based', img: 'Data', desc: 'Analyze structured databases, construct custom query pipelines, and build interactive Power BI charts for system metrics reporting.' },
-    { id: 6, title: 'Cloud Architect Intern', tech: 'AWS, Docker, CI/CD Pipeline', type: 'Hybrid', duration: '4 Months', stipend: 'Performance-based', img: 'Cloud', desc: 'Configure cloud architecture on AWS, maintain containerized services using Docker, and assist in deploying CI/CD build scripts.' },
-    { id: 7, title: 'Fullstack Developer Intern', tech: 'Node.js, Express, React, MongoDB', type: 'Hybrid', duration: '6 Months', stipend: 'Performance-based', img: 'Fullstack', desc: 'Build end-to-end fullstack applications using the MERN stack. Implement user authentication, database models, and RESTful APIs.' },
-    { id: 8, title: 'Cyber Security Analyst', tech: 'OWASP Top 10, Penetration Testing', type: 'Hybrid', duration: '4 Months', stipend: 'Performance-based', img: 'Security', desc: 'Audit system code bases for security flaws, write security patches, and run threat vectors checks on endpoints.' },
+    { id: 5, title: 'Data Analyst Intern', tech: 'Python, SQL, Power BI', type: 'Hybrid', duration: '3 Months', stipend: 'Performance-based', img: img5, desc: 'Analyze structured databases, construct custom query pipelines, and build interactive Power BI charts for system metrics reporting.' },
+    { id: 6, title: 'Cloud Architect Intern', tech: 'AWS, Docker, CI/CD Pipeline', type: 'Hybrid', duration: '4 Months', stipend: 'Performance-based', img: img6, desc: 'Configure cloud architecture on AWS, maintain containerized services using Docker, and assist in deploying CI/CD build scripts.' },
+    { id: 7, title: 'Fullstack Developer Intern', tech: 'Node.js, Express, React, MongoDB', type: 'Hybrid', duration: '6 Months', stipend: 'Performance-based', img: img7, desc: 'Build end-to-end fullstack applications using the MERN stack. Implement user authentication, database models, and RESTful APIs.' },
+    { id: 8, title: 'Cyber Security Analyst', tech: 'OWASP Top 10, Penetration Testing', type: 'Hybrid', duration: '4 Months', stipend: 'Performance-based', img: img8, desc: 'Audit system code bases for security flaws, write security patches, and run threat vectors checks on endpoints.' },
 
     // On-site
-    { id: 9, title: 'Machine Learning Engineer', tech: 'TensorFlow, PyTorch, Scikit-Learn', type: 'On-site', duration: '6 Months', stipend: 'Performance-based', img: 'ML', desc: 'Train predictive and classification algorithms, impute raw datasets, and deploy machine learning models inside API endpoints.' },
-    { id: 10, title: 'Backend Developer Intern', tech: 'Java, Spring Boot, MySQL', type: 'On-site', duration: '3 Months', stipend: 'Performance-based', img: 'Backend', desc: 'Design backend database schemas in MySQL, build REST controllers using Spring Boot, and integrate microservices routing.' },
-    { id: 11, title: 'Android Developer Intern', tech: 'Kotlin, Jetpack Compose, XML', type: 'On-site', duration: '3 Months', stipend: 'Performance-based', img: 'Android', desc: 'Develop native mobile applications for Android using Kotlin and Jetpack Compose. Implement Room DB offline caches.' },
-    { id: 12, title: 'Embedded Systems & IoT Intern', tech: 'Arduino, Raspberry Pi, C++', type: 'On-site', duration: '3 Months', stipend: 'Performance-based', img: 'IoT', desc: 'Write low-level controller scripts, configure wireless sensor nodes, and construct IoT hardware prototypes.' }
+    { id: 9, title: 'Machine Learning Engineer', tech: 'TensorFlow, PyTorch, Scikit-Learn', type: 'On-site', duration: '6 Months', stipend: 'Performance-based', img: img9, desc: 'Train predictive and classification algorithms, impute raw datasets, and deploy machine learning models inside API endpoints.' },
+    { id: 10, title: 'Backend Developer Intern', tech: 'Java, Spring Boot, MySQL', type: 'On-site', duration: '3 Months', stipend: 'Performance-based', img: img10, desc: 'Design backend database schemas in MySQL, build REST controllers using Spring Boot, and integrate microservices routing.' },
+    { id: 11, title: 'Android Developer Intern', tech: 'Kotlin, Jetpack Compose, XML', type: 'On-site', duration: '3 Months', stipend: 'Performance-based', img: img11, desc: 'Develop native mobile applications for Android using Kotlin and Jetpack Compose. Implement Room DB offline caches.' },
+    { id: 12, title: 'Embedded Systems & IoT Intern', tech: 'Arduino, Raspberry Pi, C++', type: 'On-site', duration: '3 Months', stipend: 'Performance-based', img: img12, desc: 'Write low-level controller scripts, configure wireless sensor nodes, and construct IoT hardware prototypes.' }
   ];
 
   // Helper to normalize and match route parameters
@@ -116,8 +129,8 @@ export default function Internships() {
                 onClick={() => handleOpenDetails(intern)}
                 style={{ cursor: 'pointer' }}
               >
-                <div className="item-image" style={{backgroundColor: '#faf5ff'}}>
-                  <h3 style={{color: 'var(--accent-purple)'}}>{intern.img}</h3>
+                <div className="item-image" style={{ padding: 0, overflow: 'hidden' }}>
+                  <img src={intern.img} alt={intern.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div className="item-details">
                   <span style={{color: 'var(--accent-purple)', fontSize: '0.8rem', fontWeight: '700', marginBottom: '8px', textTransform: 'uppercase'}}>{intern.type}</span>

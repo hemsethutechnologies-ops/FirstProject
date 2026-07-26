@@ -3,7 +3,7 @@
    =================================================== */
 
 .pc-section {
-  padding: 70px 24px;
+  padding: 30px 24px;
   background: #f5f4ef;   /* cream/beige like reference */
 }
 
@@ -79,7 +79,7 @@
 /* ── Individual card ── */
 .pc-card {
   scroll-snap-align: start;
-  flex: 0 0 calc(50% - 10px);     /* 2 cards visible */
+  flex: 0 0 calc(33.333% - 13.33px);     /* 3 cards visible */
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
