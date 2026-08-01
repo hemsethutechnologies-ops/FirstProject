@@ -4,7 +4,7 @@
    ===================================================== */
 
 .sm-section {
-  padding: 30px 24px;
+  padding: 30px 24px 0px;
   background: #ffffff;
   position: relative;
   font-family: inherit;
@@ -83,7 +83,7 @@
 
 .sm-image-wrapper {
   width: 100%;
-  max-width: 550px;
+  max-width: 420px;
   animation: fadeIn 0.8s ease-out 0.4s forwards;
   opacity: 0;
 }

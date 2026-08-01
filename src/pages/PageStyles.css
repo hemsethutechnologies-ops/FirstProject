@@ -33,7 +33,7 @@
 /* Common Grid Layout for Courses, Projects, Internships */
 .items-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 30px;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .item-image {
-  height: 160px;
+  height: auto;
   background-color: #e2e8f0;
   display: flex;
   justify-content: center;

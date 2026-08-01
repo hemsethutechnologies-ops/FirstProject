@@ -1,7 +1,7 @@
 .premium-cta-section {
-  padding: 80px 4%;
+  padding: 20px 4% 80px;
   background-color: var(--bg-light);
-  overflow: visible; /* Crucial to allow the student image to overlap outside the section */
+  overflow: visible;
   position: relative;
 }
 

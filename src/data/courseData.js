@@ -1,10 +1,13 @@
+import course1Img from '../assets/course-1.png';
+import course2Img from '../assets/course-2.png';
+
 export const courseData = [
   {
     id: 1,
     title: 'Fullstack Masterclass',
     category: 'Web Development',
     duration: '6 Months',
-    img: 'MERN',
+    img: course1Img,
     price: '₹25,000',
     level: 'Beginner to Advanced',
     instructor: 'John Doe',
@@ -75,7 +78,7 @@ export const courseData = [
     title: 'Advanced Python & Django',
     category: 'Backend Dev',
     duration: '3 Months',
-    img: 'Python',
+    img: course2Img,
     price: '₹15,000',
     level: 'Intermediate',
     instructor: 'Jane Smith',

@@ -23,10 +23,7 @@ import {
   Flame
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import training1 from '../assets/training_aws_devops.png';
-import training2 from '../assets/training_ieee_projects.png';
-import training3 from '../assets/training_internships.png';
-import training4 from '../assets/full-hero.jpeg';
+
 import ban1 from '../assets/ban-1.png';
 import ban2 from '../assets/ban-2.png';
 import ban3 from '../assets/ban-3.png';
@@ -70,66 +67,6 @@ export default function Hero() {
       isFullImage: true,
       fullImage: ban5,
       titleNormal: 'Banner 5'
-    },
-    {
-      id: 1,
-      tag: 'INDUSTRY RELEVANT TRAINING',
-      titleNormal: 'INDUSTRIAL-ORIENTED ',
-      titleHighlight: 'AWS - DEVOPS TRAINING',
-      desc: 'Start your DevOps Engineer journey today with industry-oriented training, real-world projects and expert mentorship.',
-      bullets: [
-        { text: 'Virtual Sessions', icon: 'Calendar' },
-        { text: 'Flexible Timings', icon: 'Clock' },
-        { text: 'Hands-on Learning', icon: 'Code' }
-      ],
-      btnPrimary: { text: 'Know More', link: '/courses' },
-      btnSecondary: { text: 'View Courses', link: '/courses' },
-      illustration: <img src={training1} alt="AWS DevOps Training" className="slide-illustration-img animate-float" />
-    },
-    {
-      id: 2,
-      tag: 'ACADEMIC SERVICES PLATFORM',
-      titleNormal: 'IEEE RESEARCH ',
-      titleHighlight: 'PROJECTS CATALOGUE',
-      desc: 'Explore fully-functional, verified IEEE research projects across Machine Learning, Python, Java, Django, and Web domains.',
-      bullets: [
-        { text: 'Verified Source Code', icon: 'Code' },
-        { text: 'Full Documentation', icon: 'Award' },
-        { text: 'Project Support', icon: 'CheckCircle' }
-      ],
-      btnPrimary: { text: 'Explore Projects', link: '/projects' },
-      btnSecondary: { text: 'View Catalogue', link: '/projects' },
-      illustration: <img src={training2} alt="IEEE Projects Catalogue" className="slide-illustration-img animate-float" />
-    },
-    {
-      id: 3,
-      tag: 'REMOTE INTERNSHIP PROGRAMS',
-      titleNormal: 'REAL-WORLD ',
-      titleHighlight: 'PROJECT EXPERIENCE',
-      desc: 'Bridge the gap between campus and corporate with verified corporate bootcamps and live-project mentorship panels.',
-      bullets: [
-        { text: 'Corporate Mentorship', icon: 'Users' },
-        { text: 'Remote Placement', icon: 'Building2' },
-        { text: 'Live Blueprints', icon: 'Rocket' }
-      ],
-      btnPrimary: { text: 'Apply Now', link: '/internships' },
-      btnSecondary: { text: 'Learn More', link: '/internships' },
-      illustration: <img src={training3} alt="Remote Internship Programs" className="slide-illustration-img animate-float" />
-    },
-    {
-      id: 4,
-      tag: 'FRONTEND & BACKEND BOOTCAMPS',
-      titleNormal: 'MASTER ',
-      titleHighlight: 'FULLSTACK DEVELOPMENT',
-      desc: 'Acquire cutting-edge development skills from industry experts with our intensive, project-driven learning blueprints.',
-      bullets: [
-        { text: 'Interactive Labs', icon: 'Laptop' },
-        { text: 'Expert Instructors', icon: 'Award' },
-        { text: 'Resume Building', icon: 'CheckCircle' }
-      ],
-      btnPrimary: { text: 'Browse Courses', link: '/courses' },
-      btnSecondary: { text: 'Syllabus', link: '/courses' },
-      illustration: <img src={training4} alt="Fullstack bootcamps" className="slide-illustration-img animate-float" />
     }
   ];
 
@@ -429,6 +366,18 @@ export default function Hero() {
 
       {/* Overlapping White Category Navigation Card */}
       <div className="overlapping-courses-card">
+        <div className="category-tabs-nav">
+          {categoriesList.map((cat, idx) => (
+            <button
+              key={idx}
+              className={`category-tab-btn ${activeCategory === cat ? 'active' : ''}`}
+              onClick={() => setActiveCategory(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
         {/* Courses Cards Grid */}
         <div className="courses-grid-display">
           {filteredCourses.map(course => (
@@ -444,18 +393,6 @@ export default function Hero() {
               <h3 className="course-card-title">{course.title}</h3>
               <span className="course-card-count">{course.coursesCount} Courses</span>
             </div>
-          ))}
-        </div>
-
-        <div className="category-tabs-nav">
-          {categoriesList.map((cat, idx) => (
-            <button
-              key={idx}
-              className={`category-tab-btn ${activeCategory === cat ? 'active' : ''}`}
-              onClick={() => setActiveCategory(cat)}
-            >
-              {cat}
-            </button>
           ))}
         </div>
       </div>

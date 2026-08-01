@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import './PageStyles.css';
 
+import course1Img from '../assets/course-1.png';
+import course2Img from '../assets/course-2.png';
+import course3Img from '../assets/course-3.png';
+import course4Img from '../assets/course-4.png';
+import course5Img from '../assets/course-5.png';
+import course6Img from '../assets/course-6.png';
+
 export default function Courses({ category }) {
   const categoryMapping = {
     'frontend': 'Frontend Dev',
@@ -15,40 +22,40 @@ export default function Courses({ category }) {
 
   const courses = [
     // Web Development (fullstack)
-    { id: 1, title: 'Fullstack Masterclass', category: 'Web Development', duration: '6 Months', img: 'MERN' },
-    { id: 9, title: 'Fullstack JavaScript Developer', category: 'Web Development', duration: '6 Months', img: 'MERN' },
-    { id: 13, title: 'Django & React Fullstack Application', category: 'Web Development', duration: '5 Months', img: 'Django+React' },
-    { id: 14, title: 'ASP.NET Core & Angular Enterprise App', category: 'Web Development', duration: '6 Months', img: '.NET+Angular' },
+    { id: 1, title: 'Fullstack Masterclass', category: 'Web Development', duration: '6 Months', img: course1Img },
+    { id: 9, title: 'Fullstack JavaScript Developer', category: 'Web Development', duration: '6 Months', img: course2Img },
+    { id: 13, title: 'Django & React Fullstack Application', category: 'Web Development', duration: '5 Months', img: course3Img },
+    { id: 14, title: 'ASP.NET Core & Angular Enterprise App', category: 'Web Development', duration: '6 Months', img: course4Img },
 
     // Backend Dev (backend)
-    { id: 2, title: 'Advanced Python & Django', category: 'Backend Dev', duration: '3 Months', img: 'Python' },
-    { id: 15, title: 'Node.js & Express REST APIs', category: 'Backend Dev', duration: '3 Months', img: 'Node.js' },
-    { id: 16, title: 'Java Spring Boot Microservices', category: 'Backend Dev', duration: '4 Months', img: 'Spring Boot' },
-    { id: 17, title: 'Go (Golang) Web Development', category: 'Backend Dev', duration: '3 Months', img: 'Golang' },
+    { id: 2, title: 'Advanced Python & Django', category: 'Backend Dev', duration: '3 Months', img: course5Img },
+    { id: 15, title: 'Node.js & Express REST APIs', category: 'Backend Dev', duration: '3 Months', img: course6Img },
+    { id: 16, title: 'Java Spring Boot Microservices', category: 'Backend Dev', duration: '4 Months', img: course1Img },
+    { id: 17, title: 'Go (Golang) Web Development', category: 'Backend Dev', duration: '3 Months', img: course2Img },
 
     // UI/UX Design (ui-ux)
-    { id: 3, title: 'UI/UX Design Bootcamp', category: 'UI/UX Design', duration: '2 Months', img: 'UI/UX' },
-    { id: 18, title: 'Figma Prototype & Interaction Design', category: 'UI/UX Design', duration: '2 Months', img: 'Figma' },
-    { id: 19, title: 'Mobile App UX Research & Strategy', category: 'UI/UX Design', duration: '3 Months', img: 'Mobile UX' },
-    { id: 20, title: 'Web Layout Design & Wireframing', category: 'UI/UX Design', duration: '2 Months', img: 'Figma' },
+    { id: 3, title: 'UI/UX Design Bootcamp', category: 'UI/UX Design', duration: '2 Months', img: course3Img },
+    { id: 18, title: 'Figma Prototype & Interaction Design', category: 'UI/UX Design', duration: '2 Months', img: course4Img },
+    { id: 19, title: 'Mobile App UX Research & Strategy', category: 'UI/UX Design', duration: '3 Months', img: course5Img },
+    { id: 20, title: 'Web Layout Design & Wireframing', category: 'UI/UX Design', duration: '2 Months', img: course6Img },
 
     // Frontend Dev (frontend)
-    { id: 4, title: 'Frontend Web Development', category: 'Frontend Dev', duration: '3 Months', img: 'HTML/CSS/JS' },
-    { id: 21, title: 'React.js & Next.js Advanced', category: 'Frontend Dev', duration: '3 Months', img: 'React/Next' },
-    { id: 22, title: 'Vue.js & Pinia State Management', category: 'Frontend Dev', duration: '2 Months', img: 'Vue/Pinia' },
-    { id: 23, title: 'Angular Professional Architect', category: 'Frontend Dev', duration: '4 Months', img: 'Angular' },
+    { id: 4, title: 'Frontend Web Development', category: 'Frontend Dev', duration: '3 Months', img: course1Img },
+    { id: 21, title: 'React.js & Next.js Advanced', category: 'Frontend Dev', duration: '3 Months', img: course2Img },
+    { id: 22, title: 'Vue.js & Pinia State Management', category: 'Frontend Dev', duration: '2 Months', img: course3Img },
+    { id: 23, title: 'Angular Professional Architect', category: 'Frontend Dev', duration: '4 Months', img: course4Img },
 
     // Security (cybersecurity)
-    { id: 5, title: 'Cyber Security Essentials', category: 'Security', duration: '3 Months', img: 'Security' },
-    { id: 11, title: 'Ethical Hacking & Pentesting', category: 'Security', duration: '4 Months', img: 'Pentest' },
-    { id: 24, title: 'Network Security & Cryptography', category: 'Security', duration: '3 Months', img: 'Cryptography' },
-    { id: 25, title: 'Cloud Security & Compliance Audit', category: 'Security', duration: '3 Months', img: 'Cloud Security' },
+    { id: 5, title: 'Cyber Security Essentials', category: 'Security', duration: '3 Months', img: course5Img },
+    { id: 11, title: 'Ethical Hacking & Pentesting', category: 'Security', duration: '4 Months', img: course6Img },
+    { id: 24, title: 'Network Security & Cryptography', category: 'Security', duration: '3 Months', img: course1Img },
+    { id: 25, title: 'Cloud Security & Compliance Audit', category: 'Security', duration: '3 Months', img: course2Img },
 
     // DevOps (devops)
-    { id: 6, title: 'AWS Cloud Architect', category: 'DevOps', duration: '5 Months', img: 'AWS' },
-    { id: 10, title: 'DevOps & CI/CD Pipeline Architect', category: 'DevOps', duration: '3 Months', img: 'Docker/K8s' },
-    { id: 26, title: 'Kubernetes & Docker Administration', category: 'DevOps', duration: '3 Months', img: 'Kubernetes' },
-    { id: 27, title: 'Terraform Infrastructure as Code (IaC)', category: 'DevOps', duration: '2 Months', img: 'Terraform' }
+    { id: 6, title: 'AWS Cloud Architect', category: 'DevOps', duration: '5 Months', img: course3Img },
+    { id: 10, title: 'DevOps & CI/CD Pipeline Architect', category: 'DevOps', duration: '3 Months', img: course4Img },
+    { id: 26, title: 'Kubernetes & Docker Administration', category: 'DevOps', duration: '3 Months', img: course5Img },
+    { id: 27, title: 'Terraform Infrastructure as Code (IaC)', category: 'DevOps', duration: '2 Months', img: course6Img }
   ];
 
   const targetCategoryName = category ? categoryMapping[category.toLowerCase()] : null;
@@ -81,8 +88,12 @@ export default function Courses({ category }) {
           <div className="items-grid">
             {filteredCourses.map(course => (
               <div key={course.id} className="item-card">
-                <div className="item-image" style={{backgroundColor: '#f1f5f9'}}>
-                  <h3>{course.img}</h3>
+                <div className="item-image" style={{backgroundColor: '#f1f5f9', padding: 0, overflow: 'hidden'}}>
+                  {typeof course.img === 'string' && course.img.includes('/') ? (
+                    <img src={course.img} alt={course.title} style={{width: '100%', height: 'auto', display: 'block'}} />
+                  ) : (
+                    <h3 style={{padding: '40px 0', textAlign: 'center', width: '100%'}}>{course.img}</h3>
+                  )}
                 </div>
                 <div className="item-details">
                   <span style={{color: 'var(--accent-orange)', fontSize: '0.8rem', fontWeight: '700', marginBottom: '8px', textTransform: 'uppercase'}}>{course.category}</span>
