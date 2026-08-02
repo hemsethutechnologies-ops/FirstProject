@@ -61,8 +61,9 @@
 
 /* ── Chart Wrapper ──────────────────────────────────── */
 .sm-chart-wrap {
-  width: 120%;
-  margin-left: -10%;
+  width: 130%;
+  margin-left: -5%;
+
   animation: fadeIn 0.8s ease-out 0.2s forwards;
   opacity: 0;
 }
@@ -77,8 +78,9 @@
 /* ── Right Column: Image ────────────────────────────── */
 .sm-right {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
+  margin-left: -40px; /* Pull it slightly left to decrease the gap */
 }
 
 .sm-image-wrapper {

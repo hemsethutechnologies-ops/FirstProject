@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getCourseById } from '../data/courseData';
-import { Clock, BarChart, User, CheckCircle, ChevronDown, ChevronUp, ArrowLeft, Target, Briefcase } from 'lucide-react';
+import { Clock, BarChart, User, CheckCircle, ChevronDown, ChevronUp, ArrowLeft, Target, Briefcase, Check, FolderGit2 } from 'lucide-react';
 import EnrollmentModal from '../components/EnrollmentModal';
 import './CourseDetails.css';
 
@@ -110,6 +110,25 @@ export default function CourseDetails() {
             </div>
           </section>
 
+          {course.projects && course.projects.length > 0 && (
+            <section className="detail-section">
+              <h2>Projects You Will Build</h2>
+              <div className="projects-grid">
+                {course.projects.map((proj, idx) => (
+                  <div key={idx} className="project-highlight-card">
+                    <div className="project-highlight-icon">
+                      <FolderGit2 size={24} color="var(--primary-dark)" />
+                    </div>
+                    <div>
+                      <h3>{proj.name}</h3>
+                      <p>{proj.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {course.trainingDetails && course.trainingDetails.length > 0 && (
             <section className="detail-section">
               <h2>Training Methodology</h2>
@@ -128,8 +147,7 @@ export default function CourseDetails() {
         {/* Sticky Sidebar */}
         <div className="course-sidebar-wrapper">
           <div className="course-sidebar">
-            <div className="sidebar-image">
-              <h3>{course.img}</h3>
+            <div className="sidebar-image" style={{ backgroundImage: `url(${course.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             </div>
             <div className="sidebar-content">
               <div className="price-tag">{course.price}</div>
@@ -137,10 +155,10 @@ export default function CourseDetails() {
               <p className="guarantee-text">30-Day Money-Back Guarantee</p>
               
               <ul className="sidebar-features">
-                <li><span>✓</span> Full lifetime access</li>
-                <li><span>✓</span> Access on mobile and TV</li>
-                <li><span>✓</span> Certificate of completion</li>
-                <li><span>✓</span> 1-on-1 Mentorship</li>
+                <li><Check size={18} className="sidebar-icon" /> Full lifetime access</li>
+                <li><Check size={18} className="sidebar-icon" /> Access on mobile and TV</li>
+                <li><Check size={18} className="sidebar-icon" /> Certificate of completion</li>
+                <li><Check size={18} className="sidebar-icon" /> 1-on-1 Mentorship</li>
               </ul>
             </div>
           </div>

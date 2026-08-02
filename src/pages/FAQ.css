@@ -70,9 +70,10 @@
 
 /* ─── Content Wrap ──────────────────────────────────────── */
 .faq-content-wrap {
-  max-width: 860px !important;
+  max-width: 1100px !important;
   padding-top: 48px !important;
   padding-bottom: 80px !important;
+  margin: 0 auto;
 }
 
 /* ─── Category Tabs ─────────────────────────────────────── */
@@ -82,67 +83,74 @@
   gap: 12px;
   margin-bottom: 50px;
   justify-content: center;
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .faq-cat-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 18px;
-  border-radius: 50px;
-  border: 1.5px solid var(--border-light);
-  background: #fff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
   color: var(--text-gray);
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   font-family: inherit;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .faq-cat-btn:hover {
-  border-color: var(--accent-orange);
-  color: var(--accent-orange);
-  background: #fff7f5;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  color: var(--primary-dark);
+  background: rgba(11, 33, 74, 0.05);
 }
 
 .faq-cat-btn.active {
-  background: var(--primary-dark);
-  border-color: var(--primary-dark);
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(11, 33, 74, 0.35);
+  background: #fff;
+  color: var(--primary-dark);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
 
 /* ─── FAQ Accordion ─────────────────────────────────────── */
 .faq-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: block;
+  column-count: 2;
+  column-gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .faq-list {
+    column-count: 1;
+  }
 }
 
 .faq-item {
+  break-inside: avoid;
+  margin-bottom: 24px;
   background: #fff;
-  border: 1px solid var(--border-light);
-  border-left: 4px solid transparent;
-  border-radius: 12px;
+  border: none;
+  border-radius: 16px;
   overflow: hidden;
-  transition: all 0.3s ease;
-  margin-bottom: 8px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .faq-item:hover {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transform: translateY(-2px);
-  border-left-color: var(--accent-orange);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
 }
 
 .faq-item.open {
-  border-color: rgba(11, 33, 74, 0.2);
-  border-left-color: var(--primary-dark);
-  box-shadow: 0 15px 40px rgba(11, 33, 74, 0.08);
+  box-shadow: 0 20px 50px rgba(11, 33, 74, 0.12);
+  transform: scale(1.02);
+  z-index: 10;
+  position: relative;
 }
 
 .faq-question {
@@ -167,36 +175,48 @@
   color: var(--primary-dark);
 }
 
-.faq-item.open .faq-chevron {
+.faq-icon-wrapper {
+  background: #f1f5f9;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-dark);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.faq-item.open .faq-icon-wrapper {
+  background: var(--accent-orange);
+  color: white;
   transform: rotate(180deg);
-  color: var(--accent-orange);
 }
 
 /* ─── Smooth Expand Animation ────────────────────────────── */
 .faq-answer-wrapper {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
 }
 
 .faq-item.open .faq-answer-wrapper {
-  grid-template-rows: 1fr;
+  max-height: 800px;
+  opacity: 1;
 }
 
 .faq-answer {
+  min-height: 0;
   overflow: hidden;
 }
 
 .faq-answer p {
   padding: 0 24px 22px;
   color: var(--text-gray);
-  font-size: 0.97rem;
+  font-size: 1rem;
   line-height: 1.75;
-  border-top: 1px solid var(--border-light);
-  padding-top: 18px;
-  margin: 0 24px;
-  padding-left: 0;
-  padding-right: 0;
 }
 
 /* ─── Empty State ────────────────────────────────────────── */
