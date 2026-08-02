@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { ChevronDown, Search, HelpCircle, BookOpen, Code2, Briefcase, GraduationCap, CreditCard, Globe } from 'lucide-react';
+import { Plus, Minus, Search, HelpCircle, BookOpen, Code2, Briefcase, GraduationCap, CreditCard, Globe } from 'lucide-react';
 import SEO from '../components/SEO';
 import './PageStyles.css';
 import './FAQ.css';
@@ -165,7 +165,9 @@ function FAQItem({ faq, isOpen, onToggle }) {
     <div className={`faq-item ${isOpen ? 'open' : ''}`} id={`faq-${faq.id}`}>
       <button className="faq-question" onClick={onToggle} aria-expanded={isOpen}>
         <span>{faq.question}</span>
-        <ChevronDown size={20} className="faq-chevron" />
+        <div className="faq-icon-wrapper">
+          {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+        </div>
       </button>
       <div className="faq-answer-wrapper">
         <div className="faq-answer">

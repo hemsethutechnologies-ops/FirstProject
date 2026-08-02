@@ -124,6 +124,7 @@
   color: rgba(255, 255, 255, 0.85);
   margin-top: 6px;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 /* Right Content: Backdrop Circle and Image */

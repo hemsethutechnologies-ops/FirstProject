@@ -108,12 +108,16 @@ export default function LeadFormSection() {
 
   // Branch Options list
   const branchesList = [
-    'Hyderabad (Ameerpet)',
-    'Secunderabad',
-    'Dilsukhnagar',
-    'Bengaluru (HSR Layout)',
-    'Pune',
-    'Online (Live Interactive)'
+    'B.Tech - CSE',
+    'B.Tech - CSE (AI & ML)',
+    'B.Tech - CSE (Data Science)',
+    'B.Tech - IT',
+    'B.Tech - ECE / EEE',
+    'Degree - B.Sc (Computers)',
+    'Degree - BCA',
+    'Degree - B.Com (Computers)',
+    'MCA / M.Tech',
+    'Other'
   ];
 
   // Features list matching the image

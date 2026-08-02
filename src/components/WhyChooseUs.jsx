@@ -71,7 +71,7 @@ export default function WhyChooseUs() {
 
         {/* Header */}
         <div className="wcu-header">
-          <h2 className="wcu-title">Why Serious Learners Choose STT</h2>
+          <h2 className="wcu-title">Why Serious Learners Choose HST</h2>
           <p className="wcu-subtitle">
             Real expertise. Proven results. Personal support that gets your career moving.
           </p>
@@ -81,7 +81,7 @@ export default function WhyChooseUs() {
         <div className="wcu-main">
 
           {/* LEFT — photo background + floating dark card */}
-          <div className="wcu-left" style={{ backgroundImage: `url(${studentImg})` }}>
+          <div className="wcu-left" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop')` }}>
             {/* floating dark overlay card — positioned inside the photo */}
             <div className="wcu-overlay">
               <h3 className="wcu-overlay-title">

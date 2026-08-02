@@ -9,31 +9,17 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background-color: var(--accent-green);
+  background: linear-gradient(135deg, #ef4444, #b91c1c); /* Vibrant Red gradient */
   color: #fff;
-  padding: 12px 24px;
+  padding: 14px 28px;
   border-radius: 50px;
-  font-weight: 600;
-  font-size: 1rem;
-  box-shadow: 0 4px 15px rgba(185, 28, 28, 0.4);
-  transition: all 0.3s ease;
-  animation: bounce 2s infinite;
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.5); /* Red glow */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .chat-btn:hover {
-  background-color: #991b1b;
-  transform: scale(1.05);
-  animation-play-state: paused;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px -5px rgba(220, 38, 38, 0.7);
 }

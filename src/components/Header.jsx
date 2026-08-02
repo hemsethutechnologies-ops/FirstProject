@@ -60,7 +60,9 @@ export default function Header() {
       <nav className="main-nav">
         <div className="nav-content">
           <div className="logo-area">
-            <img src={logoImg} alt="Hemsethu Logo" className="logo-image" />
+            <NavLink to="/">
+              <img src={logoImg} alt="Hemsethu Logo" className="logo-image" />
+            </NavLink>
           </div>
 
           <div className="mobile-menu-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>

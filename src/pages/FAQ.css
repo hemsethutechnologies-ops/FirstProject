@@ -17,18 +17,16 @@
 }
 
 .faq-hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
   padding: 6px 16px;
-  border-radius: 100px;
+  border-radius: 30px;
   font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  font-weight: 700;
+  letter-spacing: 1.5px;
   margin-bottom: 20px;
+  text-transform: uppercase;
   backdrop-filter: blur(8px);
 }
 
@@ -81,8 +79,9 @@
 .faq-categories {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 40px;
+  gap: 12px;
+  margin-bottom: 50px;
+  justify-content: center;
 }
 
 .faq-cat-btn {
@@ -126,20 +125,24 @@
 
 .faq-item {
   background: #fff;
-  border: 1.5px solid var(--border-light);
-  border-radius: 14px;
+  border: 1px solid var(--border-light);
+  border-left: 4px solid transparent;
+  border-radius: 12px;
   overflow: hidden;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  margin-bottom: 8px;
 }
 
 .faq-item:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transform: translateY(-2px);
+  border-left-color: var(--accent-orange);
 }
 
 .faq-item.open {
-  border-color: var(--primary-dark);
-  box-shadow: 0 4px 24px rgba(11, 33, 74, 0.1);
+  border-color: rgba(11, 33, 74, 0.2);
+  border-left-color: var(--primary-dark);
+  box-shadow: 0 15px 40px rgba(11, 33, 74, 0.08);
 }
 
 .faq-question {
@@ -152,8 +155,8 @@
   background: transparent;
   border: none;
   font-family: inherit;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--text-dark);
   text-align: left;
   cursor: pointer;
@@ -162,18 +165,6 @@
 
 .faq-question:hover {
   color: var(--primary-dark);
-  background: #f8fafc;
-}
-
-.faq-item.open .faq-question {
-  color: var(--primary-dark);
-  background: linear-gradient(90deg, #f0f4ff 0%, #f8fafc 100%);
-}
-
-.faq-chevron {
-  flex-shrink: 0;
-  color: var(--text-gray);
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s ease;
 }
 
 .faq-item.open .faq-chevron {

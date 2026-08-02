@@ -364,20 +364,20 @@ export default function Hero() {
 
       </div>
 
+      {/* Marquee Section */}
+      <div className="hero-marquee-container">
+        <div className="marquee-track">
+          <div className="marquee-content">
+            Empowering Students & Professionals &bull; 100+ Corporate Partners &bull; 10K+ Students Trained &bull; Expert Led Courses &bull; Enroll Now! &bull; Welcome to Hemsethu Technologies - Leading IT Training Institute
+          </div>
+          <div className="marquee-content" aria-hidden="true">
+            Empowering Students & Professionals &bull; 100+ Corporate Partners &bull; 10K+ Students Trained &bull; Expert Led Courses &bull; Enroll Now! &bull; Welcome to Hemsethu Technologies - Leading IT Training Institute
+          </div>
+        </div>
+      </div>
+
       {/* Overlapping White Category Navigation Card */}
       <div className="overlapping-courses-card">
-        <div className="category-tabs-nav">
-          {categoriesList.map((cat, idx) => (
-            <button
-              key={idx}
-              className={`category-tab-btn ${activeCategory === cat ? 'active' : ''}`}
-              onClick={() => setActiveCategory(cat)}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
         {/* Courses Cards Grid */}
         <div className="courses-grid-display">
           {filteredCourses.map(course => (
@@ -393,6 +393,18 @@ export default function Hero() {
               <h3 className="course-card-title">{course.title}</h3>
               <span className="course-card-count">{course.coursesCount} Courses</span>
             </div>
+          ))}
+        </div>
+
+        <div className="category-tabs-nav">
+          {categoriesList.map((cat, idx) => (
+            <button
+              key={idx}
+              className={`category-tab-btn ${activeCategory === cat ? 'active' : ''}`}
+              onClick={() => setActiveCategory(cat)}
+            >
+              {cat}
+            </button>
           ))}
         </div>
       </div>

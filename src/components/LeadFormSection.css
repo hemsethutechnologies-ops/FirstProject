@@ -508,10 +508,19 @@
   }
 
   .features-two-columns {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
   .feature-row-item {
     height: auto;
+    padding: 10px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .feature-teal-bar {
+    display: none;
   }
 }

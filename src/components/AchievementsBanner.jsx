@@ -152,11 +152,10 @@ export default function AchievementsBanner() {
         <div className="ab-text">
           <p className="ab-eyebrow">PROVEN TRACK RECORD</p>
           <h2 className="ab-headline">
-            STT Triumphs with elite<br />standard results.
+            Hemsethu Technologies:<br />Excellence in IT Training
           </h2>
           <p className="ab-body">
-            Raising the bar in tech education with every cohort —
-            our placement rate, project count and student scores speak for themselves.
+            Empowering students with industry-ready skills and hands-on project experience — our proven placement records and completed projects speak for themselves.
           </p>
         </div>
 

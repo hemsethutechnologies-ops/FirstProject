@@ -178,7 +178,7 @@
 @media (max-width: 900px) {
   .sm-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 0px;
   }
   
   .sm-title-wrapper {
@@ -189,8 +189,8 @@
   .sm-chart-wrap {
     width: 100%;
     margin-left: 0;
-    margin: 0 auto;
-    max-width: 700px;
+    margin: 0 auto -80px; /* Pull the image up significantly */
+    max-width: 600px;
   }
   
   .sm-right {
