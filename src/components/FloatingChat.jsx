@@ -10,8 +10,7 @@ export default function FloatingChat() {
   return (
     <div className="floating-chat">
       <button className="chat-btn" onClick={handleChatClick}>
-        <MessageSquare size={24} />
-        <span>Chat with Us</span>
+        <MessageSquare size={20} />
       </button>
     </div>
   );

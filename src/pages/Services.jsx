@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import './PageStyles.css';
 import './Services.css';
+import servicesHeroImg from '../assets/services_hero.jpg';
 
 export default function Services() {
   const { serviceType, subServiceType } = useParams();
@@ -45,57 +46,57 @@ export default function Services() {
       id: "academic-projects",
       title: "Academic Projects",
       desc: "Comprehensive project guidance and development for B.E/B.Tech, M.E/M.Tech, MCA/MSc, and Diploma students.",
-      icon: <GraduationCap size={40} color="#fff" />,
-      color: "var(--accent-orange)"
+      icon: <GraduationCap size={40} color="#0369a1" />,
+      color: "#f0f9ff"
     },
     {
       id: "software-services",
       title: "Software Services",
       desc: "End-to-end custom software development, web applications, and mobile app solutions tailored to your needs.",
-      icon: <Code2 size={40} color="#fff" />,
-      color: "var(--primary-dark)"
+      icon: <Code2 size={40} color="#e11d48" />,
+      color: "#fff1f2"
     },
     {
       id: "workshops",
       title: "Workshops",
       desc: "Hands-on, intensive workshops on the latest technologies and industry best practices.",
-      icon: <MonitorPlay size={40} color="#fff" />,
-      color: "var(--accent-teal)"
+      icon: <MonitorPlay size={40} color="#0369a1" />,
+      color: "#f0f9ff"
     },
     {
       id: "paper-publication",
       title: "Paper Publication",
       desc: "Expert assistance with formatting, reviewing, and publishing academic papers in reputed journals.",
-      icon: <FileText size={40} color="#fff" />,
-      color: "var(--accent-purple)"
+      icon: <FileText size={40} color="#e11d48" />,
+      color: "#fff1f2"
     },
     {
       id: "plagiarism-check",
       title: "Plagiarism Check",
       desc: "Thorough plagiarism checking services to ensure the originality and integrity of your academic documents.",
-      icon: <SearchCheck size={40} color="#fff" />,
-      color: "var(--accent-green)"
+      icon: <SearchCheck size={40} color="#0369a1" />,
+      color: "#f0f9ff"
     },
     {
       id: "paper-writing",
       title: "Paper Writing",
       desc: "Professional guidance and support for structuring and writing high-quality academic and research papers.",
-      icon: <PenTool size={40} color="#fff" />,
-      color: "#e11d48"
+      icon: <PenTool size={40} color="#e11d48" />,
+      color: "#fff1f2"
     },
     {
       id: "corporate-training",
       title: "Corporate Training",
       desc: "Customized training programs designed to upskill your corporate workforce in modern technologies.",
-      icon: <Briefcase size={40} color="#fff" />,
-      color: "#0ea5e9"
+      icon: <Briefcase size={40} color="#0369a1" />,
+      color: "#f0f9ff"
     },
     {
       id: "online-training",
       title: "Online Training",
       desc: "Flexible, high-quality online training courses accessible from anywhere in the world.",
-      icon: <Globe size={40} color="#fff" />,
-      color: "#f59e0b"
+      icon: <Globe size={40} color="#e11d48" />,
+      color: "#fff1f2"
     }
   ];
 
@@ -114,9 +115,62 @@ export default function Services() {
           canonical="/services"
           keywords={['IT services Hyderabad', 'academic project services', 'paper publication', 'corporate training Hyderabad', 'software development services']}
         />
-        <div className="page-header" style={{background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-orange) 100%)'}}>
-          <h1>Our Services</h1>
-          <p>Comprehensive technical and academic solutions designed to empower students and professionals.</p>
+        <div className="page-header" style={{
+          background: '#f8fafc',
+          padding: '50px 5% 20px',
+          borderBottom: '1px solid #e2e8f0',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '40px',
+          position: 'relative',
+          overflow: 'hidden',
+          flexWrap: 'wrap'
+        }}>
+          {/* Subtle Grid Background */}
+          <div style={{
+            position: 'absolute',
+            top: 0, left: 0, right: 0, bottom: 0,
+            backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)',
+            backgroundSize: '24px 24px',
+            opacity: 0.5,
+            zIndex: 0
+          }} />
+
+          {/* Left Content */}
+          <div style={{ flex: '1 1 500px', zIndex: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px' }}>
+              <div style={{ width: '30px', height: '2px', background: '#0369a1' }}></div>
+              <span style={{ color: '#0369a1', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.9rem' }}>
+                Professional Solutions
+              </span>
+            </div>
+            
+            <h1 style={{ fontSize: '3.5rem', fontWeight: '850', color: '#0f172a', lineHeight: '1.1', marginBottom: '20px', letterSpacing: '-1px' }}>
+              Expert <span style={{ color: '#e11d48' }}>Services</span> For Your Needs
+            </h1>
+            
+            <p style={{ fontSize: '1.15rem', color: '#475569', lineHeight: '1.6', maxWidth: '600px', marginBottom: '0' }}>
+              Comprehensive technical and academic solutions designed to empower students, researchers, and professionals to achieve their goals.
+            </p>
+          </div>
+
+          {/* Right Image/Illustration */}
+          <div style={{ flex: '1 1 400px', zIndex: 1, display: 'flex', justifyContent: 'center', position: 'relative' }}>
+             <img 
+               src={servicesHeroImg} 
+               alt="Services Hero Illustration" 
+               style={{ 
+                 width: '100%', 
+                 maxWidth: '550px',
+                 height: '350px',
+                 objectFit: 'cover',
+                 objectPosition: 'center',
+                 WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 75%)',
+                 maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 75%)'
+               }} 
+             />
+          </div>
         </div>
 
         <div className="page-content-wrap">
@@ -125,13 +179,13 @@ export default function Services() {
               <div key={svc.id} className="service-card-premium" onClick={() => navigate(`/services/${svc.id}`)}>
                 <div 
                   className="service-icon-box" 
-                  style={{backgroundColor: svc.color, boxShadow: `0 10px 20px ${svc.color}40`}}
+                  style={{backgroundColor: svc.color}}
                 >
                   {svc.icon}
                 </div>
                 <h2>{svc.title}</h2>
                 <p>{svc.desc}</p>
-                <span className="service-link" style={{color: svc.color}}>
+                <span className="service-link" style={{color: '#0369a1'}}>
                   Learn More <span>➔</span>
                 </span>
               </div>
@@ -147,7 +201,14 @@ export default function Services() {
 
   return (
     <main className="page-wrapper service-detail-page">
-      <div className="page-header" style={{background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-orange) 100%)'}}>
+      <div className="page-header" style={{
+        background: '#f8fafc',
+        backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)',
+        backgroundSize: '24px 24px',
+        borderBottom: '1px solid #e2e8f0',
+        padding: '60px 20px',
+        color: '#0f172a'
+      }}>
         <div className="back-link-box">
           <button className="back-to-services" onClick={() => navigate('/services')}>
             <ArrowLeft size={16} /> Back to Services
@@ -201,11 +262,11 @@ export default function Services() {
 
                 <h3 className="section-subtitle">Project Deliverables:</h3>
                 <ul className="deliverables-bullets">
-                  <li><CheckCircle size={18} color="var(--accent-orange)" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>Complete Source Code:</strong> Clean, modular, well-commented code.</span></li>
-                  <li><CheckCircle size={18} color="var(--accent-orange)" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>Project Documentation:</strong> Standard reports (Synopsis, Literature survey, Design, UML diagrams).</span></li>
-                  <li><CheckCircle size={18} color="var(--accent-orange)" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>Local System Setup:</strong> Detailed configuration on your personal computer.</span></li>
-                  <li><CheckCircle size={18} color="var(--accent-orange)" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>PPT Presentation:</strong> Ready-made PPT slides for mid-term reviews.</span></li>
-                  <li><CheckCircle size={18} color="var(--accent-orange)" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>Viva Q&A Prep:</strong> Guides answering standard examiner questions.</span></li>
+                  <li><CheckCircle size={18} color="#0369a1" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>Complete Source Code:</strong> Clean, modular, well-commented code.</span></li>
+                  <li><CheckCircle size={18} color="#e11d48" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>Project Documentation:</strong> Standard reports (Synopsis, Literature survey, Design, UML diagrams).</span></li>
+                  <li><CheckCircle size={18} color="#0369a1" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>Local System Setup:</strong> Detailed configuration on your personal computer.</span></li>
+                  <li><CheckCircle size={18} color="#e11d48" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>PPT Presentation:</strong> Ready-made PPT slides for mid-term reviews.</span></li>
+                  <li><CheckCircle size={18} color="#0369a1" style={{ flexShrink: 0, marginTop: '3px' }} /> <span><strong>Viva Q&A Prep:</strong> Guides answering standard examiner questions.</span></li>
                 </ul>
 
                 <button className="item-btn mt-30" onClick={() => navigate('/contact')}>Request Project Callback</button>
@@ -254,16 +315,16 @@ export default function Services() {
                   Hemsethu Technologies designs robust, modern software systems, web platforms, and mobile apps. We work with clients to scale platforms and optimize online visibility.
                 </p>
 
-                <div className="features-grid-small">
+                <div className="mini-features-grid mt-40">
                   <div className="mini-card">
-                    <Cpu size={24} color="var(--accent-orange)" />
-                    <h4>Tech Stacks</h4>
-                    <p>React.js, Node.js, Python Django, Flutter, Android, iOS.</p>
+                    <Cpu size={32} color="#0369a1" />
+                    <h4>Latest Tech Stacks</h4>
+                    <p>MERN, Django, React, AI/ML, and more.</p>
                   </div>
                   <div className="mini-card">
-                    <Globe size={24} color="var(--accent-orange)" />
-                    <h4>Scale Support</h4>
-                    <p>Cloud deployment, hosting configuration, SEO alignment.</p>
+                    <CheckCircle size={32} color="#e11d48" />
+                    <h4>100% Plagiarism Free</h4>
+                    <p>Original code with Turnitin reports if requested.</p>
                   </div>
                 </div>
               </div>

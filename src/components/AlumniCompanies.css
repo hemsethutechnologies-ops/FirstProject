@@ -22,7 +22,8 @@
 
 .alumni-tag {
   display: inline-block;
-  color: var(--accent-green); /* Hemsethu crimson red */
+  color: var(--accent-green);
+  /* Hemsethu crimson red */
   font-size: 0.8rem;
   font-weight: 750;
   letter-spacing: 2px;
@@ -53,20 +54,16 @@
   position: relative;
   display: flex;
   padding: 10px 0;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 15%,
-    black 85%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 15%,
-    black 85%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 15%,
+      black 85%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 15%,
+      black 85%,
+      transparent 100%);
 }
 
 .companies-ticker-track {
@@ -84,6 +81,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -124,10 +122,22 @@
   font-weight: 800 !important;
   letter-spacing: -0.5px;
 }
-.logo-zoho .z-red { color: #e1251b; }
-.logo-zoho .z-blue { color: #1a73e8; }
-.logo-zoho .z-green { color: #00b050; }
-.logo-zoho .z-yellow { color: #ffc000; }
+
+.logo-zoho .z-red {
+  color: #e1251b;
+}
+
+.logo-zoho .z-blue {
+  color: #1a73e8;
+}
+
+.logo-zoho .z-green {
+  color: #00b050;
+}
+
+.logo-zoho .z-yellow {
+  color: #ffc000;
+}
 
 /* Razorpay */
 .logo-razorpay {
@@ -168,6 +178,7 @@
   font-weight: 800 !important;
   font-size: 1.25rem !important;
 }
+
 .logo-accenture .acc-arrow {
   color: #a100ff;
   font-weight: 800;
@@ -185,6 +196,7 @@
   color: #0070ad;
   font-size: 1.15rem !important;
 }
+
 .logo-capgemini .cap-spade {
   font-size: 1.3rem;
   color: #002244;
@@ -195,8 +207,10 @@
   color: #0056b3;
   font-style: italic;
 }
+
 .logo-tcs .tcs-dot {
-  color: var(--accent-orange); /* orange dot */
+  color: var(--accent-orange);
+  /* orange dot */
   font-style: normal;
 }
 
@@ -211,6 +225,7 @@
   .alumni-title {
     font-size: 2rem;
   }
+
   .alumni-section {
     padding: 60px 0;
   }

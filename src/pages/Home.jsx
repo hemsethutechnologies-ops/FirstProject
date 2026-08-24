@@ -2,7 +2,6 @@ import React from 'react';
 import SEO from '../components/SEO';
 import Hero from '../components/Hero';
 import AlumniCompanies from '../components/AlumniCompanies';
-import AchievementsBanner from '../components/AchievementsBanner';
 import WhyChooseUs from '../components/WhyChooseUs';
 import PopularCourses from '../components/PopularCourses';
 import SuccessModel from '../components/SuccessModel';
@@ -29,7 +28,7 @@ const organizationSchema = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+91-8555887986',
+    telephone: '+91-9391925913',
     contactType: 'customer service',
     availableLanguage: ['English', 'Telugu', 'Hindi'],
   },
@@ -51,16 +50,15 @@ export default function Home() {
         jsonLd={organizationSchema}
       />
       <Hero />
-      <AlumniCompanies />
-      <AchievementsBanner />
       <WhyChooseUs />
       <PopularCourses />
-      <SuccessModel />
-      <Features />
-      <HowItWorks />
       <CategoryGrid />
       <FeaturedList />
       <LeadFormSection />
+      <SuccessModel />
+      <Features />
+      <HowItWorks />
+      <AlumniCompanies />
       <Testimonials />
       <CTA />
     </main>

@@ -1,233 +1,243 @@
 /* ===================================================
-   PopularCourses — matches reference design exactly
+   PopularCourses — Grid Layout
    =================================================== */
 
-.pc-section {
-  padding: 30px 24px;
-  background: #f5f4ef;   /* cream/beige like reference */
+.courses-grid-section {
+  padding: 80px 24px;
+  background: #f8fafc; /* Very light subtle background */
 }
 
-.pc-container {
-  max-width: 1100px;
+.courses-grid-container {
+  max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
 }
 
-/* ── Label ── */
-.pc-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  color: #888;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-/* ── Title + green underline ── */
-.pc-title-wrap {
+/* ── Header ─────────────────────────────────────────── */
+.courses-grid-header {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 60px;
 }
 
-.pc-title {
-  font-size: 2.1rem;
-  font-weight: 800;
-  color: #111827;
-  line-height: 1.25;
-  margin: 0 0 8px;
+.courses-tag {
+  display: inline-block;
+  color: #e11d48;
+  font-size: 0.85rem;
+  font-weight: 750;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
 }
 
-.pc-underline {
-  width: 220px;
-  height: 12px;
+.courses-title {
+  font-size: 2.8rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.courses-subtitle {
+  font-size: 1.1rem;
+  color: #475569;
+  max-width: 600px;
   margin: 0 auto;
 }
 
-.pc-underline svg {
-  width: 100%;
-  height: 100%;
+/* ── Grid Layout ────────────────────────────────────── */
+.courses-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
-/* ── Slider wrapper ── */
-.pc-slider-wrap {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* ── Cards track (horizontal scroll) ── */
-.pc-track {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;           /* hide scrollbar Firefox */
-  -ms-overflow-style: none;        /* hide scrollbar IE */
-  flex: 1;
-  padding: 6px 2px 12px;           /* breathing room for shadow */
-}
-
-.pc-track::-webkit-scrollbar {
-  display: none;                   /* hide scrollbar Chrome/Safari */
-}
-
-/* ── Individual card ── */
-.pc-card {
-  scroll-snap-align: start;
-  flex: 0 0 calc(33.333% - 13.33px);     /* 3 cards visible */
+/* ── Course Card ────────────────────────────────────── */
+.course-card {
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
 }
 
-.pc-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.13);
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border-color: #cbd5e1;
 }
 
-/* ── Banner image area ── */
-.pc-banner {
+/* ── Image Wrapper ──────────────────────────────────── */
+.course-card-image-wrapper {
   position: relative;
   width: 100%;
+  aspect-ratio: 4/3;
+  background: #ffffff;
+  border-bottom: 1px solid #f8fafc;
   overflow: hidden;
-  background: #f8fafc;
 }
 
-.pc-banner-img {
+.course-card-image {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
 }
 
-/* ── Orange duration badge ── */
-.pc-badge {
+.course-card:hover .course-card-image {
+  transform: scale(1.05);
+}
+
+.course-card-overlay {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background: #f59e0b;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.course-card:hover .course-card-overlay {
+  opacity: 1;
+}
+
+.play-icon {
   color: #ffffff;
-  font-size: 0.72rem;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.course-card:hover .play-icon {
+  transform: scale(1);
+}
+
+.course-card-price {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.price-struck {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+.price-new {
   font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 6px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: #ffffff;
+}
+
+/* ── Content ────────────────────────────────────────── */
+.course-card-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.course-card-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.course-card-meta span {
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-/* ── JOIN OUR CLASS button on banner ── */
-.pc-join-btn {
-  position: absolute;
-  bottom: 14px;
-  left: 14px;
-  background: #22c55e;
-  color: #ffffff;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  padding: 7px 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.18s ease, transform 0.18s ease;
+.course-card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 10px;
+  line-height: 1.3;
 }
 
-.pc-join-btn:hover {
-  background: #16a34a;
-  transform: scale(1.04);
+.course-card-desc {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  flex: 1;
 }
 
-/* ── Card body ── */
-.pc-body {
-  padding: 16px 18px 18px;
+.course-card-stats {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
 }
 
-.pc-course-title {
+.course-card-btn {
+  width: 100%;
+  padding: 12px;
+  background: #fff1f2;
+  color: #e11d48;
+  border: 1px solid #ffe4e6;
+  border-radius: 8px;
   font-size: 0.95rem;
   font-weight: 700;
-  color: #111827;
-  margin: 0;
-  line-height: 1.35;
-}
-
-/* ── Metadata row: sessions | students | price ── */
-.pc-meta {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.pc-meta-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.78rem;
-  color: #555e6c;
-  font-weight: 500;
-}
-
-.pc-meta-item svg {
-  color: #9ca3af;
-  flex-shrink: 0;
-}
-
-/* ── Navigation arrows ── */
-.pc-arrow {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 1px solid #e2e6f0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #374151;
-  cursor: pointer;
-  transition: background 0.18s ease, box-shadow 0.18s ease;
+  gap: 8px;
+  transition: all 0.2s ease;
 }
 
-.pc-arrow:hover {
-  background: #111827;
+.course-card-btn:hover {
+  background: #e11d48;
   color: #ffffff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  border-color: #e11d48;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.2);
 }
 
-/* ── Responsive ── */
-@media (max-width: 860px) {
-  .pc-card {
-    flex: 0 0 80%;
-  }
-
-  .pc-title {
-    font-size: 1.6rem;
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .courses-grid-layout {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 560px) {
-  .pc-section { padding: 50px 16px; }
-
-  .pc-card {
-    flex: 0 0 90%;
+@media (max-width: 768px) {
+  .courses-grid-layout {
+    grid-template-columns: 1fr;
   }
-
-  .pc-title {
-    font-size: 1.4rem;
-  }
-
-  .pc-arrow {
-    display: none;
+  
+  .courses-title {
+    font-size: 2.2rem;
   }
 }

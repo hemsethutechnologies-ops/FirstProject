@@ -1,0 +1,16 @@
+# Hemsethu Technologies
+
+> Engineering Excellence. Bridging the gap between university curriculum and the demands of the modern technology industry.
+
+## About
+Founded by passionate engineers, HemSethu Technologies (HEM - Hub of Emerging Minds. Sethu - The Bridge to Technology) is a recognized digital innovation hub based in Secunderabad. We offer project-based, hands-on learning environments directly aligned with industry needs.
+
+## Services
+- **Academic & IEEE Projects**: Fully customizable source code, database schemas, and documentation (SRS, DFD) for engineering students.
+- **Enterprise Bootcamps**: Intensive training in React, Django, Full-Stack, and UI/UX.
+- **Internships**: Remote and on-site software engineering and digital marketing internships.
+- **Publication Support**: Guidance for IEEE, UGC Care, and Scopus journal publications.
+
+## Contact
+- Phone: +91 93919 25913
+- Location: Secunderabad, Hyderabad, India

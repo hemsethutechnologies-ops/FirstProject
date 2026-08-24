@@ -37,13 +37,13 @@
 
 .proj-category-badge {
   display: inline-block;
-  color: var(--accent-teal);
+  color: #e11d48;
   font-size: 0.75rem;
   font-weight: 800;
-  margin-bottom: 8px;
+  margin-bottom: 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  background: rgba(0, 168, 150, 0.1);
+  background: rgba(225, 29, 72, 0.1);
   padding: 4px 8px;
   border-radius: 4px;
 }
@@ -56,7 +56,7 @@
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
 
 .proj-level-badge.major {
@@ -66,9 +66,9 @@
 }
 
 .proj-level-badge.minor {
-  background-color: rgba(20, 184, 166, 0.1);
-  color: #0d9488;
-  border: 1px solid rgba(20, 184, 166, 0.25);
+  background-color: rgba(225, 29, 72, 0.1);
+  color: #e11d48;
+  border: 1px solid rgba(225, 29, 72, 0.25);
 }
 
 .btn-outline {
@@ -948,4 +948,40 @@
 
 .video-checklist-status {
   font-weight: 750;
+}
+
+/* Level Card Pulse Animations */
+@keyframes pulse-highlight-red {
+  0% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.4); border-color: rgba(225, 29, 72, 0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(225, 29, 72, 0); border-color: rgba(225, 29, 72, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); border-color: #e2e8f0; }
+}
+
+@keyframes pulse-highlight-blue {
+  0% { box-shadow: 0 0 0 0 rgba(3, 105, 161, 0.4); border-color: rgba(3, 105, 161, 0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(3, 105, 161, 0); border-color: rgba(3, 105, 161, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(3, 105, 161, 0); border-color: #e2e8f0; }
+}
+
+.level-card-animated-red {
+  animation: pulse-highlight-red 2.5s infinite;
+}
+
+.level-card-animated-red:hover {
+  animation: none;
+  border-color: #e11d48 !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(225, 29, 72, 0.15) !important;
+}
+
+.level-card-animated-blue {
+  animation: pulse-highlight-blue 2.5s infinite;
+  animation-delay: 1.25s;
+}
+
+.level-card-animated-blue:hover {
+  animation: none;
+  border-color: #0369a1 !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(3, 105, 161, 0.15) !important;
 }

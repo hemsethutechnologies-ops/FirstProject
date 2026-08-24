@@ -39,7 +39,8 @@
   position: absolute;
   top: 30px;
   right: 30px;
-  color: #eff6ff; /* Soft contrast background icon */
+  color: #eff6ff;
+  /* Soft contrast background icon */
 }
 
 .quote-icon {

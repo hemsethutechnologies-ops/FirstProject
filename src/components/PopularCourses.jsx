@@ -1,8 +1,7 @@
-import React, { useRef } from 'react';
-import { Clock, Users, BookOpen, IndianRupee, ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
+import { Clock, Users, BookOpen, IndianRupee, ArrowRight, PlayCircle } from 'lucide-react';
 import './PopularCourses.css';
 
-// Training banner images from assets
 import img1 from '../assets/course-1.png';
 import img2 from '../assets/course-2.png';
 import img3 from '../assets/course-3.png';
@@ -14,29 +13,35 @@ const courses = [
   {
     id: 1,
     banner: img1,
-    duration: '3 Months',
+    duration: '6 Months',
     title: 'Python Full Stack Development Program',
-    sessions: 45,
+    sessions: 90,
     students: '420+',
-    price: '₹20,000',
+    price: '₹10,000',
+    originalPrice: '35,000',
+    description: 'Master Python, Django, and frontend technologies to build scalable web applications from scratch.',
   },
   {
     id: 2,
     banner: img2,
-    duration: '3 Months',
-    title: 'Java Application Development Program',
-    sessions: 40,
+    duration: '6 Months',
+    title: 'Java Full Stack Development Program',
+    sessions: 85,
     students: '350+',
-    price: '₹18,000',
+    price: '₹10,000',
+    originalPrice: '35,000',
+    description: 'Learn core and advanced Java, Spring Boot, and Microservices architecture for enterprise apps.',
   },
   {
     id: 3,
     banner: img3,
-    duration: '4 Months',
+    duration: '6 Months',
     title: 'MERN Stack Web Development Program',
-    sessions: 50,
+    sessions: 100,
     students: '279+',
-    price: '₹25,000',
+    price: '₹10,000',
+    originalPrice: '35,000',
+    description: 'Become a full-stack Javascript expert using MongoDB, Express, React, and Node.js.',
   },
   {
     id: 4,
@@ -45,7 +50,9 @@ const courses = [
     title: 'Data Science & Machine Learning Program',
     sessions: 35,
     students: '310+',
-    price: '₹22,000',
+    price: '₹2,500',
+    originalPrice: '15,000',
+    description: 'Dive into data analysis, AI models, and predictive analytics using modern Python libraries.',
   },
   {
     id: 5,
@@ -54,92 +61,63 @@ const courses = [
     title: 'AWS & DevOps Engineering Program',
     sessions: 30,
     students: '200+',
-    price: '₹20,000',
+    price: '₹2,500',
+    originalPrice: '15,000',
+    description: 'Master cloud infrastructure, CI/CD pipelines, Docker, and Kubernetes for modern deployments.',
   },
   {
     id: 6,
     banner: img6,
-    duration: '3 Months',
+    duration: '1 Month',
     title: 'Android Application Development Program',
-    sessions: 38,
+    sessions: 20,
     students: '290+',
-    price: '₹18,000',
-  },
+    price: '₹1,500',
+    originalPrice: '10,000',
+    description: 'Build native Android apps using Kotlin and Java with real-world project experience.',
+  }
 ];
 
 export default function PopularCourses() {
-  const trackRef = useRef(null);
-
-  const scroll = (dir) => {
-    if (trackRef.current) {
-      const cardWidth = trackRef.current.querySelector('.pc-card').offsetWidth + 20;
-      trackRef.current.scrollBy({ left: dir * cardWidth * 2, behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section className="pc-section">
-      <div className="pc-container">
-
-        {/* Label */}
-        <p className="pc-label">POPULAR COURSES</p>
-
-        {/* Title */}
-        <div className="pc-title-wrap">
-          <h2 className="pc-title">Upgrade Your Skills with Our Training Programs!</h2>
-          <div className="pc-underline" aria-hidden="true">
-            <svg viewBox="0 0 220 12" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-              <path d="M2 9 C 40 2, 80 12, 120 5 C 160 -2, 200 10, 218 6"
-                stroke="#22c55e" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-            </svg>
-          </div>
+    <section className="courses-grid-section">
+      <div className="courses-grid-container">
+        
+        <div className="courses-grid-header">
+          <span className="courses-tag">POPULAR COURSES</span>
+          <h2 className="courses-title">Upgrade Your Skills</h2>
+          <p className="courses-subtitle">Choose from our industry-aligned programs designed to get you hired.</p>
         </div>
 
-        {/* Slider row */}
-        <div className="pc-slider-wrap">
-          {/* Left arrow */}
-          <button className="pc-arrow pc-arrow--left" onClick={() => scroll(-1)} aria-label="Previous">
-            <ChevronLeft size={22} />
-          </button>
-
-          {/* Cards track */}
-          <div className="pc-track" ref={trackRef}>
-            {courses.map((c) => (
-              <div key={c.id} className="pc-card">
-                {/* Banner */}
-                <div className="pc-banner">
-                  <img src={c.banner} alt={c.title} className="pc-banner-img" />
-                  {/* orange duration badge */}
-                  <span className="pc-badge">
-                    <Clock size={13} /> {c.duration}
-                  </span>
-                  {/* JOIN button on banner */}
-                  <button className="pc-join-btn">JOIN OUR CLASS</button>
+        <div className="courses-grid-layout">
+          {courses.map((course) => (
+            <div className="course-card" key={course.id}>
+              <div className="course-card-image-wrapper">
+                <img src={course.banner} alt={course.title} className="course-card-image" />
+                <div className="course-card-overlay">
+                  <PlayCircle size={48} className="play-icon" />
                 </div>
-
-                {/* Card body */}
-                <div className="pc-body">
-                  <h3 className="pc-course-title">{c.title}</h3>
-                  <div className="pc-meta">
-                    <span className="pc-meta-item">
-                      <BookOpen size={13} /> {c.sessions} Sessions
-                    </span>
-                    <span className="pc-meta-item">
-                      <Users size={13} /> {c.students} Students
-                    </span>
-                    <span className="pc-meta-item">
-                      <IndianRupee size={13} /> {c.price.replace('₹', '')}
-                    </span>
-                  </div>
+                <div className="course-card-price">
+                  <span className="price-struck">₹{course.originalPrice}</span>
+                  <span className="price-new"><IndianRupee size={14} /> {course.price.replace('₹', '')}</span>
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Right arrow */}
-          <button className="pc-arrow pc-arrow--right" onClick={() => scroll(1)} aria-label="Next">
-            <ChevronRight size={22} />
-          </button>
+              <div className="course-card-content">
+                <div className="course-card-meta">
+                  <span><Clock size={14}/> {course.duration}</span>
+                  <span><BookOpen size={14}/> {course.sessions} Sessions</span>
+                </div>
+                <h3 className="course-card-title">{course.title}</h3>
+                <p className="course-card-desc">{course.description}</p>
+                <div className="course-card-stats">
+                  <Users size={16} /> <span>{course.students} Students Enrolled</span>
+                </div>
+                <button className="course-card-btn">
+                  Enroll Now <ArrowRight size={16} />
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>

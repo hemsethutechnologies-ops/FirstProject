@@ -8,13 +8,13 @@
 .chat-btn {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: linear-gradient(135deg, #ef4444, #b91c1c); /* Vibrant Red gradient */
   color: #fff;
-  padding: 14px 28px;
+  padding: 10px 20px;
   border-radius: 50px;
-  font-weight: 700;
-  font-size: 1.05rem;
+  font-weight: 600;
+  font-size: 0.95rem;
   box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.5); /* Red glow */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }

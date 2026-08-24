@@ -19,10 +19,10 @@ import {
   RefreshCw 
 } from 'lucide-react';
 
-// Import project mockup screenshots
-import screenEcommerce from '../assets/project_screen_ecommerce.png';
-import screenDashboard from '../assets/project_screen_dashboard.png';
-import screenLanding from '../assets/project_screen_landing.png';
+// Use placeholder mockup screenshots
+const screenEcommerce = 'https://placehold.co/800x450/e2e8f0/475569?text=Ecommerce+Mockup';
+const screenDashboard = 'https://placehold.co/800x450/e2e8f0/475569?text=Dashboard+Mockup';
+const screenLanding = 'https://placehold.co/800x450/e2e8f0/475569?text=Landing+Mockup';
 
 // Dynamic project details generator based on category
 const getProjectDetails = (category) => {
@@ -481,7 +481,7 @@ export default function ProjectTemplate({ title, description, projects, backgrou
   };
 
   const handleRequestSource = (projId, projTitle) => {
-    const phoneNumber = '918555887986';
+    const phoneNumber = '919391925913';
     const text = `Hello Hemsethu Technologies, I am interested in requesting the source code for the project: "${projTitle}" (Project ID: ${projId}).`;
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, '_blank');
@@ -568,30 +568,34 @@ export default function ProjectTemplate({ title, description, projects, backgrou
                 onClick={() => handleOpenDetails(proj)}
                 style={{ cursor: 'pointer' }}
               >
-                <div className="item-image" style={{ backgroundColor: '#e0f2fe', color: '#0369a1' }}>
-                  <h3>{proj.img} Project</h3>
+                <div className="item-header-pattern">
+                  <span className="proj-category-badge">{proj.category}</span>
+                  <span className={`proj-level-badge ${proj.projectLevel === 'Minor' || proj.category === 'Python' ? 'minor' : 'major'}`}>
+                    {proj.projectLevel || (proj.category === 'Python' ? 'Minor' : 'Major')}
+                  </span>
                 </div>
+                
                 <div className="item-details">
-                  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                    <span className="proj-category-badge">{proj.category}</span>
-                    <span className={`proj-level-badge ${proj.projectLevel === 'Minor' || proj.category === 'Python' ? 'minor' : 'major'}`}>
-                      {proj.projectLevel || (proj.category === 'Python' ? 'Minor' : 'Major')} Project
-                    </span>
-                  </div>
                   <h3 className="item-title">{proj.title}</h3>
                   <p className="item-desc">{proj.description || `A comprehensive project covering the core concepts of ${proj.category}. Includes complete source code and documentation.`}</p>
-                  <div className="item-footer">
-                    <button 
-                      className="item-btn btn-outline" 
-                      style={{ width: '100%' }}
-                      onClick={(e) => {
-                        e.stopPropagation(); // Avoid opening the modal on click
-                        handleRequestSource(proj.id, proj.title);
-                      }}
-                    >
-                      Request Source
-                    </button>
+                  
+                  <div className="item-tech-stack">
+                    {getProjectDetails(proj.category).techStack.slice(0, 3).map((tech, idx) => (
+                      <span key={idx} className="mini-tech-badge">{tech}</span>
+                    ))}
                   </div>
+                </div>
+                
+                <div className="item-footer">
+                  <button 
+                    className="item-btn btn-outline" 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleRequestSource(proj.id, proj.title);
+                    }}
+                  >
+                    Request Source
+                  </button>
                 </div>
               </div>
             ))}

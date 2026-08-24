@@ -20,7 +20,8 @@ import {
   Layers,
   Settings,
   Database,
-  Flame
+  Flame,
+  Search
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -29,157 +30,159 @@ import ban2 from '../assets/ban-2.png';
 import ban3 from '../assets/ban-3.png';
 import ban4 from '../assets/ban-4.png';
 import ban5 from '../assets/ban-5.png';
+import studentLeft from '../assets/new_hero_student_left.png';
+import studentRight from '../assets/new_hero_student_right.png';
 import './Hero.css';
 
 export default function Hero() {
   const [virtualIndex, setVirtualIndex] = useState(4); // Start copy index
   const [transitionEnabled, setTransitionEnabled] = useState(true);
-  const [activeCategory, setActiveCategory] = useState('All Courses');
+  const [activeCategory, setActiveCategory] = useState('Web Development');
   const autoplayTimerRef = useRef(null);
 
   const slides = [
-    {
-      id: 5,
-      isFullImage: true,
-      fullImage: ban1,
-      titleNormal: 'Banner 1'
-    },
-    {
-      id: 6,
-      isFullImage: true,
-      fullImage: ban2,
-      titleNormal: 'Banner 2'
-    },
-    {
-      id: 7,
-      isFullImage: true,
-      fullImage: ban3,
-      titleNormal: 'Banner 3'
-    },
-    {
-      id: 8,
-      isFullImage: true,
-      fullImage: ban4,
-      titleNormal: 'Banner 4'
-    },
-    {
-      id: 9,
-      isFullImage: true,
-      fullImage: ban5,
-      titleNormal: 'Banner 5'
-    }
+    { id: 5, isFullImage: true, fullImage: ban1, titleNormal: 'Banner 1' },
+    { id: 6, isFullImage: true, fullImage: ban2, titleNormal: 'Banner 2' },
+    { id: 7, isFullImage: true, fullImage: ban3, titleNormal: 'Banner 3' },
+    { id: 8, isFullImage: true, fullImage: ban4, titleNormal: 'Banner 4' },
+    { id: 9, isFullImage: true, fullImage: ban5, titleNormal: 'Banner 5' }
   ];
 
   const categoriesList = [
     'All Courses',
-    'AWS Cloud',
-    'DevOps',
-    'Cloud Computing',
-    'Backend Development',
-    'Frontend Development',
+    'Web Development',
+    'AWS & DevOps',
     'Data Science',
+    'Artificial Intelligence',
     'Cyber Security'
   ];
 
   const coursesData = [
     {
       id: 1,
-      category: 'AWS Cloud',
-      title: 'AWS Cloud Practitioner',
-      coursesCount: 12,
+      category: 'Web Development',
+      title: 'Full Stack MERN Developer',
+      coursesCount: 24,
       tag: 'Popular',
       colorClass: 'course-blue',
-      icon: 'Cloud'
+      icon: 'Code'
     },
     {
       id: 2,
-      category: 'DevOps',
-      title: 'DevOps Engineering',
-      coursesCount: 18,
-      tag: 'Popular',
-      colorClass: 'course-green',
-      icon: 'Infinity'
-    },
-    {
-      id: 3,
-      category: 'DevOps',
-      title: 'Docker & Kubernetes',
-      coursesCount: 10,
-      tag: 'Popular',
-      colorClass: 'course-purple',
-      icon: 'Box'
-    },
-    {
-      id: 4,
-      category: 'DevOps',
-      title: 'Jenkins CI/CD',
-      coursesCount: 8,
-      tag: 'Popular',
-      colorClass: 'course-orange',
-      icon: 'Settings'
-    },
-    {
-      id: 5,
-      category: 'DevOps',
-      title: 'Terraform Automation',
-      coursesCount: 7,
-      tag: 'Popular',
-      colorClass: 'course-pink',
+      category: 'Web Development',
+      title: 'Frontend ReactJS Mastery',
+      coursesCount: 16,
+      tag: 'Hot',
+      colorClass: 'course-teal',
       icon: 'Layers'
     },
     {
-      id: 6,
-      category: 'DevOps',
-      title: 'Monitoring with Prometheus',
-      coursesCount: 6,
-      tag: 'Popular',
-      colorClass: 'course-teal',
-      icon: 'Activity'
-    },
-    {
-      id: 7,
-      category: 'Cloud Computing',
-      title: 'Google Cloud Architect',
-      coursesCount: 15,
-      tag: 'Hot',
-      colorClass: 'course-blue',
-      icon: 'Cloud'
-    },
-    {
-      id: 8,
-      category: 'Backend Development',
-      title: 'Python Django Backend',
-      coursesCount: 22,
+      id: 3,
+      category: 'Web Development',
+      title: 'Backend Node.js & Express',
+      coursesCount: 12,
       tag: 'Popular',
       colorClass: 'course-purple',
       icon: 'Terminal'
     },
     {
-      id: 9,
-      category: 'Frontend Development',
-      title: 'ReactJS Frontend Mastery',
-      coursesCount: 16,
+      id: 4,
+      category: 'AWS & DevOps',
+      title: 'DevOps with AWS',
+      coursesCount: 18,
       tag: 'Popular',
-      colorClass: 'course-teal',
-      icon: 'Code'
+      colorClass: 'course-orange',
+      icon: 'Cloud'
     },
     {
-      id: 10,
-      category: 'Data Science',
-      title: 'Machine Learning & AI',
-      coursesCount: 25,
+      id: 5,
+      category: 'Cyber Security',
+      title: 'Level 1 Ethical Hacking',
+      coursesCount: 8,
       tag: 'Hot',
-      colorClass: 'course-orange',
+      colorClass: 'course-pink',
+      icon: 'Shield'
+    },
+    {
+      id: 6,
+      category: 'Data Science',
+      title: 'Python with Data Science',
+      coursesCount: 20,
+      tag: 'Popular',
+      colorClass: 'course-green',
+      icon: 'Activity'
+    },
+    {
+      id: 7,
+      category: 'Artificial Intelligence',
+      title: 'AI & Machine Learning',
+      coursesCount: 15,
+      tag: 'New',
+      colorClass: 'course-purple',
       icon: 'Brain'
     },
     {
-      id: 11,
-      category: 'Cyber Security',
-      title: 'Ethical Hacking Bootcamps',
+      id: 8,
+      category: 'Artificial Intelligence',
+      title: 'Deep Learning with PyTorch',
+      coursesCount: 10,
+      tag: 'Advanced',
+      colorClass: 'course-blue',
+      icon: 'Settings'
+    },
+    {
+      id: 9,
+      category: 'Web Development',
+      title: 'Next.js Enterprise Apps',
+      coursesCount: 15,
+      tag: 'Hot',
+      colorClass: 'course-purple',
+      icon: 'Cloud'
+    },
+    {
+      id: 10,
+      category: 'Web Development',
+      title: 'MongoDB Data Architecture',
       coursesCount: 11,
       tag: 'Popular',
+      colorClass: 'course-green',
+      icon: 'Database'
+    },
+    {
+      id: 11,
+      category: 'Web Development',
+      title: 'SQL & Relational Databases',
+      coursesCount: 18,
+      tag: 'Popular',
+      colorClass: 'course-blue',
+      icon: 'Database'
+    },
+    {
+      id: 12,
+      category: 'Web Development',
+      title: 'Django Python Backend',
+      coursesCount: 22,
+      tag: 'Hot',
+      colorClass: 'course-orange',
+      icon: 'Terminal'
+    },
+    {
+      id: 13,
+      category: 'Web Development',
+      title: 'Java Full Stack Developer',
+      coursesCount: 25,
+      tag: 'Popular',
       colorClass: 'course-pink',
-      icon: 'Shield'
+      icon: 'Box'
+    },
+    {
+      id: 14,
+      category: 'Web Development',
+      title: 'Angular Frontend Mastery',
+      coursesCount: 14,
+      tag: 'Popular',
+      colorClass: 'course-teal',
+      icon: 'Layers'
     }
   ];
 
@@ -275,6 +278,7 @@ export default function Hero() {
       case 'Code': return <Code size={32} />;
       case 'Brain': return <Laptop size={32} />;
       case 'Shield': return <Shield size={32} />;
+      case 'Database': return <Database size={32} />;
       default: return <Cloud size={32} />;
     }
   };
@@ -282,173 +286,93 @@ export default function Hero() {
   const activeSlide = slides[virtualIndex % slides.length];
 
   const filteredCourses = activeCategory === 'All Courses'
-    ? coursesData.slice(0, 6)
+    ? coursesData.slice(0, 8)
     : coursesData.filter(course => course.category === activeCategory);
 
   return (
-    <section className="hero-page-section">
-      <div className="hero-slider-container">
+    <section className="corp-hero-wrapper">
+      {/* 1. The Corporate Search Header */}
+      <div className="corp-hero-header">
+        {/* Decorative Students */}
+        <img src={studentLeft} alt="Student learning" className="hero-decor-student hero-decor-left" />
+        <img src={studentRight} alt="Student standing" className="hero-decor-student hero-decor-right" />
 
+        <div className="corp-hero-header-content">
+          <h1 className="corp-hero-title">
+            Transform Your <span className="title-highlight">Future in Tech</span>
+          </h1>
+          <p className="corp-hero-subtitle">
+            Join HemSethu Technologies to master highly demanded skills, build real-world projects, and guarantee your career success.
+          </p>
 
+          <div className="corp-hero-search">
+            <Search className="search-icon" size={20} />
+            <input type="text" placeholder="What do you want to learn today? (e.g. AWS, React, Python)" />
+            <button className="search-btn">Explore</button>
+          </div>
+        </div>
+      </div>
 
-        {/* Slide Frame */}
-        <div className="slider-viewport">
-          <div className="slider-track" style={{ transform: `translateX(-${(virtualIndex % slides.length) * 100}%)` }}>
-            {slides.map((slide, index) => (
-              <div key={slide.id} className={`slide-item ${slide.isFullImage ? 'full-image-slide' : ''}`}>
-                {slide.isFullImage ? (
-                  <div className="slide-full-image-container">
-                    <img src={slide.fullImage} alt={slide.titleNormal} className="slide-full-banner-img" />
-                  </div>
-                ) : (
-                  <div className="slide-content-grid">
-
-                    {/* Left Text details */}
-                    <div className="slide-info-pane">
-                      <span className="slide-tag-badge">
-                        <Award size={14} style={{ marginRight: '6px' }} />
-                        {slide.tag}
-                      </span>
-
-                      <h1 className="slide-title">
-                        {slide.titleNormal}
-                        <span className="title-highlight">{slide.titleHighlight}</span>
-                      </h1>
-
-                      <p className="slide-desc">{slide.desc}</p>
-
-                      <div className="slide-bullets">
-                        {slide.bullets.map((bullet, bIdx) => (
-                          <span key={bIdx} className="bullet-pill">
-                            {renderBulletIcon(bullet.icon)}
-                            {bullet.text}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="slide-buttons">
-                        <Link to={slide.btnPrimary.link} className="btn-primary">
-                          <Rocket size={16} style={{ marginRight: '8px' }} />
-                          {slide.btnPrimary.text}
-                        </Link>
-                        <Link to={slide.btnSecondary.link} className="btn-secondary">
-                          <BookOpen size={16} style={{ marginRight: '8px' }} />
-                          {slide.btnSecondary.text}
-                        </Link>
-                      </div>
-                    </div>
-
-                    {/* Right Illustration */}
-                    <div className="slide-graphics-pane">
-                      {slide.illustration}
-                    </div>
-
-                  </div>
-                )}
+      {/* 2. The Promotional Peek-a-boo Slider */}
+      <div className="corp-hero-showcase">
+        <div className="showcase-slider-viewport">
+          <div className="showcase-slider-track" style={{ transform: `translateX(-${(virtualIndex % slides.length) * 100}%)` }}>
+            {slides.map((slide) => (
+              <div key={slide.id} className="showcase-slide-item">
+                <img src={slide.fullImage} alt={slide.titleNormal} className="showcase-banner-img" />
               </div>
             ))}
           </div>
         </div>
 
-        {/* Dots indicators */}
-        <div className="slider-dots">
+        <button className="showcase-arrow arrow-left" onClick={handlePrev} aria-label="Previous slide">
+          <ChevronLeft size={24} />
+        </button>
+        <button className="showcase-arrow arrow-right" onClick={handleNext} aria-label="Next slide">
+          <ChevronRight size={24} />
+        </button>
+
+        <div className="showcase-dots">
           {slides.map((_, idx) => (
             <button
               key={idx}
-              className={`dot-indicator ${idx === (virtualIndex % slides.length) ? 'active' : ''}`}
+              className={`showcase-dot ${idx === (virtualIndex % slides.length) ? 'active' : ''}`}
               onClick={() => handleThumbClick(idx + slides.length)}
-              aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
         </div>
-
       </div>
 
-      {/* Marquee Section */}
-      <div className="hero-marquee-container">
-        <div className="marquee-track">
-          <div className="marquee-content">
-            Empowering Students & Professionals &bull; 100+ Corporate Partners &bull; 10K+ Students Trained &bull; Expert Led Courses &bull; Enroll Now! &bull; Welcome to Hemsethu Technologies - Leading IT Training Institute
-          </div>
-          <div className="marquee-content" aria-hidden="true">
-            Empowering Students & Professionals &bull; 100+ Corporate Partners &bull; 10K+ Students Trained &bull; Expert Led Courses &bull; Enroll Now! &bull; Welcome to Hemsethu Technologies - Leading IT Training Institute
-          </div>
-        </div>
-      </div>
-
-      {/* Overlapping White Category Navigation Card */}
-      <div className="overlapping-courses-card">
-        {/* Courses Cards Grid */}
-        <div className="courses-grid-display">
-          {filteredCourses.map(course => (
-            <div key={course.id} className={`course-card ${course.colorClass}`}>
-              <div className="course-card-top">
-                <span className="course-badge" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <Flame size={14} /> {course.tag}
-                </span>
-                <div className="course-icon-bg">
-                  {renderCourseIcon(course.icon)}
-                </div>
-              </div>
-              <h3 className="course-card-title">{course.title}</h3>
-              <span className="course-card-count">{course.coursesCount} Courses</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="category-tabs-nav">
+      {/* 3. The Courses Hub Grid */}
+      <div className="corp-hero-courses">
+        <div className="category-tabs-modern">
           {categoriesList.map((cat, idx) => (
             <button
               key={idx}
-              className={`category-tab-btn ${activeCategory === cat ? 'active' : ''}`}
+              className={`modern-tab-btn ${activeCategory === cat ? 'active' : ''}`}
               onClick={() => setActiveCategory(cat)}
             >
               {cat}
             </button>
           ))}
         </div>
-      </div>
 
-      {/* Bottom 4 Colored Stats Blocks */}
-      <div className="bottom-stats-grid">
-        <div className="new-stat-card theme-blue">
-          <div className="stat-icon-wrapper">
-            <Trophy size={28} />
-          </div>
-          <div className="stat-details">
-            <h3>500+</h3>
-            <p>Verified Project Titles</p>
-          </div>
-        </div>
-
-        <div className="new-stat-card theme-green">
-          <div className="stat-icon-wrapper">
-            <Users size={28} />
-          </div>
-          <div className="stat-details">
-            <h3>10K+</h3>
-            <p>Students Trained & Placed</p>
-          </div>
-        </div>
-
-        <div className="new-stat-card theme-purple">
-          <div className="stat-icon-wrapper">
-            <Building2 size={28} />
-          </div>
-          <div className="stat-details">
-            <h3>100+</h3>
-            <p>Corporate Partners</p>
-          </div>
-        </div>
-
-        <div className="new-stat-card theme-orange">
-          <div className="stat-icon-wrapper">
-            <Award size={28} />
-          </div>
-          <div className="stat-details">
-            <h3>5+</h3>
-            <p>Years of Excellence</p>
-          </div>
+        <div className="modern-courses-grid">
+          {filteredCourses.map(course => (
+            <Link to="/courses" key={course.id} className={`modern-course-card ${course.colorClass}`}>
+              <div className="modern-card-icon">
+                {renderCourseIcon(course.icon)}
+              </div>
+              <div className="modern-card-info">
+                <span className="modern-card-tag"><Flame size={12} style={{ marginRight: '4px' }} /> {course.tag}</span>
+                <h3>{course.title}</h3>
+                <p>{course.coursesCount} Programs</p>
+              </div>
+              <div className="modern-card-arrow">
+                <ChevronRight size={18} />
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

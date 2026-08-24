@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../../pages/PageStyles.css';
 import '../../pages/Projects.css';
 import { 
@@ -16,13 +17,36 @@ import {
   HelpCircle, 
   HardDrive, 
   Layout, 
-  RefreshCw 
+  RefreshCw,
+  Brain,
+  Terminal,
+  Network,
+  Smartphone,
+  BarChart3,
+  Coffee,
+  Globe,
+  BookOpen,
+  GraduationCap,
+  Zap,
+  Cloud,
+  Wifi,
+  Boxes,
+  Layers,
+  ShoppingCart,
+  Bot,
+  Atom,
+  Triangle,
+  FileCode,
+  ServerCog,
+  Component
 } from 'lucide-react';
 
 // Import project mockup screenshots
-import screenEcommerce from '../../assets/project_screen_ecommerce.png';
-import screenDashboard from '../../assets/project_screen_dashboard.png';
-import screenLanding from '../../assets/project_screen_landing.png';
+const screenEcommerce = 'https://placehold.co/800x450/e2e8f0/475569?text=Ecommerce+Mockup';
+const screenLanding = 'https://placehold.co/800x450/e2e8f0/475569?text=Landing+Mockup';
+const screenDashboard = 'https://placehold.co/800x450/e2e8f0/475569?text=Dashboard+Mockup';
+import projectsHeroImg from '../../assets/projects_hero.jpg';
+import SEO from '../../components/SEO';
 
 // Dynamic project details generator based on category
 const getProjectDetails = (category) => {
@@ -413,6 +437,7 @@ function SimulatedCodeScreen({ category }) {
 
   return (
     <div className="simulated-screen-container">
+      <SEO title="All Projects" description="Browse our extensive portfolio of over 140 customizable academic and industry projects." />
       <div className="sim-screen-header">
         <div className="sim-screen-dots">
           <span className="sim-screen-dot red"></span>
@@ -596,10 +621,72 @@ export default function AllProjects() {
     { id: 143, title: 'Calories Burnt Prediction', category: 'Machine Learning', description: 'Predicts calories burnt during exercise based on activity and biometric data.', tech: 'Linear Regression, XGBoost, Scikit-learn, Pandas', projectLevel: 'Minor', img: 'ML' },
     { id: 144, title: 'Online Payment Fraud Detection', category: 'Machine Learning', description: 'Identifies fraudulent online payment transactions using classification models.', tech: 'Random Forest, Scikit-learn, Pandas, NumPy', projectLevel: 'Minor', img: 'ML' },
     { id: 145, title: 'Text Summarization (Basic Extractive Model)', category: 'Machine Learning', description: 'Generates a short summary from a longer piece of text.', tech: 'NLP, NLTK, Gensim, TF-IDF', projectLevel: 'Minor', img: 'ML' },
-    { id: 146, title: 'Chatbot using Rule-Based NLP', category: 'Machine Learning', description: 'Responds to user queries using predefined rules and pattern matching.', tech: 'NLTK, Python, Regular Expressions', projectLevel: 'Minor', img: 'ML' }
+    { id: 146, title: 'Chatbot using Rule-Based NLP', category: 'Machine Learning', description: 'Responds to user queries using predefined rules and pattern matching.', tech: 'NLTK, Python, Regular Expressions', projectLevel: 'Minor', img: 'ML' },
+
+    // Deep Learning
+    { id: 147, title: 'Generative Adversarial Network (GAN) Image Synthesizer', category: 'Deep Learning', price: 'Premium', img: 'AI', projectLevel: 'Major' },
+    { id: 148, title: 'Deep Neural Network for Audio Classification', category: 'Deep Learning', price: 'Free', img: 'AI', projectLevel: 'Minor' },
+
+    // Block Chain
+    { id: 149, title: 'Decentralized Voting System using Smart Contracts', category: 'Block Chain', price: 'Premium', img: 'Web', projectLevel: 'Major' },
+    { id: 150, title: 'Cryptocurrency Wallet Application', category: 'Block Chain', price: 'Premium', img: 'Web', projectLevel: 'Major' },
+
+    // Big Data
+    { id: 151, title: 'Hadoop Cluster Log Analysis Dashboard', category: 'Big Data', price: 'Premium', img: 'Data', projectLevel: 'Major' },
+    { id: 152, title: 'Real-time Streaming Data Pipeline with Apache Kafka', category: 'Big Data', price: 'Free', img: 'Data', projectLevel: 'Minor' },
+
+    // IOT
+    { id: 153, title: 'Smart Home Automation System with Raspberry Pi', category: 'IOT', price: 'Premium', img: 'Hardware', projectLevel: 'Major' },
+    { id: 154, title: 'RFID based Attendance System', category: 'IOT', price: 'Free', img: 'Hardware', projectLevel: 'Minor' },
+
+    // Cloud Computing
+    { id: 155, title: 'Serverless Server Architecture using AWS Lambda', category: 'Cloud Computing', price: 'Premium', img: 'Cloud', projectLevel: 'Major' },
+    { id: 156, title: 'Distributed Cloud Storage Manager', category: 'Cloud Computing', price: 'Free', img: 'Cloud', projectLevel: 'Minor' },
+
+    // Data Mining
+    { id: 157, title: 'Association Rule Mining for Market Basket Analysis', category: 'Data Mining', price: 'Premium', img: 'Data', projectLevel: 'Major' },
+    { id: 158, title: 'Web Scraping and Data Extraction Utility', category: 'Data Mining', price: 'Free', img: 'Data', projectLevel: 'Minor' },
+
+    // MERN Stack
+    { id: 159, title: 'Full Stack Social Media Platform with Chat', category: 'MERN Stack', price: 'Premium', img: 'Web', projectLevel: 'Major' },
+    { id: 160, title: 'Kanban Board Task Management Tool', category: 'MERN Stack', price: 'Free', img: 'Web', projectLevel: 'Minor' },
+
+    // Full Stack
+    { id: 161, title: 'Multi-vendor Marketplace with Payment Gateway', category: 'Full Stack', price: 'Premium', img: 'Web', projectLevel: 'Major' },
+    { id: 162, title: 'Blog Content Management System (CMS)', category: 'Full Stack', price: 'Free', img: 'Web', projectLevel: 'Minor' },
+
+    // E-commerce
+    { id: 163, title: 'Comprehensive Online Store with Inventory', category: 'E-commerce', price: 'Premium', img: 'Web', projectLevel: 'Major' },
+    { id: 164, title: 'Simple Shopping Cart Application', category: 'E-commerce', price: 'Free', img: 'Web', projectLevel: 'Minor' },
+
+    // LLMs
+    { id: 165, title: 'Custom Enterprise Chatbot with RAG & Vector DB', category: 'LLMs', price: 'Premium', img: 'AI', projectLevel: 'Major' },
+    { id: 166, title: 'Document Summarization and Q&A Bot', category: 'LLMs', price: 'Free', img: 'AI', projectLevel: 'Minor' },
+
+    // React
+    { id: 167, title: 'Real-time Chat App Dashboard with WebSockets', category: 'React', price: 'Premium', img: 'Web', projectLevel: 'Major' },
+    { id: 168, title: 'Live Weather API Forecasting App', category: 'React', price: 'Free', img: 'Web', projectLevel: 'Minor' },
+
+    // Next.js
+    { id: 169, title: 'SEO Optimized Corporate Site with SSR', category: 'Next.js', price: 'Premium', img: 'Web', projectLevel: 'Major' },
+    { id: 170, title: 'Modern Personal Developer Portfolio', category: 'Next.js', price: 'Free', img: 'Web', projectLevel: 'Minor' },
+
+    // HTML Static Sites
+    { id: 171, title: 'Creative Agency Multipage Landing Site', category: 'HTML Static Sites', price: 'Premium', img: 'Web', projectLevel: 'Major' },
+    { id: 172, title: 'Responsive Restaurant Menu Page', category: 'HTML Static Sites', price: 'Free', img: 'Web', projectLevel: 'Minor' },
+
+    // Node.js
+    { id: 173, title: 'Scalable REST API with Express and MongoDB', category: 'Node.js', price: 'Premium', img: 'Web', projectLevel: 'Major' },
+    { id: 174, title: 'JWT Authentication Microservice', category: 'Node.js', price: 'Free', img: 'Web', projectLevel: 'Minor' },
+
+    // Angular
+    { id: 175, title: 'Enterprise Admin Dashboard Panel', category: 'Angular', price: 'Premium', img: 'Web', projectLevel: 'Major' },
+    { id: 176, title: 'Reactive To-Do List Application', category: 'Angular', price: 'Free', img: 'Web', projectLevel: 'Minor' }
   ];
 
-  const categories = ['All', ...new Set(allProjects.map(p => p.category))];
+  const navigate = useNavigate();
+  const { levelId } = useParams();
+
   const [activeCategory, setActiveCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const [activeProject, setActiveProject] = useState(null);
@@ -610,16 +697,57 @@ export default function AllProjects() {
   const [levelFilter, setLevelFilter] = useState('All');
   const itemsPerPage = 6;
 
-  const handleCategoryChange = (category) => {
-    setActiveCategory(category);
-    setLevelFilter('All');
-    setCurrentPage(1);
+  // New Wizard State
+  const [flowStep, setFlowStep] = useState(1);
+  const [selectedLevel, setSelectedLevel] = useState(null);
+  const [selectedLanguage, setSelectedLanguage] = useState(null);
+
+  useEffect(() => {
+    if (levelId) {
+      const formattedLevel = levelId.toLowerCase() === 'minor' ? 'Minor' : 'Major';
+      setSelectedLevel(formattedLevel);
+      setLevelFilter(formattedLevel);
+      setFlowStep(2);
+    } else {
+      setSelectedLevel(null);
+      setLevelFilter('All');
+      setFlowStep(1);
+      setActiveCategory('All');
+    }
+  }, [levelId]);
+
+  const handleSelectLevel = (level) => {
+    window.scrollTo(0, 0);
+    navigate(`/projects/level/${level.toLowerCase()}`);
   };
 
-  const handleLevelFilterChange = (filter) => {
-    setLevelFilter(filter);
+  const handleSelectLanguage = (lang) => {
+    setSelectedLanguage(lang);
+    setActiveCategory(lang);
+    setLevelFilter(selectedLevel);
     setCurrentPage(1);
+    setFlowStep(3);
   };
+
+  const handleBackToLevel = () => {
+    navigate('/projects');
+  };
+
+  const handleBackToLanguage = () => {
+    setFlowStep(2);
+  };
+
+  const projectsForSelectedLevel = useMemo(() => {
+    if (!selectedLevel) return [];
+    return allProjects.filter(p => {
+       const lvl = p.projectLevel || (p.category === 'Python' ? 'Minor' : 'Major');
+       return lvl === selectedLevel;
+    });
+  }, [selectedLevel]);
+
+  const categoriesForSelectedLevel = useMemo(() => {
+    return [...new Set(projectsForSelectedLevel.map(p => p.category))];
+  }, [projectsForSelectedLevel]);
 
   const filteredProjects = useMemo(() => {
     let projs = allProjects;
@@ -627,20 +755,13 @@ export default function AllProjects() {
       projs = projs.filter(p => p.category === activeCategory);
     }
     if (levelFilter !== 'All') {
-      projs = projs.filter(p => p.projectLevel === levelFilter);
+      projs = projs.filter(p => {
+        const lvl = p.projectLevel || (p.category === 'Python' ? 'Minor' : 'Major');
+        return lvl === levelFilter;
+      });
     }
     return projs;
   }, [activeCategory, levelFilter]);
-
-  const hasMajorAndMinor = useMemo(() => {
-    let projs = allProjects;
-    if (activeCategory !== 'All') {
-      projs = projs.filter(p => p.category === activeCategory);
-    }
-    const hasMajor = projs.some(p => p.projectLevel === 'Major');
-    const hasMinor = projs.some(p => p.projectLevel === 'Minor' || p.category === 'Python');
-    return hasMajor && hasMinor;
-  }, [activeCategory]);
 
   const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -667,7 +788,7 @@ export default function AllProjects() {
   };
 
   const handleRequestSource = (projId, projTitle) => {
-    const phoneNumber = '918555887986';
+    const phoneNumber = '919391925913';
     const text = `Hello Hemsethu Technologies, I am interested in requesting the source code for the project: "${projTitle}" (Project ID: ${projId}).`;
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, '_blank');
@@ -713,118 +834,251 @@ export default function AllProjects() {
   };
 
   return (
-    <main className="page-wrapper projects-page">
-      <div className="page-header" style={{background: 'linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-orange) 100%)'}}>
-        <h1>Projects Catalog</h1>
-        <p>Browse our extensive library of industry-standard projects across all domains.</p>
-      </div>
-
-      <div className="page-content-wrap">
-        <div className="category-filters">
-          {categories.map((cat, idx) => (
-            <button 
-              key={idx} 
-              className={`filter-tab ${activeCategory === cat ? 'active' : ''}`}
-              onClick={() => handleCategoryChange(cat)}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {hasMajorAndMinor && (
-          <div className="category-filters" style={{ marginBottom: '40px' }}>
-            <button 
-              className={`filter-tab ${levelFilter === 'All' ? 'active' : ''}`}
-              onClick={() => handleLevelFilterChange('All')}
-            >
-              All Projects
-            </button>
-            <button 
-              className={`filter-tab ${levelFilter === 'Major' ? 'active' : ''}`}
-              onClick={() => handleLevelFilterChange('Major')}
-            >
-              Major Projects
-            </button>
-            <button 
-              className={`filter-tab ${levelFilter === 'Minor' ? 'active' : ''}`}
-              onClick={() => handleLevelFilterChange('Minor')}
-            >
-              Minor Projects
-            </button>
+    <main className="page-wrapper projects-page" style={!levelId ? { padding: 0, minHeight: 'auto' } : {}}>
+      {!levelId ? (
+        <div className="page-header" style={{
+          background: '#f8fafc',
+          padding: '20px 5% 60px',
+          borderBottom: '1px solid #e2e8f0',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '40px',
+          position: 'relative',
+          overflow: 'hidden',
+          flexWrap: 'wrap',
+          minHeight: 'calc(100vh - 90px)'
+        }}>
+          {/* Subtle Background Pattern */}
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '24px 24px', opacity: 0.4, pointerEvents: 'none' }}></div>
+          
+          <div style={{ flex: '1 1 400px', zIndex: 1, display: 'flex', justifyContent: 'center', position: 'relative' }}>
+             <img 
+               src={projectsHeroImg} 
+               alt="Projects Hero Illustration" 
+               style={{ 
+                 width: '100%', 
+                 maxWidth: '600px', 
+                 objectFit: 'cover', 
+                 WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 75%)',
+                 maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 75%)'
+               }} 
+             />
           </div>
-        )}
 
-        {currentProjects.length > 0 ? (
-          <div className="items-grid">
-            {currentProjects.map(proj => (
-              <div 
-                key={proj.id} 
-                className="item-card"
-                onClick={() => handleOpenDetails(proj)}
-                style={{ cursor: 'pointer' }}
-              >
-                <div className="item-image" style={{backgroundColor: '#e0f2fe', color: '#0369a1'}}>
-                  <h3>{proj.img} Project</h3>
-                </div>
-                <div className="item-details">
-                  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                    <span className="proj-category-badge">{proj.category}</span>
-                    <span className={`proj-level-badge ${proj.projectLevel === 'Minor' || proj.category === 'Python' ? 'minor' : 'major'}`}>
-                      {proj.projectLevel || (proj.category === 'Python' ? 'Minor' : 'Major')} Project
-                    </span>
+          <div style={{ flex: '1 1 500px', zIndex: 1, position: 'relative' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+               <div style={{ height: '3px', width: '40px', backgroundColor: '#e11d48' }}></div>
+               <span style={{ color: '#e11d48', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.9rem' }}>Comprehensive Catalog</span>
+            </div>
+            <h1 className="page-title" style={{ color: '#0f172a', fontSize: '3.5rem', fontWeight: '800', marginBottom: '24px', letterSpacing: '-1px', lineHeight: '1.15', textAlign: 'left' }}>
+              Elevate Your <span style={{ color: '#0369a1' }}>Skills</span> <br/>With Real Projects
+            </h1>
+            <p className="page-subtitle" style={{ color: '#475569', fontSize: '1.15rem', lineHeight: '1.6', fontWeight: '400', maxWidth: '550px', textAlign: 'left', opacity: 1, marginBottom: '40px' }}>
+              Browse our extensive library of industry-standard projects across all domains. Select your expertise level to get started with hands-on learning.
+            </p>
+
+            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', maxWidth: '550px' }}>
+              <div className="wizard-card level-card level-card-animated-red" onClick={() => handleSelectLevel('Minor')} style={{ flex: '1 1 200px', background: '#fff', borderRadius: '12px', padding: '20px', textAlign: 'left', cursor: 'pointer', border: '1px solid #e2e8f0', transition: 'all 0.3s ease', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '15px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                  <div style={{ background: 'rgba(225,29,72,0.1)', padding: '12px', borderRadius: '10px' }}>
+                     <Zap size={28} color="#e11d48" strokeWidth={2} />
                   </div>
-                  <h3 className="item-title">{proj.title}</h3>
-                  <p className="item-desc">{proj.description || `A comprehensive project covering the core concepts of ${proj.category}. Includes complete source code and documentation.`}</p>
-                  <div className="item-footer">
-                    <button 
-                      className="item-btn btn-outline" 
-                      style={{ width: '100%' }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleRequestSource(proj.id, proj.title);
-                      }}
-                    >
-                      Request Source
-                    </button>
+                  <div>
+                     <h3 style={{ color: '#1e293b', fontSize: '1.05rem', fontWeight: '700', margin: '0 0 4px 0' }}>Mini Projects</h3>
+                     <p style={{ color: '#64748b', fontSize: '0.8rem', margin: 0, lineHeight: '1.4' }}>Beginner to intermediate</p>
                   </div>
                 </div>
+                <ChevronRight size={20} color="#cbd5e1" />
               </div>
-            ))}
+              
+              <div className="wizard-card level-card level-card-animated-blue" onClick={() => handleSelectLevel('Major')} style={{ flex: '1 1 200px', background: '#fff', borderRadius: '12px', padding: '20px', textAlign: 'left', cursor: 'pointer', border: '1px solid #e2e8f0', transition: 'all 0.3s ease', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '15px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                  <div style={{ background: 'rgba(3,105,161,0.1)', padding: '12px', borderRadius: '10px' }}>
+                     <GraduationCap size={28} color="#0369a1" strokeWidth={2} />
+                  </div>
+                  <div>
+                     <h3 style={{ color: '#1e293b', fontSize: '1.05rem', fontWeight: '700', margin: '0 0 4px 0' }}>Major Projects</h3>
+                     <p style={{ color: '#64748b', fontSize: '0.8rem', margin: 0, lineHeight: '1.4' }}>Advanced IEEE topics</p>
+                  </div>
+                </div>
+                <ChevronRight size={20} color="#cbd5e1" />
+              </div>
+            </div>
           </div>
-        ) : (
-          <div className="no-projects-found">
-            <h3>No projects found for this category and filter.</h3>
+        </div>
+      ) : (
+        <div className="page-header" style={{
+          background: '#f8fafc',
+          padding: '60px 5% 40px',
+          borderBottom: '1px solid #e2e8f0',
+          textAlign: 'center',
+          position: 'relative'
+        }}>
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '24px 24px', opacity: 0.3, pointerEvents: 'none' }}></div>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <h1 className="page-title" style={{ color: '#0f172a', fontSize: '3rem', fontWeight: '800', marginBottom: '16px', letterSpacing: '-1px' }}>
+              {selectedLevel === 'Minor' ? 'Mini' : 'Major'} <span style={{ color: '#e11d48' }}>Projects</span>
+            </h1>
+            <p className="page-subtitle" style={{ color: '#475569', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
+              Select a technology stack to view the full list of available {selectedLevel ? selectedLevel.toLowerCase() : ''} projects in that domain.
+            </p>
+          </div>
+        </div>
+      )}
+
+      <div className="page-content-wrap" style={!levelId ? { padding: 0 } : {}}>
+        {flowStep === 2 && (
+          <div className="wizard-step" style={{ padding: '20px 40px' }}>
+            <div style={{ marginBottom: '30px', display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <button className="wizard-back-btn" onClick={handleBackToLevel} style={{ display: 'flex', alignItems: 'center', gap: '5px', background: '#f1f5f9', border: 'none', color: '#475569', cursor: 'pointer', fontSize: '0.9rem', fontWeight: '600', padding: '8px 16px', borderRadius: '20px', transition: 'background 0.2s' }}>
+                <ChevronLeft size={16} /> Back
+              </button>
+            </div>
+            <div style={{ marginBottom: '40px' }}>
+              <h2 style={{ color: '#e11d48', textTransform: 'uppercase', fontSize: '1.75rem', fontWeight: '800', margin: '0 0 8px 0', letterSpacing: '0.5px' }}>LANGUAGES</h2>
+              <div style={{ height: '3px', width: '50px', backgroundColor: '#e11d48' }}></div>
+            </div>
+            
+            <div className="wizard-grid tech-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '25px' }}>
+              {categoriesForSelectedLevel.map(cat => {
+                let IconComponent = Code;
+                if (cat.toLowerCase().includes('artificial intelligence') || cat.toLowerCase().includes('ai')) IconComponent = Brain;
+                else if (cat.toLowerCase().includes('machine learning') || cat.toLowerCase().includes('ml')) IconComponent = Network;
+                else if (cat.toLowerCase().includes('deep learning')) IconComponent = Cpu;
+                else if (cat.toLowerCase().includes('python') || cat.toLowerCase().includes('django')) IconComponent = Terminal;
+                else if (cat.toLowerCase().includes('android')) IconComponent = Smartphone;
+                else if (cat.toLowerCase().includes('data')) IconComponent = BarChart3;
+                else if (cat.toLowerCase().includes('java')) IconComponent = Coffee;
+                else if (cat.toLowerCase().includes('.net') || cat.toLowerCase().includes('c#')) IconComponent = Globe;
+                else if (cat.toLowerCase().includes('ieee')) IconComponent = BookOpen;
+                else if (cat.toLowerCase().includes('cloud')) IconComponent = Cloud;
+                else if (cat.toLowerCase().includes('iot')) IconComponent = Wifi;
+                else if (cat.toLowerCase().includes('block')) IconComponent = Boxes;
+                else if (cat.toLowerCase().includes('mern')) IconComponent = Layers;
+                else if (cat.toLowerCase().includes('full stack')) IconComponent = Layout;
+                else if (cat.toLowerCase().includes('e-commerce') || cat.toLowerCase().includes('ecommerce')) IconComponent = ShoppingCart;
+                else if (cat.toLowerCase().includes('llm') || cat.toLowerCase().includes('language model')) IconComponent = Bot;
+                else if (cat.toLowerCase().includes('react')) IconComponent = Atom;
+                else if (cat.toLowerCase().includes('next')) IconComponent = Triangle;
+                else if (cat.toLowerCase().includes('html') || cat.toLowerCase().includes('static')) IconComponent = FileCode;
+                else if (cat.toLowerCase().includes('node')) IconComponent = ServerCog;
+                else if (cat.toLowerCase().includes('angular')) IconComponent = Component;
+
+                return (
+                  <div key={cat} className="wizard-card tech-card" onClick={() => handleSelectLanguage(cat)} style={{ background: '#fff', borderRadius: '12px', padding: '35px 15px', textAlign: 'center', cursor: 'pointer', border: '1px solid #f1f5f9', boxShadow: '0 10px 40px rgba(0,0,0,0.06)', transition: 'all 0.3s ease', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+                    <IconComponent size={42} color="#e11d48" strokeWidth={1.5} />
+                    <h3 style={{ color: '#1e293b', fontSize: '1rem', fontWeight: '600', margin: 0 }}>{cat}</h3>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
 
-        {totalPages > 1 && (
-          <div className="pagination-controls">
-            <button 
-              className="page-btn prev-next" 
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              <ChevronLeft size={20} />
-            </button>
-            
-            {[...Array(totalPages)].map((_, i) => (
-              <button 
-                key={i} 
-                className={`page-btn ${currentPage === i + 1 ? 'active' : ''}`}
-                onClick={() => handlePageChange(i + 1)}
-              >
-                {i + 1}
+        {flowStep === 3 && (
+          <div className="wizard-step">
+            <div className="wizard-header-row" style={{ display: 'flex', alignItems: 'center', marginBottom: '40px', gap: '20px' }}>
+              <button className="wizard-back-btn" onClick={handleBackToLanguage} style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', fontSize: '1rem', fontWeight: '600' }}>
+                <ChevronLeft size={20} /> Back to Technologies
               </button>
-            ))}
+              <h2 className="wizard-title" style={{ color: '#1e293b', margin: 0 }}>{selectedLanguage} {selectedLevel} Projects</h2>
+            </div>
 
-            <button 
-              className="page-btn prev-next" 
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-            >
-              <ChevronRight size={20} />
-            </button>
+            {currentProjects.length > 0 ? (
+              <div className="projects-table-container" style={{ overflowX: 'auto', background: '#fff', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.03)', border: '1px solid #e2e8f0' }}>
+                <table className="projects-table" style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+                  <thead style={{ background: '#f8fafc', borderBottom: '2px solid #e2e8f0' }}>
+                    <tr>
+                      <th style={{ padding: '16px 24px', color: '#475569', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>S.No</th>
+                      <th style={{ padding: '16px 24px', color: '#475569', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Project Title</th>
+                      <th style={{ padding: '16px 24px', color: '#475569', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Category</th>
+                      <th style={{ padding: '16px 24px', color: '#475569', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Level</th>
+                      <th style={{ padding: '16px 24px', color: '#475569', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Tech Stack</th>
+                      <th style={{ padding: '16px 24px', color: '#475569', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.5px', textAlign: 'center' }}>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {currentProjects.map((proj, idx) => (
+                      <tr 
+                        key={proj.id} 
+                        className="project-table-row"
+                        onClick={() => handleOpenDetails(proj)}
+                        style={{ cursor: 'pointer', borderBottom: '1px solid #f1f5f9', transition: 'background 0.2s' }}
+                      >
+                        <td style={{ padding: '20px 24px', color: '#64748b', fontWeight: '600' }}>
+                          {(currentPage - 1) * itemsPerPage + idx + 1}
+                        </td>
+                        <td style={{ padding: '20px 24px', color: '#1e293b', fontWeight: '600', fontSize: '1.05rem', maxWidth: '300px' }}>
+                          {proj.title}
+                        </td>
+                        <td style={{ padding: '20px 24px' }}>
+                          <span className="proj-category-badge">{proj.category}</span>
+                        </td>
+                        <td style={{ padding: '20px 24px' }}>
+                          <span className={`proj-level-badge ${proj.projectLevel === 'Minor' || proj.category === 'Python' ? 'minor' : 'major'}`}>
+                            {proj.projectLevel || (proj.category === 'Python' ? 'Minor' : 'Major')}
+                          </span>
+                        </td>
+                        <td style={{ padding: '20px 24px', color: '#64748b', fontSize: '0.9rem' }}>
+                          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                            {getProjectDetails(proj.category).techStack.slice(0, 2).map((tech, idx) => (
+                              <span key={idx} className="mini-tech-badge" style={{ margin: 0 }}>{tech}</span>
+                            ))}
+                          </div>
+                        </td>
+                        <td style={{ padding: '20px 24px', textAlign: 'center' }} onClick={(e) => e.stopPropagation()}>
+                          <button 
+                            className="item-btn btn-outline" 
+                            style={{ padding: '8px 16px', fontSize: '0.85rem' }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleRequestSource(proj.id, proj.title);
+                            }}
+                          >
+                            Request Source
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="no-projects-found">
+                <h3>No projects found for this category and filter.</h3>
+              </div>
+            )}
+
+            {totalPages > 1 && (
+              <div className="pagination-controls">
+                <button 
+                  className="page-btn prev-next" 
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                
+                {[...Array(totalPages)].map((_, i) => (
+                  <button 
+                    key={i} 
+                    className={`page-btn ${currentPage === i + 1 ? 'active' : ''}`}
+                    onClick={() => handlePageChange(i + 1)}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+
+                <button 
+                  className="page-btn prev-next" 
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>

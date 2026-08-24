@@ -8,7 +8,8 @@ export const courseData = [
     category: 'Web Development',
     duration: '6 Months',
     img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1000',
-    price: '₹25,000',
+    price: '₹6,500',
+    originalPrice: '₹12,000',
     level: 'Beginner to Advanced',
     instructor: 'John Doe',
     overview: 'This comprehensive Fullstack Masterclass will take you from a complete beginner to a highly proficient fullstack developer. You will learn the entire MERN stack (MongoDB, Express, React, Node.js) through hands-on projects, building real-world applications that you can showcase in your portfolio.',
@@ -33,6 +34,14 @@ export const courseData = [
       'Deploy full-stack applications to cloud platforms',
       'Master version control with Git and GitHub'
     ],
+    careerOpportunities: [
+      'Fullstack Web Developer',
+      'Frontend Engineer (React)',
+      'Backend Engineer (Node.js)',
+      'MERN Stack Developer'
+    ],
+    salaryInsights: '₹6 LPA - ₹15 LPA (Average Starting Salary)',
+    toolsCovered: ['React', 'Node.js', 'MongoDB', 'Express', 'Git', 'Redux', 'TailwindCSS', 'Postman'],
     syllabus: [
       {
         module: 'Module 1: Frontend Fundamentals',
@@ -53,16 +62,12 @@ export const courseData = [
     ],
     projects: [
       {
-        name: 'Major Project 1',
+        name: 'Real-Time Project 1: E-Commerce Store',
         desc: 'A full-featured online store with shopping cart, user authentication, and Stripe payment integration.'
       },
       {
-        name: 'Major Project 2',
+        name: 'Real-Time Project 2: Live Dashboard',
         desc: 'A real-time dashboard with user profiles, posts, likes, and live chat using Socket.io.'
-      },
-      {
-        name: 'Major Project 3',
-        desc: 'A robust RESTful API built with Node/Express featuring JWT authentication and pagination.'
       }
     ],
     trainingDetails: [
@@ -71,6 +76,12 @@ export const courseData = [
       'Weekly Assignments & Quizzes',
       'Resume Building & Mock Interviews',
       'Guaranteed Placement Assistance'
+    ],
+    faqs: [
+      { q: 'Do I need prior coding experience?', a: 'No, this course is designed for complete beginners. We start from the very basics of HTML and CSS before moving to advanced concepts.' },
+      { q: 'Will I get a certificate?', a: 'Yes, upon successful completion of the course and major projects, you will receive an industry-recognized certificate from HemSethu Technologies.' },
+      { q: 'What is the schedule of the live classes?', a: 'Classes are typically held on weekends and evenings to accommodate working professionals and students.' },
+      { q: 'Do you provide placement assistance?', a: 'Yes! We have a dedicated placement cell that helps with resume building, mock interviews, and referrals to our partner companies.' }
     ]
   },
   {
@@ -79,7 +90,8 @@ export const courseData = [
     category: 'Backend Dev',
     duration: '3 Months',
     img: 'https://images.unsplash.com/photo-1526379095098-d400fd0bfce8?auto=format&fit=crop&q=80&w=1000',
-    price: '₹15,000',
+    price: '₹6,500',
+    originalPrice: '₹12,000',
     level: 'Intermediate',
     instructor: 'Jane Smith',
     overview: 'Dive deep into backend development with Python and Django. This course is designed for those who already have basic programming knowledge and want to build highly scalable, secure, and data-driven web applications.',
@@ -101,6 +113,13 @@ export const courseData = [
       'Implementing Celery for background tasks',
       'Database optimization and ORM tricks'
     ],
+    careerOpportunities: [
+      'Backend Developer (Python/Django)',
+      'API Engineer',
+      'Software Engineer II'
+    ],
+    salaryInsights: '₹7 LPA - ₹18 LPA (Average Starting Salary)',
+    toolsCovered: ['Python', 'Django', 'PostgreSQL', 'Redis', 'Docker', 'AWS', 'Git'],
     syllabus: [
       {
         module: 'Module 1: Python Deep Dive',
@@ -117,11 +136,11 @@ export const courseData = [
     ],
     projects: [
       {
-        name: 'Major Project 1',
+        name: 'Real-Time Project 1: Secure API',
         desc: 'A secure API for a blogging platform with token-based authentication and role-based access control.'
       },
       {
-        name: 'Major Project 2',
+        name: 'Real-Time Project 2: Data Dashboard',
         desc: 'A Django-powered web app for tracking data with advanced filtering and Postgres database.'
       }
     ],
@@ -130,6 +149,11 @@ export const courseData = [
       'Advanced Database Design Workshops',
       'Real-world Case Studies',
       'Career Counseling'
+    ],
+    faqs: [
+      { q: 'Is Python mandatory for this course?', a: 'Yes, basic knowledge of Python programming is required to grasp the Django concepts effectively.' },
+      { q: 'Will we learn API deployment?', a: 'Absolutely. The final module covers deploying your Django APIs to cloud platforms like AWS and Heroku.' },
+      { q: 'Do you provide placement assistance?', a: 'Yes! We have a dedicated placement cell that helps with resume building, mock interviews, and referrals.' }
     ]
   }
 ];
@@ -146,29 +170,36 @@ export const getCourseById = (id) => {
     category: 'Technology',
     duration: 'Varies',
     img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1000',
-    price: 'Contact Us',
+    price: '₹6,500',
+    originalPrice: '₹12,000',
     level: 'All Levels',
     instructor: 'Expert Faculty',
-    overview: 'A premium course designed to elevate your technical skills. Please contact our support team for the detailed brochure of this specific program.',
+    overview: 'This comprehensive course will help you master the necessary skills to excel in the tech industry. Designed with industry professionals, you will build real-world applications and gain practical experience.',
+    careerOpportunities: [
+      'Software Developer',
+      'Technical Specialist',
+      'IT Consultant'
+    ],
+    salaryInsights: 'Competitive Industry Standards',
+    toolsCovered: ['Industry Standard Tools', 'Git', 'Agile Methodologies', 'Cloud Basics'],
     descriptionExtra: 'Sounds amazing, right? Join us to accelerate your learning with dedicated mentorship and practical assignments.',
     requirements: [
       'A computer and an internet connection',
-      'Willingness to learn new concepts'
+      'Passion for learning technology'
     ],
     whoIsFor: [
       'Students and professionals looking to upskill',
       'Anyone passionate about technology'
     ],
     whatYouWillLearn: [
-      'Industry standard best practices',
-      'Hands-on project experience',
-      'Preparation for certification exams',
-      'Career guidance and mentorship'
+      'Core concepts of the chosen technology',
+      'Best practices and design patterns',
+      'Real-world problem solving'
     ],
     syllabus: [
       {
-        module: 'Module 1: Fundamentals',
-        topics: ['Introduction to concepts', 'Setting up the environment', 'Basic syntax and operations']
+        module: 'Module 1: Introduction',
+        topics: ['Overview', 'Setup', 'Basic Concepts']
       },
       {
         module: 'Module 2: Advanced Topics',
@@ -177,14 +208,23 @@ export const getCourseById = (id) => {
     ],
     projects: [
       {
-        name: 'Capstone Project',
-        desc: 'An industry-grade project combining all learned concepts.'
+        name: 'Real-Time Project 1: Industry Application',
+        desc: 'An industry-grade real-time project combining all learned concepts.'
+      },
+      {
+        name: 'Real-Time Project 2: Advanced System',
+        desc: 'A comprehensive real-time system built from scratch.'
       }
     ],
     trainingDetails: [
       'Comprehensive Curriculum',
       'Expert Instructors',
       'Certification of Completion'
+    ],
+    faqs: [
+      { q: 'Is this course suitable for beginners?', a: 'Yes, this course is designed to take you from basics to advanced concepts.' },
+      { q: 'Will I get a certificate?', a: 'Yes, upon successful completion, you will receive a verified certificate.' },
+      { q: 'Do you provide placement assistance?', a: 'We offer extensive placement support including resume reviews and interview preparation.' }
     ]
   };
 };

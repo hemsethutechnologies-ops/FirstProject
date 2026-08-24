@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Phone, Mail, MapPin, LogIn, Code, Menu, X } from 'lucide-react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logoImg from '../assets/logo.png';
@@ -7,17 +7,38 @@ import './Header.css';
 export default function Header() {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Hide on scroll down (past 100px), show on scroll up
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        setIsVisible(true);
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleRequestClick = () => {
     navigate('/contact');
   };
 
   const handleLoginClick = () => {
-    alert("Sign-in Portal: Under maintenance. Registration & login functionality will be available soon.");
+    setIsLoginModalOpen(true);
   };
 
   return (
-    <header className="header-container">
+    <header className={`header-container ${isVisible ? '' : 'header-hidden'}`}>
       {/* Top Bar */}
       <div className="top-bar">
         <div className="top-bar-content">
@@ -26,7 +47,7 @@ export default function Header() {
               <Phone size={16} />
               <div className="info-text">
                 <span className="label">Contact support</span>
-                <span className="value">+91 8555 8879 86</span>
+                <span className="value">+91 9391925913</span>
               </div>
             </div>
             <div className="info-item">
@@ -103,7 +124,7 @@ export default function Header() {
                 <li><NavLink to="/courses/frontend" onClick={() => setIsMobileMenuOpen(false)}>Frontend Development</NavLink></li>
                 <li><NavLink to="/courses/backend" onClick={() => setIsMobileMenuOpen(false)}>Backend Development</NavLink></li>
                 <li><NavLink to="/courses/fullstack" onClick={() => setIsMobileMenuOpen(false)}>Fullstack Masterclass</NavLink></li>
-                <li><NavLink to="/courses/ui-ux" onClick={() => setIsMobileMenuOpen(false)}>UI/UX Design</NavLink></li>
+                <li><NavLink to="/courses/data-science-ai" onClick={() => setIsMobileMenuOpen(false)}>Data Science & AI</NavLink></li>
                 <li><NavLink to="/courses/devops" onClick={() => setIsMobileMenuOpen(false)}>DevOps & Cloud</NavLink></li>
                 <li><NavLink to="/courses/cybersecurity" onClick={() => setIsMobileMenuOpen(false)}>Cyber Security</NavLink></li>
               </ul>
@@ -152,6 +173,25 @@ export default function Header() {
           </ul>
         </div>
       </nav>
+      {/* Login Maintenance Modal */}
+      {isLoginModalOpen && (
+        <div className="login-modal-overlay">
+          <div className="login-modal-content">
+            <div className="login-modal-header">
+              <h3>Notice</h3>
+              <button className="close-modal-btn" onClick={() => setIsLoginModalOpen(false)}>
+                <X size={20} />
+              </button>
+            </div>
+            <div className="login-modal-body">
+              <p>Sign-in Portal: Under maintenance. Registration & login functionality will be available soon.</p>
+            </div>
+            <div className="login-modal-footer">
+              <button className="modal-ok-btn" onClick={() => setIsLoginModalOpen(false)}>OK</button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

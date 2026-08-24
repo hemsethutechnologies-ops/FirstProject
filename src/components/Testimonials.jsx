@@ -53,7 +53,7 @@ export default function Testimonials() {
               <div className="quote-icon-wrap">
                 <Quote size={24} className="quote-icon" />
               </div>
-              
+
               <div className="rating-stars">
                 {[...Array(review.rating)].map((_, i) => (
                   <Star key={i} size={16} fill="#eab308" color="#eab308" />

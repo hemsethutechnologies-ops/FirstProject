@@ -3,6 +3,7 @@ import { Plus, Minus, Search, HelpCircle, BookOpen, Code2, Briefcase, Graduation
 import SEO from '../components/SEO';
 import './PageStyles.css';
 import './FAQ.css';
+import faqHeroImg from '../assets/faq_hero.jpg';
 
 const categories = [
   { id: 'all', label: 'All Questions', icon: HelpCircle },
@@ -32,7 +33,7 @@ const faqs = [
     id: 3,
     category: 'general',
     question: 'How can I contact Hemsethu Technologies?',
-    answer: 'You can reach us via phone at +91 8555 8879 86, email us at hemsethutechnologies@gmail.com, or visit our Contact page to fill out a request form. Our support team typically responds within 24 hours.',
+    answer: 'You can reach us via phone at +91 9391925913, email us at hemsethutechnologies@gmail.com, or visit our Contact page to fill out a request form. Our support team typically responds within 24 hours.',
   },
   {
     id: 4,
@@ -224,28 +225,82 @@ export default function FAQ() {
         jsonLd={faqPageSchema}
       />
       {/* Hero Header */}
-      <div className="page-header faq-hero-header">
-        <div className="faq-hero-badge">
-          <HelpCircle size={18} />
-          <span>Help Center</span>
+      <div className="page-header faq-hero-header" style={{
+        background: '#f8fafc',
+        padding: '50px 5% 20px',
+        borderBottom: '1px solid #e2e8f0',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: '40px',
+        position: 'relative',
+        overflow: 'hidden',
+        flexWrap: 'wrap',
+        textAlign: 'left'
+      }}>
+        {/* Subtle Grid Background */}
+        <div style={{
+          position: 'absolute',
+          top: 0, left: 0, right: 0, bottom: 0,
+          backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+          opacity: 0.5,
+          zIndex: 0
+        }} />
+
+        <div style={{ flex: '1 1 500px', zIndex: 1 }}>
+          <div className="faq-hero-badge" style={{ marginBottom: '15px', display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', background: '#e0f2fe', color: '#0369a1', borderRadius: '30px', fontWeight: '700', fontSize: '0.9rem' }}>
+            <HelpCircle size={18} />
+            <span>Help Center</span>
+          </div>
+          <h1 style={{ fontSize: '3.5rem', fontWeight: '850', color: '#0f172a', lineHeight: '1.1', marginBottom: '20px', letterSpacing: '-1px' }}>
+            Frequently Asked <span style={{ color: '#e11d48' }}>Questions</span>
+          </h1>
+          <p style={{ fontSize: '1.15rem', color: '#475569', lineHeight: '1.6', maxWidth: '600px', marginBottom: '30px' }}>
+            Everything you need to know about Hemsethu Technologies — from courses and projects to payments and certifications.
+          </p>
+
+          {/* Search Bar */}
+          <div className="faq-search-wrap" style={{ position: 'relative', maxWidth: '500px' }}>
+            <Search size={22} className="faq-search-icon" style={{ position: 'absolute', left: '20px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
+            <input
+              id="faq-search"
+              type="text"
+              className="faq-search-input"
+              placeholder="Search questions…"
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setOpenId(null);
+              }}
+              style={{
+                width: '100%',
+                padding: '16px 20px 16px 55px',
+                borderRadius: '12px',
+                border: '1px solid #cbd5e1',
+                fontSize: '1.1rem',
+                boxShadow: '0 10px 25px rgba(0,0,0,0.05)',
+                outline: 'none',
+                transition: 'all 0.3s ease'
+              }}
+            />
+          </div>
         </div>
-        <h1>Frequently Asked Questions</h1>
 
-        <p>Everything you need to know about Hemsethu Technologies — from courses and projects to payments and certifications.</p>
-
-        {/* Search Bar */}
-        <div className="faq-search-wrap">
-          <Search size={20} className="faq-search-icon" />
-          <input
-            id="faq-search"
-            type="text"
-            className="faq-search-input"
-            placeholder="Search questions…"
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              setOpenId(null);
-            }}
+        {/* Right Image/Illustration */}
+        <div style={{ flex: '1 1 400px', zIndex: 1, display: 'flex', justifyContent: 'center', position: 'relative' }}>
+          <img 
+            src={faqHeroImg} 
+            alt="FAQ Hero Illustration" 
+            style={{ 
+              width: '100%', 
+              maxWidth: '550px',
+              height: '350px',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 75%)',
+              maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 75%)'
+            }} 
           />
         </div>
       </div>

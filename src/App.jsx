@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import FloatingChat from './components/FloatingChat'
 import ScrollToTop from './components/ScrollToTop'
+import ScrollToTopButton from './components/ScrollToTopButton'
 import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
@@ -45,6 +46,7 @@ function App() {
             
             {/* Projects Subpages (Separate Pages) */}
             <Route path="/projects" element={<AllProjects />} />
+            <Route path="/projects/level/:levelId" element={<AllProjects />} />
             <Route path="/projects/ieee" element={<IEEEProjects />} />
             <Route path="/projects/python" element={<PythonProjects />} />
             <Route path="/projects/django" element={<DjangoProjects />} />
@@ -61,7 +63,7 @@ function App() {
             <Route path="/courses/frontend" element={<Courses category="frontend" />} />
             <Route path="/courses/backend" element={<Courses category="backend" />} />
             <Route path="/courses/fullstack" element={<Courses category="fullstack" />} />
-            <Route path="/courses/ui-ux" element={<Courses category="ui-ux" />} />
+            <Route path="/courses/data-science-ai" element={<Courses category="data-science-ai" />} />
             <Route path="/courses/devops" element={<Courses category="devops" />} />
             <Route path="/courses/cybersecurity" element={<Courses category="cybersecurity" />} />
             <Route path="/courses/:courseId" element={<CourseDetails />} />
@@ -81,6 +83,7 @@ function App() {
 
         <Footer />
         <FloatingChat />
+        <ScrollToTopButton />
       </div>
     </BrowserRouter>
   )

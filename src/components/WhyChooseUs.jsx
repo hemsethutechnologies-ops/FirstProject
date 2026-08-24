@@ -1,9 +1,10 @@
 import React from 'react';
 import {
   ShieldCheck, TrendingUp, BookOpen, Headphones,
-  Users, PlayCircle, ClipboardList, Award, ArrowRight
+  Users, PlayCircle, ClipboardList, Award, ArrowRight, Briefcase
 } from 'lucide-react';
-import studentImg from '../assets/wcu_student_bg.png';
+const studentImg = 'https://placehold.co/800x800/e2e8f0/475569?text=Student+Image';
+import wcuImage from '../assets/wcu_new_image.jpg';
 import './WhyChooseUs.css';
 
 const features = [
@@ -13,9 +14,9 @@ const features = [
     desc: 'Learn directly from working professionals with real project experience.',
   },
   {
-    icon: <TrendingUp size={22} />,
-    title: '10+ Years Proven',
-    desc: 'A decade of coaching across varied tech profiles and career goals.',
+    icon: <Briefcase size={22} />,
+    title: 'Real-world Projects',
+    desc: 'Work on live industry use-cases to build a strong, hirable portfolio.',
   },
   {
     icon: <BookOpen size={22} />,
@@ -80,22 +81,8 @@ export default function WhyChooseUs() {
         {/* Main 2-column row */}
         <div className="wcu-main">
 
-          {/* LEFT — photo background + floating dark card */}
-          <div className="wcu-left" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop')` }}>
-            {/* floating dark overlay card — positioned inside the photo */}
-            <div className="wcu-overlay">
-              <h3 className="wcu-overlay-title">
-                Online &nbsp;|&nbsp; Offline &nbsp;|&nbsp; Hybrid Training
-              </h3>
-              <ul className="wcu-bullet-list">
-                {bullets.map((b, i) => (
-                  <li key={i} className="wcu-bullet">
-                    <ArrowRight size={13} className="wcu-arrow" />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* LEFT — photo background */}
+          <div className="wcu-left" style={{ backgroundImage: `url(${wcuImage})` }}>
           </div>
 
           {/* RIGHT — 2×2 feature cards */}

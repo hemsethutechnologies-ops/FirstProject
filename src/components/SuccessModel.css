@@ -5,7 +5,11 @@
 
 .sm-section {
   padding: 30px 24px 0px;
-  background: #ffffff;
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
   position: relative;
   font-family: inherit;
 }
@@ -61,15 +65,16 @@
 
 /* ── Chart Wrapper ──────────────────────────────────── */
 .sm-chart-wrap {
-  width: 130%;
-  margin-left: -5%;
-
+  width: 100%;
+  display: flex;
+  justify-content: center;
   animation: fadeIn 0.8s ease-out 0.2s forwards;
   opacity: 0;
 }
 
 .sm-svg {
   width: 100%;
+  max-width: 600px;
   height: auto;
   display: block;
   overflow: visible;
@@ -78,9 +83,8 @@
 /* ── Right Column: Image ────────────────────────────── */
 .sm-right {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  margin-left: -40px; /* Pull it slightly left to decrease the gap */
 }
 
 .sm-image-wrapper {
@@ -99,18 +103,37 @@
 
 /* ── Animations ─────────────────────────────────────── */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes popInSegment {
-  0% { opacity: 0; transform: scale(0.95); }
-  100% { opacity: 1; transform: scale(1); }
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes fadeInLabel {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* ── SVG Elements ───────────────────────────────────── */
@@ -182,7 +205,7 @@
     grid-template-columns: 1fr;
     gap: 0px;
   }
-  
+
   .sm-title-wrapper {
     text-align: center;
     margin: 0 auto;
@@ -191,10 +214,11 @@
   .sm-chart-wrap {
     width: 100%;
     margin-left: 0;
-    margin: 0 auto -80px; /* Pull the image up significantly */
+    margin: 0 auto -80px;
+    /* Pull the image up significantly */
     max-width: 600px;
   }
-  
+
   .sm-right {
     justify-content: center;
   }
@@ -204,11 +228,11 @@
   .sm-section {
     padding: 40px 20px;
   }
-  
+
   .sm-title {
     font-size: 1.8rem;
   }
-  
+
   .sm-description {
     font-size: 1rem;
   }

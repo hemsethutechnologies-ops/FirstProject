@@ -8,18 +8,18 @@ const CY = 265;
 const OUTER_R = 165;     // Increased from 148
 const INNER_R = 95;      // Increased from 84
 const LINE_START = OUTER_R + 12;
-const LINE_END   = OUTER_R + 50;
-const TEXT_R     = OUTER_R + 64;
+const LINE_END = OUTER_R + 50;
+const TEXT_R = OUTER_R + 64;
 
 /* ── Segment data ────────────────────────────────────── */
 const segments = [
-  { label: 'Group Discussion',      pct: 5,  color: '#e91e8c' },
-  { label: 'Practical Exposure',    pct: 50, color: '#1565c0' },
-  { label: 'Live Projects',         pct: 20, color: '#29b6f6' },
-  { label: 'Theory Knowledge',      pct: 10, color: '#f57c00' },
-  { label: 'Weekly Evaluations',    pct: 5,  color: '#546e7a' },
-  { label: 'Placement Assessments', pct: 5,  color: '#43a047' },
-  { label: 'Mock Interviews',       pct: 5,  color: '#7b1fa2' },
+  { label: 'Group Discussion', pct: 5, color: '#e91e8c' },
+  { label: 'Practical Exposure', pct: 50, color: '#1565c0' },
+  { label: 'Live Projects', pct: 20, color: '#29b6f6' },
+  { label: 'Theory Knowledge', pct: 10, color: '#f57c00' },
+  { label: 'Weekly Evaluations', pct: 5, color: '#546e7a' },
+  { label: 'Placement Assessments', pct: 5, color: '#43a047' },
+  { label: 'Mock Interviews', pct: 5, color: '#7b1fa2' },
 ];
 
 /* ── Helpers ─────────────────────────────────────────── */
@@ -61,7 +61,7 @@ export default function SuccessModel() {
   return (
     <section className="sm-section">
       <div className="sm-container">
-        
+
         {/* Title Centered at Top */}
         <div className="sm-title-wrapper">
           <h2 className="sm-title">
@@ -109,8 +109,8 @@ export default function SuccessModel() {
                 {/* Leader lines + labels */}
                 {processed.map((s, i) => {
                   const lineS = polar(CX, CY, LINE_START, s.midDeg);
-                  const lineE = polar(CX, CY, LINE_END,   s.midDeg);
-                  const txtPt = polar(CX, CY, TEXT_R,     s.midDeg);
+                  const lineE = polar(CX, CY, LINE_END, s.midDeg);
+                  const txtPt = polar(CX, CY, TEXT_R, s.midDeg);
 
                   const radMid = ((s.midDeg - 90) * Math.PI) / 180;
                   const cosVal = Math.cos(radMid);

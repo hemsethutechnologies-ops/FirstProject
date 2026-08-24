@@ -1,0 +1,47 @@
+.scroll-to-top {
+  position: fixed;
+  bottom: 90px; /* Positioned above the floating chat */
+  right: 30px;
+  z-index: 999;
+}
+
+.scroll-button {
+  background: #e11d48;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.scroll-button:hover {
+  background: #be123c;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(225, 29, 72, 0.4);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* On mobile, adjust the position slightly */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 80px;
+    right: 20px;
+  }
+}
