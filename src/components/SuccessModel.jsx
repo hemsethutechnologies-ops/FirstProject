@@ -78,7 +78,7 @@ export default function SuccessModel() {
           <div className="sm-left">
             <div className="sm-chart-wrap">
               <svg
-                viewBox="0 50 780 440"
+                viewBox="-80 -40 940 560"
                 xmlns="http://www.w3.org/2000/svg"
                 className="sm-svg"
               >

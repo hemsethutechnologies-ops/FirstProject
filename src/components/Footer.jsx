@@ -40,7 +40,7 @@ export default function Footer() {
             </div>
             <div className="contact-item">
               <Mail size={18} className="contact-icon" />
-              <span>info@hemsethutechnologies.com</span>
+              <span>info@hemsethu.in</span>
             </div>
           </div>
         </div>

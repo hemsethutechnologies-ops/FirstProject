@@ -17,8 +17,8 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Hemsethu Technologies',
-  url: 'https://hemsethutechnologies.com',
-  logo: 'https://hemsethutechnologies.com/logo.png',
+  url: 'https://hemsethu.in',
+  logo: 'https://hemsethu.in/logo.png',
   description: 'Leading IT training and project development company in Hyderabad offering academic projects, courses, internships, and software services.',
   address: {
     '@type': 'PostalAddress',

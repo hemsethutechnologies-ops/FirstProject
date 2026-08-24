@@ -375,6 +375,18 @@
 
 /* Responsive Overrides */
 @media (max-width: 992px) {
+  .ent-section {
+    padding: 60px 0;
+  }
+  
+  .ent-narrative {
+    padding: 60px 0 40px 0;
+  }
+  
+  .ent-mission {
+    padding: 40px 0 60px 0;
+  }
+
   .about-photo-hero-text h1 {
     font-size: 2.5rem;
   }
@@ -385,6 +397,11 @@
   
   .ent-story-header .ent-title {
     font-size: 2.4rem;
+  }
+  
+  .ent-mission-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
   
   .ent-mission-label {

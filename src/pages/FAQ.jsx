@@ -248,12 +248,12 @@ export default function FAQ() {
           zIndex: 0
         }} />
 
-        <div style={{ flex: '1 1 500px', zIndex: 1 }}>
+        <div style={{ flex: '1 1 100%', maxWidth: '600px', zIndex: 1 }}>
           <div className="faq-hero-badge" style={{ marginBottom: '15px', display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', background: '#e0f2fe', color: '#0369a1', borderRadius: '30px', fontWeight: '700', fontSize: '0.9rem' }}>
             <HelpCircle size={18} />
             <span>Help Center</span>
           </div>
-          <h1 style={{ fontSize: '3.5rem', fontWeight: '850', color: '#0f172a', lineHeight: '1.1', marginBottom: '20px', letterSpacing: '-1px' }}>
+          <h1 className="faq-hero-title" style={{ fontWeight: '850', color: '#0f172a', lineHeight: '1.1', marginBottom: '20px', letterSpacing: '-1px' }}>
             Frequently Asked <span style={{ color: '#e11d48' }}>Questions</span>
           </h1>
           <p style={{ fontSize: '1.15rem', color: '#475569', lineHeight: '1.6', maxWidth: '600px', marginBottom: '30px' }}>
@@ -288,7 +288,7 @@ export default function FAQ() {
         </div>
 
         {/* Right Image/Illustration */}
-        <div style={{ flex: '1 1 400px', zIndex: 1, display: 'flex', justifyContent: 'center', position: 'relative' }}>
+        <div style={{ flex: '1 1 100%', maxWidth: '400px', zIndex: 1, display: 'flex', justifyContent: 'center', position: 'relative', marginTop: '30px' }}>
           <img 
             src={faqHeroImg} 
             alt="FAQ Hero Illustration" 
