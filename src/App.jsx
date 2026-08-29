@@ -14,6 +14,7 @@ import Internships from './pages/Internships'
 import Contact from './pages/Contact'
 import CourseDetails from './pages/CourseDetails'
 import FAQ from './pages/FAQ'
+import ApplicationForm from './pages/ApplicationForm'
 
 // Separate Project Pages
 import IEEEProjects from './pages/projects/IEEEProjects'
@@ -78,6 +79,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/about/faq" element={<FAQ />} />
+            <Route path="/apply" element={<ApplicationForm />} />
           </Routes>
         </div>
 

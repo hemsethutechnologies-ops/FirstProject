@@ -1,21 +1,41 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Globe, MessageCircle, Share2, Video, Send, MapPin, Phone, Mail, ChevronRight } from 'lucide-react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { Globe, MessageCircle, Share2, Video, Send, MapPin, Phone, Mail, ChevronRight, CheckCircle } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 import './Footer.css';
+import { submitToExcel } from '../utils/submitToExcel';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const location = useLocation();
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
-    if (!email.trim()) {
-      alert("Please enter a valid email address.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setErrorMsg("Please enter a valid email address.");
       return;
     }
-    alert(`Thank you! You have successfully subscribed to the Hemsethu Technologies newsletter with ${email}.`);
-    setEmail('');
+    
+    setErrorMsg('');
+    setIsSubmitting(true);
+    const success = await submitToExcel({ email }, 'Newsletter Subscription');
+    setIsSubmitting(false);
+
+    if (success) {
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setEmail('');
+      }, 5000);
+    } else {
+      alert('Failed to subscribe. Please try again later.');
+    }
   };
+
+  if (location.pathname === '/apply') return null;
 
   return (
     <footer className="footer-section">
@@ -72,16 +92,28 @@ export default function Footer() {
         <div className="footer-newsletter">
           <h3>Newsletter</h3>
           <p>Subscribe to our newsletter for the latest updates, courses, and project ideas.</p>
-          <form className="newsletter-input" onSubmit={handleSubscribe}>
-            <input 
-              type="email" 
-              required
-              placeholder="Email address..." 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <button type="submit" aria-label="Subscribe"><Send size={18} /></button>
-          </form>
+          {isSubmitted ? (
+            <div style={{ padding: '12px 15px', background: 'rgba(16, 185, 129, 0.1)', color: '#10b981', display: 'flex', alignItems: 'center', gap: '8px', borderRadius: '8px', border: '1px solid rgba(16, 185, 129, 0.2)', marginBottom: '20px', animation: 'fadeIn 0.3s ease-out' }}>
+              <CheckCircle size={18} /> 
+              <span style={{ fontSize: '0.95rem' }}>Successfully subscribed!</span>
+            </div>
+          ) : (
+            <div style={{ position: 'relative' }}>
+              <form className="newsletter-input" onSubmit={handleSubscribe}>
+                <input 
+                  type="email" 
+                  required
+                  placeholder="Email address..." 
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setErrorMsg(''); }}
+                />
+                <button type="submit" aria-label="Subscribe" disabled={isSubmitting}>
+                  {isSubmitting ? '...' : <Send size={18} />}
+                </button>
+              </form>
+              {errorMsg && <div style={{ color: '#ef4444', fontSize: '0.85rem', marginTop: '5px' }}>{errorMsg}</div>}
+            </div>
+          )}
           <div className="social-links">
             <a href="#" aria-label="Website"><Globe size={18} /></a>
             <a href="#" aria-label="Whatsapp"><MessageCircle size={18} /></a>

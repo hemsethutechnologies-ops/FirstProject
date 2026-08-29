@@ -19,6 +19,7 @@ import {
 import './PageStyles.css';
 import './Services.css';
 import servicesHeroImg from '../assets/services_hero.jpg';
+import { submitToExcel } from '../utils/submitToExcel';
 
 export default function Services() {
   const { serviceType, subServiceType } = useParams();
@@ -32,13 +33,44 @@ export default function Services() {
   const [quoteName, setQuoteName] = useState('');
   const [quoteEmail, setQuoteEmail] = useState('');
   const [quoteDesc, setQuoteDesc] = useState('');
+  const [isSubmittingQuote, setIsSubmittingQuote] = useState(false);
+  const [isQuoteSubmitted, setIsQuoteSubmitted] = useState(false);
+  const [quoteError, setQuoteError] = useState('');
 
-  const handleQuoteSubmit = (e) => {
+  const validateQuoteForm = () => {
+    if (quoteName.trim().length < 2) return "Name must be at least 2 characters long.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(quoteEmail)) return "Please enter a valid email address.";
+    if (quoteDesc.trim().length < 10) return "Project details must be at least 10 characters long.";
+    return "";
+  };
+
+  const handleQuoteSubmit = async (e) => {
     e.preventDefault();
-    alert(`Thank you, ${quoteName}! We have received your project quote request. A solutions architect from Hemsethu Technologies will email you at ${quoteEmail} within 24 hours.`);
-    setQuoteName('');
-    setQuoteEmail('');
-    setQuoteDesc('');
+    
+    const error = validateQuoteForm();
+    if (error) {
+      setQuoteError(error);
+      return;
+    }
+    
+    setQuoteError('');
+    setIsSubmittingQuote(true);
+
+    const success = await submitToExcel({
+      name: quoteName,
+      email: quoteEmail,
+      description: quoteDesc,
+      service: currentServiceKey,
+      subService: subServiceType
+    }, 'Quote Request Form');
+
+    setIsSubmittingQuote(false);
+
+    if (success) {
+      setIsQuoteSubmitted(true);
+    } else {
+      alert('Failed to send quote request. Please try again later.');
+    }
   };
 
   const services = [
@@ -332,7 +364,29 @@ export default function Services() {
               <div className="detail-sidebar-info">
                 <div className="sidebar-card">
                   <h4>Get a Project Quote</h4>
+                  {isQuoteSubmitted ? (
+                    <div style={{ textAlign: 'center', padding: '20px 0', animation: 'fadeIn 0.5s ease-out' }}>
+                      <CheckCircle size={48} color="#10b981" style={{ margin: '0 auto 15px' }} />
+                      <h4 style={{ color: '#0f172a', marginBottom: '10px' }}>Quote Requested!</h4>
+                      <p style={{ color: '#475569', fontSize: '0.95rem', lineHeight: '1.5' }}>
+                        Thank you, <strong>{quoteName}</strong>. We'll email you at {quoteEmail} shortly.
+                      </p>
+                      <button 
+                        onClick={() => {
+                          setIsQuoteSubmitted(false);
+                          setQuoteName('');
+                          setQuoteEmail('');
+                          setQuoteDesc('');
+                        }}
+                        className="btn-modal-primary mt-20"
+                        style={{ fontSize: '0.9rem' }}
+                      >
+                        New Request
+                      </button>
+                    </div>
+                  ) : (
                   <form className="sidebar-quote-form" onSubmit={handleQuoteSubmit}>
+                    {quoteError && <div style={{ color: '#ef4444', background: '#fef2f2', padding: '8px', borderRadius: '4px', marginBottom: '10px', border: '1px solid #fca5a5', fontSize: '0.85rem' }}>{quoteError}</div>}
                     <input 
                       type="text" 
                       required 
@@ -354,10 +408,11 @@ export default function Services() {
                       value={quoteDesc}
                       onChange={(e) => setQuoteDesc(e.target.value)}
                     ></textarea>
-                    <button type="submit" className="btn-modal-primary mt-10">
-                      Request Quote <Send size={14} />
+                    <button type="submit" className="btn-modal-primary mt-10" disabled={isSubmittingQuote}>
+                      {isSubmittingQuote ? 'Requesting...' : <>Request Quote <Send size={14} /></>}
                     </button>
                   </form>
+                  )}
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Phone, Mail, MapPin, LogIn, Code, Menu, X } from 'lucide-react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Phone, Mail, MapPin, LogIn, Code, Menu, X, ExternalLink } from 'lucide-react';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import logoImg from '../assets/logo.png';
 import './Header.css';
 
@@ -10,6 +10,7 @@ export default function Header() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +37,8 @@ export default function Header() {
   const handleLoginClick = () => {
     setIsLoginModalOpen(true);
   };
+
+  if (location.pathname === '/apply') return null;
 
   return (
     <header className={`header-container ${isVisible ? '' : 'header-hidden'}`}>

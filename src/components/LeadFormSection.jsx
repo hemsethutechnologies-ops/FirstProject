@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import './LeadFormSection.css';
 import studentImg from '../assets/indian_student_standing.png';
+import { submitToExcel } from '../utils/submitToExcel';
 
 export default function LeadFormSection() {
   const [processedImg, setProcessedImg] = useState(studentImg);
@@ -93,6 +94,15 @@ export default function LeadFormSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+
+  const validateForm = () => {
+    if (formData.name.trim().length < 2) return "Name must be at least 2 characters long.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) return "Please enter a valid email address.";
+    if (formData.phone.length !== 10) return "Mobile number must be exactly 10 digits.";
+    if (!formData.course) return "Please select a course.";
+    if (!formData.branch) return "Please select a branch.";
+    return "";
+  };
 
   // Course Options list
   const coursesList = [
@@ -242,8 +252,15 @@ export default function LeadFormSection() {
     alert('SMS Demo: New OTP code "1234" sent to ' + formData.phone);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    const error = validateForm();
+    if (error) {
+      setErrorMsg(error);
+      return;
+    }
+    
     if (!otpVerified) {
       setErrorMsg('Please verify your mobile number with OTP first.');
       return;
@@ -252,11 +269,15 @@ export default function LeadFormSection() {
     setIsSubmitting(true);
     setErrorMsg('');
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    const success = await submitToExcel(formData, 'Lead Form');
+
+    setIsSubmitting(false);
+    
+    if (success) {
       setIsSubmitted(true);
-    }, 1500);
+    } else {
+      setErrorMsg('Failed to submit request. Please try again later.');
+    }
   };
 
   const resetForm = () => {
@@ -356,7 +377,7 @@ export default function LeadFormSection() {
               <form className="callback-form-inner" onSubmit={handleSubmit}>
                 <h3 className="form-header-title">Request Callback</h3>
 
-                {errorMsg && <div className="form-error-banner">{errorMsg}</div>}
+                {errorMsg && <div className="form-error-banner" style={{ background: '#fef2f2', border: '1px solid #fca5a5', color: '#ef4444', padding: '10px', borderRadius: '6px', marginBottom: '15px', fontSize: '0.9rem' }}>{errorMsg}</div>}
 
                 {/* Name Field */}
                 <div className="form-input-group">

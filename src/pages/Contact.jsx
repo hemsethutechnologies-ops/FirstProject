@@ -2,23 +2,50 @@ import React, { useState } from 'react';
 import SEO from '../components/SEO';
 import './PageStyles.css';
 import './Contact.css';
-import { Phone, Mail, MapPin, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, CheckCircle } from 'lucide-react';
 import contactHeroImg from '../assets/contact_hero.jpg';
 
+
+import { submitToExcel } from '../utils/submitToExcel';
 
 export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = (e) => {
+  const validateForm = () => {
+    if (name.trim().length < 2) return "Name must be at least 2 characters long.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return "Please enter a valid email address.";
+    if (subject.trim().length < 2) return "Please enter a subject.";
+    if (message.trim().length < 10) return "Message must be at least 10 characters long.";
+    return "";
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Thank you, ${name}! Your message has been sent successfully. A representative from Hemsethu Technologies will contact you at ${email} within 24 hours.`);
-    setName('');
-    setEmail('');
-    setSubject('');
-    setMessage('');
+    
+    const error = validateForm();
+    if (error) {
+      setErrorMsg(error);
+      return;
+    }
+    
+    setErrorMsg('');
+    setIsSubmitting(true);
+    
+    const success = await submitToExcel({ name, email, subject, message }, 'Contact Form');
+    
+    setIsSubmitting(false);
+    
+    if (success) {
+      setIsSubmitted(true);
+    } else {
+      alert('Failed to send message. Please try again later.');
+    }
   };
 
   return (
@@ -119,8 +146,32 @@ export default function Contact() {
         </div>
 
         <div className="contact-form-panel">
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="form-group">
+          {isSubmitted ? (
+            <div style={{ textAlign: 'center', padding: '40px 20px', animation: 'fadeIn 0.5s ease-out' }}>
+              <CheckCircle size={64} color="#10b981" style={{ margin: '0 auto 20px' }} />
+              <h2 style={{ fontSize: '2rem', color: '#0f172a', marginBottom: '15px' }}>Message Sent!</h2>
+              <p style={{ color: '#475569', fontSize: '1.1rem', lineHeight: '1.6' }}>
+                Thank you, <strong>{name}</strong>! We have received your message.<br/>
+                A representative will contact you at <strong>{email}</strong> within 24 hours.
+              </p>
+              <button 
+                onClick={() => { 
+                  setIsSubmitted(false); 
+                  setName(''); 
+                  setEmail(''); 
+                  setSubject(''); 
+                  setMessage(''); 
+                }} 
+                className="btn-submit" 
+                style={{ marginTop: '30px', width: 'auto', padding: '12px 30px' }}
+              >
+                Send Another Message
+              </button>
+            </div>
+          ) : (
+            <form className="contact-form" onSubmit={handleSubmit}>
+              {errorMsg && <div style={{ color: '#ef4444', background: '#fef2f2', padding: '10px', borderRadius: '6px', marginBottom: '15px', border: '1px solid #fca5a5', fontSize: '0.9rem' }}>{errorMsg}</div>}
+              <div className="form-group">
               <label>Full Name</label>
               <input 
                 type="text" 
@@ -160,10 +211,11 @@ export default function Contact() {
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>
             </div>
-            <button type="submit" className="btn-submit">
-              Send Message <Send size={18} />
+            <button type="submit" className="btn-submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : <>Send Message <Send size={18} /></>}
             </button>
           </form>
+          )}
         </div>
       </div>
     </main>
